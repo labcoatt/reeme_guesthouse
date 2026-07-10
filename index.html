@@ -141,143 +141,143 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Top Navigation Bar -->
-    <header class="w-full sticky top-0 z-50 bg-background/95 backdrop-blur-md shadow-[0_4px_16px_rgba(140,110,80,0.04)] border-b border-primary/5">
-        <nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto w-full">
-            <!-- Brand Logo -->
-            <a href="#home" class="flex items-center gap-2 text-xl font-bold text-primary tracking-tight click-shrink">
-                <span class="material-symbols-outlined text-2xl filled text-secondary">house</span>
-                <span>Reeme Guest House</span>
-            </a>
+    <!-- Top Navigation Bar (Absolute Overlay) -->
+    <header class="w-full absolute top-0 left-0 z-50 bg-transparent border-none">
+        <nav class="flex justify-between items-center px-6 py-6 max-w-7xl mx-auto w-full">
             
-            <!-- Desktop Links -->
-            <div class="hidden md:flex items-center gap-2">
-                <a class="text-on-surface-variant hover:text-primary px-4 py-2 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#home">Home</a>
-                <a class="text-on-surface-variant hover:text-primary px-4 py-2 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#about">About Us</a>
-                <a class="text-on-surface-variant hover:text-primary px-4 py-2 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#rooms">Accommodations</a>
-                <a class="text-on-surface-variant hover:text-primary px-4 py-2 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#contact">Contact</a>
+            <!-- Left Side: Capsule Button Menu | Reserve -->
+            <div class="flex items-center">
+                <div class="flex items-center bg-black/25 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 text-white text-xs font-semibold uppercase tracking-wider gap-3 shadow-sm">
+                    <button id="menu-trigger-btn" class="hover:text-secondary flex items-center gap-1.5 transition-colors click-shrink focus:outline-none">
+                        <span class="material-symbols-outlined text-base">menu</span>
+                        <span>Menu</span>
+                    </button>
+                    <span class="text-white/30 font-light">|</span>
+                    <a href="#contact" class="hover:text-secondary transition-colors click-shrink">Reserve</a>
+                </div>
             </div>
-
-            <!-- CTA Action Button -->
-            <div class="hidden md:block">
-                <a href="#contact" class="neomorph-raised click-shrink inline-block bg-background text-primary font-bold px-6 py-2.5 rounded-xl border border-primary/20">
-                    Book Stay
+            
+            <!-- Center Logo: Elegant serif display style with letter-spacing -->
+            <div class="absolute left-1/2 -translate-x-1/2 text-center pointer-events-auto">
+                <a href="#home" class="text-lg sm:text-2xl font-extrabold text-white tracking-[0.25em] uppercase hover:opacity-90 transition-all leading-none block font-display">
+                    REEME
                 </a>
             </div>
 
-            <!-- Mobile Hamburger Toggle -->
-            <button id="mobile-menu-btn" class="md:hidden neomorph-raised p-2 rounded-xl text-primary click-shrink" aria-label="Toggle Navigation Menu">
-                <span class="material-symbols-outlined text-2xl">menu</span>
-            </button>
+            <!-- Right Side: Weather/Local details | Contact Link -->
+            <div class="hidden sm:flex items-center">
+                <div class="flex items-center text-white text-xs font-semibold uppercase tracking-wider gap-3">
+                    <div class="flex items-center gap-1 bg-black/25 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 opacity-90">
+                        <span class="material-symbols-outlined text-sm text-secondary">wb_sunny</span>
+                        <span>22°C / 71.6°F</span>
+                    </div>
+                    <a href="#contact" class="hover:text-secondary transition-all bg-black/25 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 click-shrink">Contact</a>
+                </div>
+            </div>
+            
+            <!-- Mobile Right Action (Visible only on mobile) -->
+            <div class="sm:hidden flex items-center">
+                <a href="#contact" class="text-white text-xs bg-black/20 backdrop-blur-sm px-3.5 py-2 border border-white/10 rounded-full font-semibold uppercase tracking-wider hover:text-secondary transition-all click-shrink">Contact</a>
+            </div>
         </nav>
 
-        <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 pt-2 bg-background/95 backdrop-blur-md border-b border-primary/5 space-y-3">
-            <a class="block text-on-surface-variant hover:text-primary py-2.5 px-4 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#home">Home</a>
-            <a class="block text-on-surface-variant hover:text-primary py-2.5 px-4 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#about">About Us</a>
-            <a class="block text-on-surface-variant hover:text-primary py-2.5 px-4 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#rooms">Accommodations</a>
-            <a class="block text-on-surface-variant hover:text-primary py-2.5 px-4 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#contact">Contact</a>
-            <a class="block text-center bg-primary text-white font-bold py-3 rounded-xl shadow-md transition-all active:scale-95" href="#contact">Book Now</a>
+        <!-- Sidebar / Drawer Navigation Menu -->
+        <div id="sidebar-menu" class="fixed inset-y-0 left-0 w-80 max-w-full bg-[#2D2722] text-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-8 border-r border-white/5">
+            <div class="space-y-8">
+                <!-- Close Button & Header -->
+                <div class="flex justify-between items-center pb-6 border-b border-white/10">
+                    <span class="text-xs font-bold uppercase tracking-widest text-secondary">Navigation</span>
+                    <button id="sidebar-close-btn" class="p-2 rounded-full hover:bg-white/5 transition-colors click-shrink focus:outline-none">
+                        <span class="material-symbols-outlined text-2xl">close</span>
+                    </button>
+                </div>
+                <!-- Links -->
+                <nav class="flex flex-col gap-6 text-xl font-medium tracking-wide">
+                    <a class="hover:text-secondary transition-colors" href="#home">Home</a>
+                    <a class="hover:text-secondary transition-colors" href="#about">About Us</a>
+                    <a class="hover:text-secondary transition-colors" href="#rooms">Accommodations</a>
+                    <a class="hover:text-secondary transition-colors" href="#contact">Contact</a>
+                </nav>
+            </div>
+            <!-- Drawer Footer details -->
+            <div class="space-y-4 pt-6 border-t border-white/10 text-stone-300 text-xs leading-relaxed">
+                <div>
+                    <span class="block font-bold text-white uppercase text-[10px] tracking-wider mb-1">Establishment</span>
+                    Postmasburg, Northern Cape, South Africa
+                </div>
+                <a href="tel:+27533130000" class="block text-sm font-semibold hover:text-secondary text-white transition-colors">+27 (0) 53 313 0000</a>
+                <a href="#contact" class="click-shrink block text-center w-full py-3 bg-primary text-white font-bold rounded-xl transition-all">Book Room</a>
+            </div>
         </div>
+        
+        <!-- Sidebar Backdrop Overlay -->
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-neutral-950/40 backdrop-blur-sm z-40 hidden transition-opacity duration-300 opacity-0"></div>
     </header>
 
     <main class="flex-grow">
         
-        <!-- Hero Section (Combined Slide Carousel + Executive Booking Card) -->
-        <section id="home" class="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden py-16 md:py-0">
-            <!-- Carousel Images Background -->
+        <!-- Hero Section (Full-bleed Background & Centered Content & Floating Booking Bar) -->
+        <section id="home" class="relative min-h-[90vh] sm:min-h-screen flex items-center justify-center px-6 overflow-hidden py-16 md:py-0">
+            <!-- Carousel Background Images -->
             <div class="absolute inset-0 z-0" id="hero-carousel">
                 <div class="hero-carousel-item active absolute inset-0">
-                    <img alt="Guest House Exterior Modern Lounge" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrfNLsO3frULIh4lbpJzx0YeFvhs124W0Y99iXSYktJYgh1LtWcXnsMKsPioePNGKDBdMM9p238zbTBMg8_kZ6a7gO8pLcoBEE25aG79M2FYjppRrrhGA7Da36t0MI7iXmxhcGyWT800g812Qd_XUnI8z1TvszlPuNo-no1gk9LSUTTMp45GhYcTm2x40ngnnmezDU2y-7HOC3xtymLmUkUywXu17OJWClQWuMOJLD9eU3HS-7vjNxgRRrIZJvnevlp2o">
+                    <img alt="Guest House Exterior Lounge" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrfNLsO3frULIh4lbpJzx0YeFvhs124W0Y99iXSYktJYgh1LtWcXnsMKsPioePNGKDBdMM9p238zbTBMg8_kZ6a7gO8pLcoBEE25aG79M2FYjppRrrhGA7Da36t0MI7iXmxhcGyWT800g812Qd_XUnI8z1TvszlPuNo-no1gk9LSUTTMp45GhYcTm2x40ngnnmezDU2y-7HOC3xtymLmUkUywXu17OJWClQWuMOJLD9eU3HS-7vjNxgRRrIZJvnevlp2o">
                 </div>
                 <div class="hero-carousel-item absolute inset-0">
-                    <img alt="Guest House Cozy Suite Interior" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1yjYL_0EBMU2MdmZrp-UP4hs6yXcX3b5av_Cs_ydJLPP3Hh6ghDiJFjiQ92sgjnCk3sntTH_Vllf2pqOoH6O2BYv0kIb0ascUbcPym6gaT8EqDpfWfjyMNVO2vA8XQWMeROj_PYiONTxLImPQOoA-sjRLEOajhc97dYMAZIk1rK5kT6v_F9zgwlQ4yF_5NqPOVwR4mmXhqyDC9HakdeW3ZaLQDEjUW6z16xkYMjio_TCoTx18MOy9tyA4F21jMLyDxRVbwZRzExw7Ue8">
+                    <img alt="Guest House Cozy Room Interior" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1yjYL_0EBMU2MdmZrp-UP4hs6yXcX3b5av_Cs_ydJLPP3Hh6ghDiJFjiQ92sgjnCk3sntTH_Vllf2pqOoH6O2BYv0kIb0ascUbcPym6gaT8EqDpfWfjyMNVO2vA8XQWMeROj_PYiONTxLImPQOoA-sjRLEOajhc97dYMAZIk1rK5kT6v_F9zgwlQ4yF_5NqPOVwR4mmXhqyDC9HakdeW3ZaLQDEjUW6z16xkYMjio_TCoTx18MOy9tyA4F21jMLyDxRVbwZRzExw7Ue8">
                 </div>
-                <!-- Warm Dark Blur Overlay for legibility -->
+                <!-- Ambient overlay overlay to read white texts clearly -->
                 <div class="absolute inset-0 bg-neutral-950/45 backdrop-brightness-[0.8]"></div>
             </div>
             
-            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
-                <!-- Hero Heading & Tagline -->
-                <div class="lg:col-span-7 space-y-6 text-left">
-                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-secondary text-sm font-semibold tracking-wide border border-white/10">
-                        <span class="material-symbols-outlined text-sm filled text-secondary">workspace_premium</span>
-                        Postmasburg's Premium Stay
+            <!-- Hero Heading in Lower-Middle Overlay -->
+            <div class="absolute inset-x-6 bottom-36 sm:bottom-40 z-10 flex flex-col items-center justify-center text-center space-y-4">
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-light text-white tracking-[0.25em] uppercase leading-none font-display">
+                    FIND YOUR SANCTUARY
+                </h1>
+                <p class="text-xs sm:text-sm md:text-base text-stone-200/90 tracking-[0.1em] font-medium leading-relaxed font-sans max-w-xl">
+                    Book now for Postmasburg's House of Comfort
+                </p>
+            </div>
+
+            <!-- Floating Booking Bar docked at the bottom center -->
+            <div class="absolute inset-x-6 bottom-8 z-20 flex justify-center pointer-events-auto">
+                <div class="w-full max-w-4xl bg-stone-950/70 backdrop-blur-md rounded-2xl md:rounded-full border border-white/10 px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-white/10 shadow-xl">
+                    
+                    <!-- Arrive / Depart Picker Input -->
+                    <div class="w-full md:w-2/5 flex items-center gap-3 px-2 py-2 md:py-0 text-left">
+                        <span class="material-symbols-outlined text-secondary text-xl">calendar_today</span>
+                        <div class="flex-grow">
+                            <span class="block text-[10px] text-stone-400 uppercase font-bold tracking-widest">Arrive - Depart</span>
+                            <input type="text" id="booking-dates-input" placeholder="Select Proposed Dates" class="w-full bg-transparent border-none p-0 text-sm text-white font-semibold focus:ring-0 focus:outline-none placeholder:text-stone-500 cursor-pointer">
+                        </div>
                     </div>
-                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tight">
-                        Safe, Pristine & <br><span class="text-secondary">Comfortable Lodge</span>
-                    </h1>
-                    <p class="text-lg md:text-xl text-stone-200/90 max-w-xl leading-relaxed font-medium">
-                        Welcome to a modern sanctuary in Postmasburg. We provide corporate mining contractors and weekend travelers a safe, uninterrupted, and fully backed-up home away from home.
-                    </p>
-                    <div class="flex items-center gap-4 text-stone-300">
-                        <div class="flex items-center text-secondary">
-                            <span class="material-symbols-outlined filled text-xl">star</span>
-                            <span class="material-symbols-outlined filled text-xl">star</span>
-                            <span class="material-symbols-outlined filled text-xl">star</span>
-                            <span class="material-symbols-outlined filled text-xl">star</span>
-                            <span class="material-symbols-outlined filled text-xl">star</span>
-                            <span class="ml-2 font-bold text-white text-base">4.9/5.0</span>
+                    
+                    <!-- Guests Selector with dynamic counter logic -->
+                    <div class="w-full md:w-1/3 flex items-center justify-between px-2 md:px-6 py-3 md:py-0 text-left">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-secondary text-xl">people</span>
+                            <div>
+                                <span class="block text-[10px] text-stone-400 uppercase font-bold tracking-widest font-sans">Guests</span>
+                                <span id="booking-guests-display" class="text-sm text-white font-semibold">2 Guests</span>
+                            </div>
                         </div>
-                        <span class="text-sm">Verified Local Reviews</span>
+                        
+                        <!-- Count Controls -->
+                        <div class="flex items-center bg-white/5 border border-white/10 rounded-full px-2 py-1 gap-3">
+                            <button type="button" id="guest-minus-btn" class="w-6 h-6 rounded-full hover:bg-white/10 flex items-center justify-center text-white click-shrink text-xs font-semibold focus:outline-none">&minus;</button>
+                            <span id="guest-count-val" class="text-white text-xs font-bold">2</span>
+                            <button type="button" id="guest-plus-btn" class="w-6 h-6 rounded-full hover:bg-white/10 flex items-center justify-center text-white click-shrink text-xs font-semibold focus:outline-none">&plus;</button>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- Executive Booking Card (Option A - Gold/Espresso dark design) -->
-                <div class="lg:col-span-5 flex justify-center lg:justify-end">
-                    <div class="neomorph-card-dark w-full max-w-md p-8 rounded-3xl space-y-6">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="text-2xl font-bold text-white tracking-tight">Executive Accommodation</h3>
-                                <p class="text-stone-400 text-sm">Postmasburg, South Africa</p>
-                            </div>
-                            <div class="neomorph-inset-dark p-2 rounded-full text-secondary">
-                                <span class="material-symbols-outlined text-lg filled">verified_user</span>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="neomorph-inset-dark p-4 rounded-xl">
-                                <div class="flex items-center gap-2 text-stone-400 text-xs mb-1 uppercase font-bold tracking-wider">
-                                    <span class="material-symbols-outlined text-sm text-secondary">calendar_today</span>
-                                    Check-in
-                                </div>
-                                <div class="text-white font-semibold text-sm">Standard Time</div>
-                                <div class="text-stone-400 text-[10px]">After 2:00 PM</div>
-                            </div>
-                            <div class="neomorph-inset-dark p-4 rounded-xl">
-                                <div class="flex items-center gap-2 text-stone-400 text-xs mb-1 uppercase font-bold tracking-wider">
-                                    <span class="material-symbols-outlined text-sm text-secondary">calendar_month</span>
-                                    Check-out
-                                </div>
-                                <div class="text-white font-semibold text-sm">Standard Time</div>
-                                <div class="text-stone-400 text-[10px]">Until 11:00 AM</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Value callout inside booking card -->
-                        <div class="neomorph-inset-dark p-4 rounded-xl space-y-2">
-                            <div class="flex items-center justify-between text-xs text-stone-300 font-bold uppercase tracking-wider">
-                                <span>Includes Utilities</span>
-                                <span class="text-secondary">Fully Covered</span>
-                            </div>
-                            <p class="text-stone-400 text-xs leading-normal">
-                                Backup power generator, solar hot water, high-speed fiber internet, and safe private parking are automatically included.
-                            </p>
-                        </div>
-                        
-                        <div class="flex justify-between items-end pt-2">
-                            <div>
-                                <span class="text-2xl font-extrabold text-white">High Quality</span>
-                                <span class="text-stone-400 ml-1 text-sm">Comfort Stays</span>
-                            </div>
-                            <div class="text-secondary text-xs font-semibold">24/7 Security</div>
-                        </div>
-                        
-                        <a href="#contact" class="click-shrink block text-center w-full py-4 bg-primary text-white font-bold text-base rounded-2xl shadow-lg hover:bg-primary/95 transition-all">
-                            Inquire Now
+                    
+                    <!-- CTA Action Button inside booking bar -->
+                    <div class="w-full md:w-1/4 flex items-center justify-end px-2 pt-3 md:pt-0">
+                        <a href="#contact" class="click-shrink block text-center w-full md:w-auto px-8 py-3 bg-primary text-white text-xs font-bold uppercase tracking-widest rounded-xl md:rounded-full hover:bg-primary/95 transition-all shadow-md">
+                            Book A Room
                         </a>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -700,27 +700,69 @@
 
     <!-- Interactive Scripting -->
     <script>
-        // Responsive Mobile Menu Drawer Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        // Responsive Drawer Sidebar Navigation
+        const sidebarMenu = document.getElementById('sidebar-menu');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const menuTrigger = document.getElementById('menu-trigger-btn');
+        const sidebarClose = document.getElementById('sidebar-close-btn');
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = menuBtn.querySelector('.material-symbols-outlined');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.textContent = 'menu';
-            } else {
-                icon.textContent = 'close';
-            }
+        function openSidebar() {
+            sidebarMenu.classList.remove('-translate-x-full');
+            sidebarMenu.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+            setTimeout(() => {
+                sidebarBackdrop.classList.add('opacity-100');
+                sidebarBackdrop.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeSidebar() {
+            sidebarMenu.classList.add('-translate-x-full');
+            sidebarMenu.classList.remove('translate-x-0');
+            sidebarBackdrop.classList.remove('opacity-100');
+            sidebarBackdrop.classList.add('opacity-0');
+            setTimeout(() => {
+                sidebarBackdrop.classList.add('hidden');
+            }, 300);
+        }
+
+        if (menuTrigger) menuTrigger.addEventListener('click', openSidebar);
+        if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+        if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+
+        // Hide sidebar on click links
+        sidebarMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeSidebar);
         });
 
-        // Hide mobile menu on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuBtn.querySelector('.material-symbols-outlined').textContent = 'menu';
+        // Guest Selector Counter Logic inside Booking Bar
+        const plusBtn = document.getElementById('guest-plus-btn');
+        const minusBtn = document.getElementById('guest-minus-btn');
+        const countVal = document.getElementById('guest-count-val');
+        const displayVal = document.getElementById('booking-guests-display');
+
+        if (plusBtn && minusBtn && countVal && displayVal) {
+            let count = parseInt(countVal.textContent, 10) || 2;
+            
+            plusBtn.addEventListener('click', () => {
+                if (count < 10) {
+                    count++;
+                    updateCount();
+                }
             });
-        });
+
+            minusBtn.addEventListener('click', () => {
+                if (count > 1) {
+                    count--;
+                    updateCount();
+                }
+            });
+
+            function updateCount() {
+                countVal.textContent = count;
+                displayVal.textContent = count === 1 ? '1 Guest' : `${count} Guests`;
+            }
+        }
 
         // Dynamic Form Label Highlights
         const formInputs = document.querySelectorAll('input, textarea, select');
