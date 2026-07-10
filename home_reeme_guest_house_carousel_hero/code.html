@@ -1,0 +1,433 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Reeme Guest House | Safe &amp; Comfortable Home-Away-From-Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#818cf8",
+                    "on-background": "#2e3040",
+                    "surface-container-high": "#dcdee4",
+                    "inverse-on-surface": "#e8eaf0",
+                    "on-tertiary-fixed": "#2e1065",
+                    "on-surface": "#2e3040",
+                    "surface-container-low": "#e5e7ed",
+                    "error-container": "#fee2e2",
+                    "secondary": "#6c6e7e",
+                    "secondary-container": "#d8dae6",
+                    "surface-variant": "#dcdee4",
+                    "on-primary-fixed-variant": "#4338ca",
+                    "on-primary": "#ffffff",
+                    "primary": "#6366f1",
+                    "tertiary-fixed-dim": "#c4b5fd",
+                    "on-surface-variant": "#585a68",
+                    "on-secondary-fixed-variant": "#404252",
+                    "surface-bright": "#edeef4",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#ede9fe",
+                    "surface-container-lowest": "#f0f2f8",
+                    "on-tertiary-container": "#3b1f63",
+                    "on-secondary-container": "#585a68",
+                    "inverse-primary": "#a5b4fc",
+                    "primary-fixed-dim": "#a5b4fc",
+                    "outline-variant": "#d0d2dc",
+                    "outline": "#8a8c9a",
+                    "primary-fixed": "#e0e2ff",
+                    "surface-container": "#e2e4ea",
+                    "surface": "#e8eaf0",
+                    "tertiary-container": "#a78bfa",
+                    "tertiary": "#7c3aed",
+                    "secondary-fixed": "#d8dae6",
+                    "surface-container-highest": "#d6d8de",
+                    "on-primary-fixed": "#1e1b4b",
+                    "on-tertiary-fixed-variant": "#5b21b6",
+                    "secondary-fixed-dim": "#b8baca",
+                    "on-secondary-fixed": "#1a1b26",
+                    "error": "#dc2626",
+                    "surface-dim": "#d4d6dc",
+                    "inverse-surface": "#2e3040",
+                    "on-error-container": "#991b1b",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#e0e2ff",
+                    "surface-tint": "#6366f1",
+                    "on-error": "#ffffff",
+                    "background": "#e8eaf0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "display": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #e8eaf0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2e3040;
+        }
+
+        .neomorph-raised {
+            box-shadow: 6px 6px 12px rgba(0,0,0,0.08), -6px -6px 12px rgba(255,255,255,0.6);
+        }
+
+        .neomorph-inset {
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.06), inset -4px -4px 8px rgba(255,255,255,0.5);
+        }
+
+        .neomorph-card-dark {
+            background: rgba(30, 31, 43, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 10px 10px 20px rgba(0,0,0,0.2), -5px -5px 15px rgba(255,255,255,0.05);
+        }
+
+        .neomorph-inset-dark {
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.4), inset -1px -1px 3px rgba(255,255,255,0.05);
+        }
+
+        .neomorph-button-active:active {
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.06), inset -4px -4px 8px rgba(255,255,255,0.5);
+            transform: scale(0.98);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hero-carousel-item {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .hero-carousel-item.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-background">
+<!-- TopNavBar -->
+<nav class="w-full sticky top-0 z-50 bg-background shadow-[6px_6px_12px_rgba(0,0,0,0.08),-6px_-6px_12px_rgba(255,255,255,0.6)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-semibold text-primary tracking-tight">Reeme Guest House</div>
+<div class="hidden md:flex items-center space-gap-4 gap-4">
+<a class="text-primary font-semibold shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] px-4 py-2 rounded-xl transition-all duration-300" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary px-4 py-2 transition-all hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] rounded-xl" href="#">About Us</a>
+<a class="text-on-surface-variant hover:text-primary px-4 py-2 transition-all hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] rounded-xl" href="#">Services</a>
+<a class="text-on-surface-variant px-4 py-2 transition-all hover:shadow-[inset_4px_4px_8px_rgba(0,0,0,0.06),inset_-4px_-4px_8px_rgba(255,255,255,0.5)] rounded-xl hover:bg-primary hover:text-on-primary" href="#">Book Now</a>
+</div>
+<button class="neomorph-raised neomorph-button-active bg-background text-primary px-6 py-2.5 rounded-xl font-semibold transition-all duration-300">
+            Book Now
+        </button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex items-center justify-center px-8 overflow-hidden">
+<!-- Image Carousel Background -->
+<div class="absolute inset-0 z-0" id="hero-carousel">
+<div class="hero-carousel-item active absolute inset-0">
+<img alt="Guest House Exterior 1" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrfNLsO3frULIh4lbpJzx0YeFvhs124W0Y99iXSYktJYgh1LtWcXnsMKsPioePNGKDBdMM9p238zbTBMg8_kZ6a7gO8pLcoBEE25aG79M2FYjppRrrhGA7Da36t0MI7iXmxhcGyWT800g812Qd_XUnI8z1TvszlPuNo-no1gk9LSUTTMp45GhYcTm2x40ngnnmezDU2y-7HOC3xtymLmUkUywXu17OJWClQWuMOJLD9eU3HS-7vjNxgRRrIZJvnevlp2o">
+</div>
+<div class="hero-carousel-item absolute inset-0">
+<img alt="Guest House Exterior 2" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1yjYL_0EBMU2MdmZrp-UP4hs6yXcX3b5av_Cs_ydJLPP3Hh6ghDiJFjiQ92sgjnCk3sntTH_Vllf2pqOoH6O2BYv0kIb0ascUbcPym6gaT8EqDpfWfjyMNVO2vA8XQWMeROj_PYiONTxLImPQOoA-sjRLEOajhc97dYMAZIk1rK5kT6v_F9zgwlQ4yF_5NqPOVwR4mmXhqyDC9HakdeW3ZaLQDEjUW6z16xkYMjio_TCoTx18MOy9tyA4F21jMLyDxRVbwZRzExw7Ue8">
+</div>
+<!-- Dark Overlay for legibility -->
+<div class="absolute inset-0 bg-black/40 backdrop-grayscale-[0.2]"></div>
+</div>
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10 w-full">
+<div class="space-y-8">
+<h1 class="text-6xl md:text-8xl font-bold text-white leading-[1.1] tracking-tight">Safe &amp; Prestine<br><font color="#e0e2ff">Home-away from Home</font></h1>
+<p class="text-xl text-white/90 max-w-lg leading-relaxed font-medium">
+                    Experience tranquility in Postmasburg. We provide a modern sanctuary where safety meets comfort, ensuring your stay is uninterrupted and peaceful.
+                </p>
+<div class="flex items-center gap-4 text-white/80">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-yellow-400">star</span>
+<span class="ml-1 font-bold text-white">4.9</span>
+</div>
+<span class="text-sm">from 500+ satisfied guests</span>
+</div>
+</div>
+<div class="flex justify-center lg:justify-end">
+<!-- Silk Design Neomorphic Booking Card -->
+<div class="neomorph-card-dark w-full max-w-md p-8 rounded-[2rem] space-y-6">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-2xl font-bold text-white">Premium Executive Suite</h3>
+<p class="text-white/60 text-sm">Postmasburg, South Africa</p>
+</div>
+<div class="neomorph-inset-dark p-2 rounded-full text-white/70">
+<span class="material-symbols-outlined text-xl">edit</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="neomorph-inset-dark p-4 rounded-xl">
+<div class="flex items-center gap-2 text-white/50 text-xs mb-1 uppercase font-bold tracking-wider">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                                Check-in
+                            </div>
+<div class="text-white font-semibold">Feb 11, 2024</div>
+<div class="text-white/40 text-[10px]">After 2:00 PM</div>
+</div>
+<div class="neomorph-inset-dark p-4 rounded-xl">
+<div class="flex items-center gap-2 text-white/50 text-xs mb-1 uppercase font-bold tracking-wider">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+                                Check-out
+                            </div>
+<div class="text-white font-semibold">Feb 15, 2024</div>
+<div class="text-white/40 text-[10px]">Until 11:00 AM</div>
+</div>
+</div>
+<div class="neomorph-inset-dark p-4 rounded-xl flex justify-between items-center">
+<div>
+<div class="text-white/50 text-xs uppercase font-bold tracking-wider">Guests</div>
+<div class="text-white font-semibold">2 Adults, 1 Child</div>
+</div>
+<span class="material-symbols-outlined text-white/50">expand_more</span>
+</div>
+<div class="flex justify-between items-end pt-4">
+<div>
+<span class="text-3xl font-bold text-white">R1,250</span>
+<span class="text-white/50 ml-1">/ night</span>
+</div>
+<div class="text-white/60 text-xs font-medium">All taxes included</div>
+</div>
+<button class="w-full py-5 bg-white text-on-surface font-bold text-lg rounded-2xl shadow-[0_10px_25px_rgba(255,255,255,0.2)] hover:scale-[1.02] active:scale-[0.98] transition-all">
+                        Reserve Now
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Reliability & Security Bento Grid -->
+<section class="py-24 px-8 bg-background">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16 space-y-4">
+<h2 class="text-4xl font-bold text-on-surface">Built for Your Peace of Mind</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg">We’ve invested in the best technology to ensure your comfort and safety are never compromised.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1: Security -->
+<div class="neomorph-raised p-8 rounded-[2rem] space-y-6 md:col-span-2 group">
+<div class="flex justify-between items-start">
+<div class="neomorph-inset p-4 rounded-2xl text-primary">
+<span class="material-symbols-outlined text-4xl">shield_with_heart</span>
+</div>
+<span class="px-4 py-1 neomorph-inset rounded-full text-xs font-bold text-on-surface-variant uppercase tracking-wider">Active Security</span>
+</div>
+<div class="space-y-3">
+<h3 class="text-2xl font-bold text-on-surface">24/7 Monitored Protection</h3>
+<p class="text-on-surface-variant leading-relaxed">Your safety is our top priority. Our premises are monitored around the clock with advanced security systems, gated access, and professional on-site support to provide a truly worry-free environment.</p>
+</div>
+<div class="relative h-48 rounded-xl overflow-hidden mt-6">
+<img class="w-full h-full object-cover" data-alt="A clean, secure entrance of a modern guest house at night. Discreet but visible high-tech security cameras are mounted on architectural beams. The lighting is soft and warm, illuminating a sleek gated entrance with neomorphic design elements. The overall atmosphere is one of high-end safety and professional monitoring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaNFR3XPKvFwqLuZDlzdbL3SVKcKgLEQWLzmtkcgY6EVD-OWET3Fnqh04Rcl-oWOZE4FPH1Su29ZmQTcEd5YIgK1cJI8M979lPA2tT_kNUr8YDBDC9BVqPaNA2zJq9PrS_kBscn3jMePbSvgvsCsotLYEmnLoOr5ly7YnC-uTxdLeKVjJEd_EREZuHNpkkf_pokslMeBgZFmdZESzNAWPXoGQQfCzuFWgRyZX4ILBRUCWoyW48y-A0Kz4eQ9dewUqNPzXt52Zp80BtViQ">
+</div>
+</div>
+<!-- Feature 2: Power -->
+<div class="neomorph-raised p-8 rounded-[2rem] space-y-6 flex flex-col justify-between">
+<div>
+<div class="neomorph-inset p-4 rounded-2xl text-tertiary w-fit mb-6">
+<span class="material-symbols-outlined text-4xl">solar_power</span>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-4">Hybrid Power System</h3>
+<p class="text-on-surface-variant leading-relaxed">Never worry about load shedding or power outages. Our advanced solar array and battery storage system keep the lights on, the Wi-Fi fast, and your coffee hot.</p>
+</div>
+<div class="neomorph-inset p-4 rounded-xl">
+<div class="flex items-center justify-between text-sm font-semibold mb-2">
+<span class="text-on-surface">Current Status</span>
+<span class="text-green-500 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                Fully Operational
+                            </span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[95%]"></div>
+</div>
+</div>
+</div>
+<!-- Feature 3: Modern/New -->
+<div class="neomorph-raised p-8 rounded-[2rem] space-y-6 flex flex-col items-center text-center">
+<div class="neomorph-inset p-4 rounded-full text-primary">
+<span class="material-symbols-outlined text-4xl">new_releases</span>
+</div>
+<div class="space-y-3">
+<h3 class="text-2xl font-bold text-on-surface">Freshly Launched</h3>
+<p class="text-on-surface-variant">Only 6 months since our doors opened. Everything from the mattresses to the kitchenware is brand new, ensuring a modern and hygienic experience.</p>
+</div>
+</div>
+<!-- Feature 4: Location -->
+<div class="neomorph-raised p-8 rounded-[2rem] space-y-6 md:col-span-2 flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1 space-y-4">
+<h3 class="text-2xl font-bold text-on-surface">Heart of Postmasburg</h3>
+<p class="text-on-surface-variant">Conveniently located for business travelers and tourists alike. Easy access to main routes while tucked away in a quiet, peaceful neighborhood.</p>
+<button class="neomorph-raised neomorph-button-active bg-background px-6 py-2 rounded-xl text-primary font-semibold transition-all">Get Directions</button>
+</div>
+<div class="w-full md:w-64 h-40 neomorph-inset rounded-2xl overflow-hidden grayscale contrast-125">
+<div class="w-full h-full" data-location="Postmasburg, South Africa"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Welcome Overview -->
+<section class="py-24 px-8 relative">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
+<div class="w-full lg:w-1/2 grid grid-cols-2 gap-6">
+<div class="neomorph-raised rounded-3xl overflow-hidden aspect-square mt-12">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmjU-U5xlSgG2rlL6tyQCp0oxb3dOgaJCJjj2XiCkZgHazMiTggpcfQx-4eP3LnjxqQsy1Y58USH_rOnDXKzL5yMMXxn6fEGFrBlfzENHgL85kQrrZc__80WNEY9p4uOLnCXJnpJBS17FdXabwpLq2kRWUKC_7FtbzAKHHPczjANpP-I2d-k6jnp3IYw7ychVIoBfXVTFKZTD3Os7g5aocNWULB2fN2PLwAwRMkLEmw15NS-i3-2Xl8mAOTtRalgzIzwpghSFsKMwguaw" alt="Washing machine and dryer in the guest house laundry area">
+</div>
+<div class="neomorph-raised rounded-3xl overflow-hidden aspect-square">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByKmO8diw3z4O1Oddr1WyKh1raDNhxesgyFUtlcr-zSL5cF5EEldEb3O3fz0G_Lk8A0FxK1diPuGTtDnNDJPMApVbhnOQFuPuzdzaW5YxD3zahs_Cjm7bkKu-FMmpW_tB3g0RYWtQE83yTNOe0adGpEINXW5URBY-Hkom2U3gtcWuJMsdIsAx3WdGijSjs_0Z9FlSovYIbQHmWTDQYylt0cfLo1Rii6wQk89WvXwM4kbY3sateAtZKc_UJ820TqdweiQI" alt="Comfortable bedroom suite with plush headboard and fresh towels">
+</div>
+</div>
+<div class="w-full lg:w-1/2 space-y-8">
+<div class="space-y-4">
+<h4 class="text-primary font-bold uppercase tracking-widest text-sm">Our Philosophy</h4>
+<h2 class="text-4xl font-bold text-on-surface">Modern Comfort, <br>Unmatched Hospitality</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                        At Reeme Guest House, we believe a stay should be more than just a bed. Since opening 6 months ago, we've dedicated ourselves to creating an environment that feels like home but operates with the efficiency of a premium hotel.
+                    </p>
+</div>
+<ul class="space-y-4">
+<li class="flex items-center gap-4 text-on-surface font-medium">
+<span class="material-symbols-outlined text-primary neomorph-inset p-2 rounded-lg">wifi</span>
+                        Complimentary High-Speed Fiber Internet
+                    </li>
+<li class="flex items-center gap-4 text-on-surface font-medium">
+<span class="material-symbols-outlined text-primary neomorph-inset p-2 rounded-lg">local_parking</span>
+                        Secure On-site Parking with Electronic Gate
+                    </li>
+<li class="flex items-center gap-4 text-on-surface font-medium">
+<span class="material-symbols-outlined text-primary neomorph-inset p-2 rounded-lg">coffee</span>
+                        Premium Coffee &amp; Fully Equipped Kitchenette
+                    </li>
+</ul>
+<div class="pt-6">
+<a class="inline-flex items-center gap-3 font-bold text-tertiary group" href="#">
+                        Read Our Full Story
+                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">trending_flat</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-8">
+<div class="max-w-5xl mx-auto neomorph-raised rounded-[3rem] p-12 md:p-20 text-center space-y-10 relative overflow-hidden bg-background">
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-2xl"></div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-tertiary/10 rounded-full blur-2xl"></div>
+<div class="relative z-10 space-y-6">
+<h2 class="text-4xl md:text-5xl font-bold text-on-surface">Ready for a restful night?</h2>
+<p class="text-on-surface-variant text-xl max-w-2xl mx-auto leading-relaxed">
+                    Join the hundreds of satisfied guests who have experienced the "Reeme Standard." Book your safe stay today.
+                </p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center pt-6">
+<button class="neomorph-raised neomorph-button-active bg-background px-10 py-5 rounded-2xl text-primary font-bold text-lg transition-all">
+                        Check Availability
+                    </button>
+<button class="neomorph-inset px-10 py-5 rounded-2xl text-on-surface-variant font-bold text-lg">
+                        Contact Reservations
+                    </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-background shadow-[0px_-6px_12px_rgba(0,0,0,0.04),0px_-6px_12px_rgba(255,255,255,0.4)]">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 gap-6 max-w-7xl mx-auto">
+<div class="space-y-4 text-center md:text-left">
+<div class="text-lg font-semibold text-on-surface">Reeme Guest House</div>
+<p class="font-body text-sm text-on-surface-variant max-w-xs">
+                © 2024 Reeme Guest House. Postmasburg, South Africa. 24/7 Monitored Security.
+            </p>
+</div>
+<div class="flex gap-8">
+<a class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Location</a>
+</div>
+<div class="flex gap-4">
+<a class="neomorph-raised p-3 rounded-xl text-primary hover:scale-110 transition-all" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="neomorph-raised p-3 rounded-xl text-primary hover:scale-110 transition-all" href="#">
+<span class="material-symbols-outlined">mail</span>
+</a>
+</div>
+</div>
+</footer>
+<script>
+    // Neomorphic button states
+    document.querySelectorAll('.neomorph-button-active').forEach(button => {
+        button.addEventListener('mousedown', () => {
+            button.classList.add('neomorph-inset');
+            button.classList.remove('neomorph-raised');
+        });
+        button.addEventListener('mouseup', () => {
+            button.classList.remove('neomorph-inset');
+            button.classList.add('neomorph-raised');
+        });
+        button.addEventListener('mouseleave', () => {
+            button.classList.remove('neomorph-inset');
+            button.classList.add('neomorph-raised');
+        });
+    });
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-10');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.neomorph-raised, .neomorph-card-dark').forEach(el => {
+        if (!el.closest('section').classList.contains('relative')) { 
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        }
+    });
+
+    // Hero Carousel Logic
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-carousel-item');
+    
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    if (slides.length > 1) {
+        setInterval(nextSlide, 5000); // Change image every 5 seconds
+    }
+</script>
+
+
+
+
+</body></html>
