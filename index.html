@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html class="scroll-smooth light" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Reeme Guest House | Safe & Comfortable Home-Away-From-Home in Postmasburg</title>
+    <meta name="description" content="Providing premium long-term and short-term accommodations in Postmasburg, Northern Cape. 24/7 security, backup hybrid power, solar dual geysers, and high-end hospitality.">
+    
+    <!-- Scripts & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "background": "#F5F2EB",
+              "surface": "#F5F2EB",
+              "primary": "#A76B46",
+              "secondary": "#C5A059",
+              "on-surface": "#2D2722",
+              "on-surface-variant": "#6E6259",
+              "surface-container": "#EFECE2",
+              "surface-container-low": "#F2EFE6",
+              "surface-container-lowest": "#FAF8F5",
+              "surface-container-high": "#E7E3D8",
+              "surface-container-highest": "#DED9CC",
+              "outline": "#8C8276",
+              "outline-variant": "#D5CFC2",
+              "error": "#b91c1c",
+              "error-container": "#fef2f2"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "2xl": "2rem",
+              "3xl": "2.5rem",
+              "full": "9999px"
+            },
+            "fontFamily": {
+              "sans": ["Plus Jakarta Sans", "sans-serif"],
+              "headline": ["Plus Jakarta Sans", "sans-serif"],
+              "display": ["Plus Jakarta Sans", "sans-serif"],
+              "body": ["Plus Jakarta Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+    
+    <!-- Custom Neomorphic / Soft UI CSS -->
+    <style>
+        body {
+            background-color: #F5F2EB;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2D2722;
+        }
+
+        /* Neomorphic Raised Shadow (Option A - Warm Shadows) */
+        .neomorph-raised {
+            background-color: #F5F2EB;
+            box-shadow: 6px 6px 12px rgba(140, 110, 80, 0.08), -6px -6px 12px rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(167, 107, 70, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .neomorph-raised:hover {
+            box-shadow: 8px 8px 16px rgba(140, 110, 80, 0.12), -8px -8px 16px rgba(255, 255, 255, 0.95);
+        }
+
+        /* Neomorphic Inset Shadow (Option A - Warm Shadows) */
+        .neomorph-inset {
+            background-color: #F5F2EB;
+            box-shadow: inset 4px 4px 8px rgba(140, 110, 80, 0.06), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(167, 107, 70, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Premium Executive Suite Dark Card (Warm Charcoal & Gold details) */
+        .neomorph-card-dark {
+            background: rgba(45, 39, 34, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 10px 10px 20px rgba(0,0,0,0.3), -5px -5px 15px rgba(255,255,255,0.03);
+        }
+        .neomorph-inset-dark {
+            background: rgba(0, 0, 0, 0.18);
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.4), inset -1px -1px 3px rgba(255,255,255,0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hero Carousel Image Transition */
+        .hero-carousel-item {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        .hero-carousel-item.active {
+            opacity: 1;
+        }
+
+        /* Interactive Element Micro-actions */
+        .click-shrink {
+            transition: transform 0.15s ease-in-out;
+        }
+        .click-shrink:active {
+            transform: scale(0.96);
+        }
+
+        /* Marquee Gallery Styles */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 35s linear infinite;
+        }
+        .carousel-container:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+        .glass-fade-left {
+            background: linear-gradient(to right, #F5F2EB 0%, rgba(245, 242, 235, 0) 100%);
+        }
+        .glass-fade-right {
+            background: linear-gradient(to left, #F5F2EB 0%, rgba(245, 242, 235, 0) 100%);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Navigation Bar -->
+    <header class="w-full sticky top-0 z-50 bg-background/95 backdrop-blur-md shadow-[0_4px_16px_rgba(140,110,80,0.04)] border-b border-primary/5">
+        <nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto w-full">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-2 text-xl font-bold text-primary tracking-tight click-shrink">
+                <span class="material-symbols-outlined text-2xl filled text-secondary">house</span>
+                <span>Reeme Guest House</span>
+            </a>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-2">
+                <a class="text-on-surface-variant hover:text-primary px-4 py-2 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#home">Home</a>
+                <a class="text-on-surface-variant hover:text-primary px-4 py-2 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#about">About Us</a>
+                <a class="text-on-surface-variant hover:text-primary px-4 py-2 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#rooms">Accommodations</a>
+                <a class="text-on-surface-variant hover:text-primary px-4 py-2 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#contact">Contact</a>
+            </div>
+
+            <!-- CTA Action Button -->
+            <div class="hidden md:block">
+                <a href="#contact" class="neomorph-raised click-shrink inline-block bg-background text-primary font-bold px-6 py-2.5 rounded-xl border border-primary/20">
+                    Book Stay
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden neomorph-raised p-2 rounded-xl text-primary click-shrink" aria-label="Toggle Navigation Menu">
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+        </nav>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 pt-2 bg-background/95 backdrop-blur-md border-b border-primary/5 space-y-3">
+            <a class="block text-on-surface-variant hover:text-primary py-2.5 px-4 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#home">Home</a>
+            <a class="block text-on-surface-variant hover:text-primary py-2.5 px-4 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#about">About Us</a>
+            <a class="block text-on-surface-variant hover:text-primary py-2.5 px-4 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#rooms">Accommodations</a>
+            <a class="block text-on-surface-variant hover:text-primary py-2.5 px-4 transition-all rounded-xl hover:shadow-[inset_3px_3px_6px_rgba(140,110,80,0.05),_inset_-3px_-3px_6px_rgba(255,255,255,0.7)]" href="#contact">Contact</a>
+            <a class="block text-center bg-primary text-white font-bold py-3 rounded-xl shadow-md transition-all active:scale-95" href="#contact">Book Now</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- Hero Section (Combined Slide Carousel + Executive Booking Card) -->
+        <section id="home" class="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden py-16 md:py-0">
+            <!-- Carousel Images Background -->
+            <div class="absolute inset-0 z-0" id="hero-carousel">
+                <div class="hero-carousel-item active absolute inset-0">
+                    <img alt="Guest House Exterior Modern Lounge" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrfNLsO3frULIh4lbpJzx0YeFvhs124W0Y99iXSYktJYgh1LtWcXnsMKsPioePNGKDBdMM9p238zbTBMg8_kZ6a7gO8pLcoBEE25aG79M2FYjppRrrhGA7Da36t0MI7iXmxhcGyWT800g812Qd_XUnI8z1TvszlPuNo-no1gk9LSUTTMp45GhYcTm2x40ngnnmezDU2y-7HOC3xtymLmUkUywXu17OJWClQWuMOJLD9eU3HS-7vjNxgRRrIZJvnevlp2o">
+                </div>
+                <div class="hero-carousel-item absolute inset-0">
+                    <img alt="Guest House Cozy Suite Interior" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1yjYL_0EBMU2MdmZrp-UP4hs6yXcX3b5av_Cs_ydJLPP3Hh6ghDiJFjiQ92sgjnCk3sntTH_Vllf2pqOoH6O2BYv0kIb0ascUbcPym6gaT8EqDpfWfjyMNVO2vA8XQWMeROj_PYiONTxLImPQOoA-sjRLEOajhc97dYMAZIk1rK5kT6v_F9zgwlQ4yF_5NqPOVwR4mmXhqyDC9HakdeW3ZaLQDEjUW6z16xkYMjio_TCoTx18MOy9tyA4F21jMLyDxRVbwZRzExw7Ue8">
+                </div>
+                <!-- Warm Dark Blur Overlay for legibility -->
+                <div class="absolute inset-0 bg-neutral-950/45 backdrop-brightness-[0.8]"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
+                <!-- Hero Heading & Tagline -->
+                <div class="lg:col-span-7 space-y-6 text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-secondary text-sm font-semibold tracking-wide border border-white/10">
+                        <span class="material-symbols-outlined text-sm filled text-secondary">workspace_premium</span>
+                        Postmasburg's Premium Stay
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tight">
+                        Safe, Pristine & <br><span class="text-secondary">Comfortable Lodge</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-stone-200/90 max-w-xl leading-relaxed font-medium">
+                        Welcome to a modern sanctuary in Postmasburg. We provide corporate mining contractors and weekend travelers a safe, uninterrupted, and fully backed-up home away from home.
+                    </p>
+                    <div class="flex items-center gap-4 text-stone-300">
+                        <div class="flex items-center text-secondary">
+                            <span class="material-symbols-outlined filled text-xl">star</span>
+                            <span class="material-symbols-outlined filled text-xl">star</span>
+                            <span class="material-symbols-outlined filled text-xl">star</span>
+                            <span class="material-symbols-outlined filled text-xl">star</span>
+                            <span class="material-symbols-outlined filled text-xl">star</span>
+                            <span class="ml-2 font-bold text-white text-base">4.9/5.0</span>
+                        </div>
+                        <span class="text-sm">Verified Local Reviews</span>
+                    </div>
+                </div>
+                
+                <!-- Executive Booking Card (Option A - Gold/Espresso dark design) -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div class="neomorph-card-dark w-full max-w-md p-8 rounded-3xl space-y-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white tracking-tight">Executive Accommodation</h3>
+                                <p class="text-stone-400 text-sm">Postmasburg, South Africa</p>
+                            </div>
+                            <div class="neomorph-inset-dark p-2 rounded-full text-secondary">
+                                <span class="material-symbols-outlined text-lg filled">verified_user</span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="neomorph-inset-dark p-4 rounded-xl">
+                                <div class="flex items-center gap-2 text-stone-400 text-xs mb-1 uppercase font-bold tracking-wider">
+                                    <span class="material-symbols-outlined text-sm text-secondary">calendar_today</span>
+                                    Check-in
+                                </div>
+                                <div class="text-white font-semibold text-sm">Standard Time</div>
+                                <div class="text-stone-400 text-[10px]">After 2:00 PM</div>
+                            </div>
+                            <div class="neomorph-inset-dark p-4 rounded-xl">
+                                <div class="flex items-center gap-2 text-stone-400 text-xs mb-1 uppercase font-bold tracking-wider">
+                                    <span class="material-symbols-outlined text-sm text-secondary">calendar_month</span>
+                                    Check-out
+                                </div>
+                                <div class="text-white font-semibold text-sm">Standard Time</div>
+                                <div class="text-stone-400 text-[10px]">Until 11:00 AM</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Value callout inside booking card -->
+                        <div class="neomorph-inset-dark p-4 rounded-xl space-y-2">
+                            <div class="flex items-center justify-between text-xs text-stone-300 font-bold uppercase tracking-wider">
+                                <span>Includes Utilities</span>
+                                <span class="text-secondary">Fully Covered</span>
+                            </div>
+                            <p class="text-stone-400 text-xs leading-normal">
+                                Backup power generator, solar hot water, high-speed fiber internet, and safe private parking are automatically included.
+                            </p>
+                        </div>
+                        
+                        <div class="flex justify-between items-end pt-2">
+                            <div>
+                                <span class="text-2xl font-extrabold text-white">High Quality</span>
+                                <span class="text-stone-400 ml-1 text-sm">Comfort Stays</span>
+                            </div>
+                            <div class="text-secondary text-xs font-semibold">24/7 Security</div>
+                        </div>
+                        
+                        <a href="#contact" class="click-shrink block text-center w-full py-4 bg-primary text-white font-bold text-base rounded-2xl shadow-lg hover:bg-primary/95 transition-all">
+                            Inquire Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us & Bento Grid Section -->
+        <section id="about" class="py-20 md:py-28 px-6 bg-background">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Section Header -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
+                    <div class="lg:col-span-8 space-y-4">
+                        <div class="inline-block px-4 py-1.5 rounded-full neomorph-inset text-primary text-sm font-semibold tracking-wide border border-primary/10">
+                            About Our Establishment
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-on-surface tracking-tight leading-tight">
+                            Providing a modern, safe stay <br>tailored to your exact needs.
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-4">
+                        <p class="text-on-surface-variant font-medium leading-relaxed">
+                            Welcome to Reeme Guest House. We are a young established guesthouse dedicated to providing a home-away-from-home experience. Whether you are a corporate contractor working in the area, a family on holiday, or a couple on a weekend retreat, we exist to offer a safe, comfortable, and personal stay.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bento Grid Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                    <!-- Bento Item 1: Security -->
+                    <div class="neomorph-raised p-8 rounded-3xl space-y-6 md:col-span-2 flex flex-col justify-between">
+                        <div class="flex justify-between items-start">
+                            <div class="neomorph-inset p-4 rounded-2xl text-primary">
+                                <span class="material-symbols-outlined text-3xl text-primary">verified_user</span>
+                            </div>
+                            <span class="px-4 py-1.5 neomorph-inset rounded-full text-xs font-bold text-on-surface-variant uppercase tracking-wider border border-primary/5">24/7 Monitored Protection</span>
+                        </div>
+                        <div class="space-y-3">
+                            <h3 class="text-2xl font-bold text-on-surface">Advanced Secure Premises</h3>
+                            <p class="text-on-surface-variant leading-relaxed">
+                                Your peace of mind is our absolute priority. Our lodge features 24-hour high-definition security camera monitoring, electric boundary fencing, security motion sensors, panic buttons, and walled parking. Rest easy knowing your vehicles and equipment are fully secured.
+                            </p>
+                        </div>
+                        <div class="relative h-56 rounded-2xl overflow-hidden mt-4 border border-primary/5 shadow-inner">
+                            <img class="w-full h-full object-cover" alt="Sleek, high-security gate entrance with surveillance cameras, beautifully lit in warm colors at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaNFR3XPKvFwqLuZDlzdbL3SVKcKgLEQWLzmtkcgY6EVD-OWET3Fnqh04Rcl-oWOZE4FPH1Su29ZmQTcEd5YIgK1cJI8M979lPA2tT_kNUr8YDBDC9BVqPaNA2zJq9PrS_kBscn3jMePbSvgvsCsotLYEmnLoOr5ly7YnC-uTxdLeKVjJEd_EREZuHNpkkf_pokslMeBgZFmdZESzNAWPXoGQQfCzuFWgRyZX4ILBRUCWoyW48y-A0Kz4eQ9dewUqNPzXt52Zp80BtViQ">
+                        </div>
+                    </div>
+
+                    <!-- Bento Item 2: Hybrid Power System -->
+                    <div class="neomorph-raised p-8 rounded-3xl space-y-6 flex flex-col justify-between">
+                        <div>
+                            <div class="neomorph-inset p-4 rounded-2xl text-secondary w-fit mb-6">
+                                <span class="material-symbols-outlined text-3xl">solar_power</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-on-surface mb-3">Uninterrupted Power</h3>
+                            <p class="text-on-surface-variant leading-relaxed text-sm">
+                                Load shedding won't affect your stay. Our solar array combined with backup generator storage keeps the lights on, rooms heated, and high-speed fiber Wi-Fi operational at all times.
+                            </p>
+                        </div>
+                        <div class="neomorph-inset p-5 rounded-2xl border border-primary/5">
+                            <div class="flex items-center justify-between text-xs font-bold mb-3 uppercase tracking-wider">
+                                <span class="text-on-surface">Utility Status</span>
+                                <span class="text-emerald-600 flex items-center gap-1">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    Active / Backed-up
+                                </span>
+                            </div>
+                            <div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+                                <div class="h-full bg-primary w-[98%]"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento Item 3: Freshly Launched -->
+                    <div class="neomorph-raised p-8 rounded-3xl space-y-4 flex flex-col items-center text-center">
+                        <div class="neomorph-inset p-4 rounded-full text-primary">
+                            <span class="material-symbols-outlined text-3xl">new_releases</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-on-surface">Freshly Opened</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            With only 6 months since our doors opened, we offer brand new beds, contemporary furniture, clean kitchenware, and modern linens for a pristine lodging experience.
+                        </p>
+                    </div>
+
+                    <!-- Bento Item 4: Location Map details -->
+                    <div class="neomorph-raised p-8 rounded-3xl space-y-6 md:col-span-2 flex flex-col md:flex-row gap-6 items-center">
+                        <div class="flex-1 space-y-4 text-left">
+                            <h3 class="text-2xl font-bold text-on-surface">Quiet, Ideal Location</h3>
+                            <p class="text-on-surface-variant text-sm leading-relaxed">
+                                Tucked away in a tranquil residential suburb of Postmasburg, Reeme Guest House offers quick access to the local mines, shopping centers, and main travel routes while ensuring peace and privacy.
+                            </p>
+                            <a href="#contact" class="click-shrink inline-block neomorph-inset bg-background px-6 py-2.5 rounded-xl text-primary font-semibold text-xs tracking-wider uppercase border border-primary/10 hover:shadow-none hover:bg-surface-container-low transition-all">
+                                View Coordinates
+                            </a>
+                        </div>
+                        <div class="w-full md:w-60 h-44 neomorph-inset rounded-2xl overflow-hidden relative border border-primary/5">
+                            <img class="w-full h-full object-cover grayscale opacity-90 contrast-125" alt="Clean satellite view of Postmasburg, South Africa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQbUiF5eHlc-Gtmupp0SAtiWlO4wxyrrOH9GsvTsx-B9evSz4L9Jr_z08tiaEsgNMOAS3VtMuyUEHR7SlRNITdx447MR9qjqlFPC10zADgd1l1nRJTHkatsVCeuWpYrCBYdKGFrs1p7oLW-5nEZjc3PDQcz-bafDsEJzkTnptnFNzsVIjz8zWsjAsWdiamx5HdRAh1GXZLYbGhig84ITofhQMRpPDac1jsytOu7J-sBMOwL41cVtM3TA">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="bg-background/90 px-3 py-1.5 rounded-lg shadow-sm border border-primary/20 backdrop-blur-sm text-center">
+                                    <span class="text-[10px] font-bold text-primary tracking-widest uppercase">Postmasburg</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Metric Stat Panels (Option A colors) -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="p-6 rounded-2xl neomorph-inset text-center border border-primary/5">
+                        <div class="text-3xl font-extrabold text-primary mb-1">6+</div>
+                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Months Since Launch</div>
+                    </div>
+                    <div class="p-6 rounded-2xl neomorph-inset text-center border border-primary/5">
+                        <div class="text-3xl font-extrabold text-secondary mb-1">24/7</div>
+                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Camera Monitored</div>
+                    </div>
+                    <div class="p-6 rounded-2xl neomorph-inset text-center border border-primary/5">
+                        <div class="text-3xl font-extrabold text-primary mb-1">100%</div>
+                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Power Backup Status</div>
+                    </div>
+                    <div class="p-6 rounded-2xl neomorph-inset text-center border border-primary/5">
+                        <div class="text-3xl font-extrabold text-secondary mb-1">Dual</div>
+                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Solar Heating Systems</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Accommodations & Rooms Section -->
+        <section id="rooms" class="py-20 md:py-28 px-6 bg-surface-container-low border-y border-primary/5">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Section Header -->
+                <div class="text-center mb-16 space-y-4">
+                    <div class="inline-block px-4 py-1.5 rounded-full neomorph-inset text-primary text-sm font-semibold tracking-wide border border-primary/10">
+                        Tailored Guest Packages
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-on-surface tracking-tight">Our Accommodations</h2>
+                    <p class="text-on-surface-variant max-w-xl mx-auto text-base">
+                        Experience hotel-tier luxury blended with home comforts. Standardized en-suites built to host mining corporate stays and short-term visits.
+                    </p>
+                </div>
+
+                <!-- Accommodations Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
+                    
+                    <!-- Accommodation Card 1: Long-Term Corporate Stays -->
+                    <div class="neomorph-raised bg-background rounded-3xl p-8 flex flex-col justify-between group h-full">
+                        <div class="space-y-6">
+                            <div class="aspect-video w-full rounded-2xl overflow-hidden neomorph-inset border border-primary/5 relative">
+                                <img alt="Luxury contemporary guest house exterior with manicured gardens under warm sunset glow" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMrhQr49OBUFrhNfWh73vHIrmiSC_yWK6Mm8f870YWYy1zOom4PV9_F30l11-34HnIko7Ik9iQ6I-ZcdlXcOpPSgEHzEhRG7BhZsPQMB_M02xIWo1Mr0VNpHDb54_Y-nCzbGwwqUpA3xXfNf3S4aTAq4bkCBBOhkTL28htxPRcgHHOz6Aia9sYF6sBsP_kHvIrYR4LiPZ4w12wg3JYHQkGm55k5FTuin83HU2YNwriWXs63EsdYkCIX5lJfSdCChkSh0ov2_DT4BIHI_A">
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-3xl text-primary">corporate_fare</span>
+                                    <h3 class="text-2xl font-bold text-on-surface">Long-Term Corporate Stays</h3>
+                                </div>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Our executive house setup is optimized for mining professionals, engineers, and company managers requiring long-term comfort while working in the Postmasburg sector.
+                                </p>
+                            </div>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-primary text-lg">house</span>
+                                    4-bedroom en-suite layouts
+                                </li>
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-primary text-lg">cooking</span>
+                                    Full kitchen (Gas & Electric)
+                                </li>
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-primary text-lg">flatware</span>
+                                    Full self-catering capabilities
+                                </li>
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-primary text-lg">cleaning_services</span>
+                                    Daily maid & laundry service
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Standard Excellence stats footer -->
+                        <div class="mt-8 pt-6 border-t border-primary/10 flex items-center justify-between">
+                            <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Fully Serviced</span>
+                            <a href="#contact" class="click-shrink bg-primary text-white text-sm font-bold px-6 py-3 rounded-xl shadow-md hover:bg-primary/95 transition-all">
+                                Request Long Rates
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Accommodation Card 2: Short-Term Lodging -->
+                    <div class="neomorph-raised bg-background rounded-3xl p-8 flex flex-col justify-between group h-full">
+                        <div class="space-y-6">
+                            <div class="aspect-video w-full rounded-2xl overflow-hidden neomorph-inset border border-primary/5 relative">
+                                <img alt="Luxury cozy suite guest bedroom with high-end linens, fresh towels and breakfast tray" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbWdu1ws2pc6lNTZ3E9HyC8XsxNB1arn6-4Pdwyb8Up1XjYuDJo7FMr6qvWXyr6KbkX6L-nHDHfLKkYKZLTy0hWKEZHFfBw16XtvU_ETFX1b7eVk2EzEHJA0R_IORygHZgrSRgJ4FZGhFsTee59uhlTx9jrKcjRnKFHiMynQG75OZ13wtn9lb3G-azdUEygTjgG4RNTJevVNIqIqazUwp6cCOkq9BgmrWOU7cOlEzaubfzvtPcbCAs_EmeQ0ZB1UKQwCp73UIl7aNGBLo">
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-3xl text-secondary">bed</span>
+                                    <h3 class="text-2xl font-bold text-on-surface">Short-Term Lodging Stays</h3>
+                                </div>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Perfect for business trips, visiting consultants, or weekend couples seeking quiet hospitality. Each room provides elegant privacy with hotel-grade comforts.
+                                </p>
+                            </div>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-secondary text-lg">breakfast_dining</span>
+                                    Breakfast included daily
+                                </li>
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-secondary text-lg">confirmation_number</span>
+                                    Contractor food vouchers accepted
+                                </li>
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-secondary text-lg">tv</span>
+                                    Netflix, Waka TV & Fiber Wi-Fi
+                                </li>
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-secondary text-lg">soap</span>
+                                    Premium towels & toiletries
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Standard Excellence stats footer -->
+                        <div class="mt-8 pt-6 border-t border-primary/10 flex items-center justify-between">
+                            <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Breakfast Included</span>
+                            <a href="#contact" class="click-shrink bg-background border border-primary/30 text-primary text-sm font-bold px-6 py-3 rounded-xl neomorph-raised hover:bg-surface-container-low transition-all">
+                                Book Short Stay
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Continuous Highlight Gallery Marquee -->
+                <section class="overflow-hidden relative carousel-container py-6 rounded-3xl border border-primary/5 bg-background">
+                    <div class="max-w-7xl mx-auto px-6 mb-6">
+                        <h4 class="text-center font-bold text-on-surface-variant text-xs uppercase tracking-widest">Gallery Highlights</h4>
+                    </div>
+                    <!-- Ambient fading gradients -->
+                    <div class="absolute left-0 top-0 bottom-0 w-24 glass-fade-left z-10 pointer-events-none"></div>
+                    <div class="absolute right-0 top-0 bottom-0 w-24 glass-fade-right z-10 pointer-events-none"></div>
+                    
+                    <div class="animate-marquee flex gap-6 px-4">
+                        <!-- Image item duplicates to form infinite loop -->
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Lounge Area" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEL477ryB05Lx0_dMsHwQG1NflEpJmvdjYQ3G-U1_Rk4eVWUb6I5mu0yLoeikNcbz-aEnFyAkdw6t1nSKE_nOj53N5tdyzip3NivLtA06ttet7AGOygm5iWcgcVApOIsxOS8l-eQiLeMlwKiF5QRUnPxcspq5bEAYY9w1YLzxjRsqFAFaLYHLL_rEmufb7477UPttj5wu8pWqvjqQd5M-emqHiRq1GN2DTyNSGN4oICKhrZUHOR73C-FQB0sUsDTq2fk8"></div></div>
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Dining Setup" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuaQ8lxKDFe8EyT-NONOGbHr35Keak9rKMyrtl8wUZvM-4PKhORVBFq8DvmMt-ra1HpQ5-PYbUxPZkMKBSY7Oh8Rd4u2uBEjbEQ8Gm0V5xW-wGF7b1qy2HMHNouz1jxUYTfVvVq17AYLxYP6GpGsg2qJoxmrsq8N_CSDszzvJOAlw28-5gXuvUQqUGAX0HanQBq6Zfcv2bs57HBBNNON7QHoZ5uBQv6pSO4enAb-5zg5DP5LEhnGNcXQ9EbTkIoBcIxQw"></div></div>
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Executive Bedroom" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0LV39Mq5DL9tDcpnHWagz3nNrcsHEoWPuHy3dJp1Cojbq---WIRwFNywV6Xh7Knx8hqTIZvP7iriqIj9JZtlN0ttPWg8o46kB7WQ0VL1zZuGIwc4l3ERvgL3QlcHbwfx6eb4gD6bO7iCy4u8FQBOA7shrDMWyxgrgf60WdJ4r1Wf8uHu0VmnL2hLwwWWcMGmrdHGmfG1d7NY-1ucUuzlkrzgO_3V9cAVmdxiE7QEd1pQi5fQ-gLC8gTzjuQZkPkQoea0"></div></div>
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Exterior View" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNwLH5y_V5OB3jSR9SIxEXFatI3HTboaRfAt1XQro9zv9SUaD02bmfR9mCEhgUP0YZVoM8l_WzX27akTja07Nz76epKfUB8jDiCCQpextjArNmfsSw7Cw0zA6V41_1WNpFNR2ZGzwfiZhAeAKUkMJs51D433b8rEmVLIs7mRkzx4h0eJYN9hxV4HITczCHGpcrO1oBBOUKaYkItTJ1Nit99FAZDo99WRia40i1WW7EJShdPzZLiucybEuqKElRMIkg6Y0"></div></div>
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Bathroom Layout" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLBkmBjxwXJZBr0Tyg5OJcs1gzW4UsXmFNMFZfzLwhHhxyexHJljWPjeuzU6Q9hMUbrF2Uviz1Qfe04uN2Fd5qrlFEF_wSRLXlRaBFtpovrYqTZuwwddXmfqx1OdPesAGUvl0ph59SqqiHRPEBaFkxySew_2jCUX66Uiqc9OvAA8dGXS2XHJ9lpML5OF1gekhrSSHYKuwCTxfiTHkhO4h1zo-_WL6XOKhmJ-Si-vLNYmO7P-Na4LbNfVviA0bFnxTis_c"></div></div>
+                        <!-- Repeats for loop -->
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Lounge Area" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEL477ryB05Lx0_dMsHwQG1NflEpJmvdjYQ3G-U1_Rk4eVWUb6I5mu0yLoeikNcbz-aEnFyAkdw6t1nSKE_nOj53N5tdyzip3NivLtA06ttet7AGOygm5iWcgcVApOIsxOS8l-eQiLeMlwKiF5QRUnPxcspq5bEAYY9w1YLzxjRsqFAFaLYHLL_rEmufb7477UPttj5wu8pWqvjqQd5M-emqHiRq1GN2DTyNSGN4oICKhrZUHOR73C-FQB0sUsDTq2fk8"></div></div>
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Dining Setup" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuaQ8lxKDFe8EyT-NONOGbHr35Keak9rKMyrtl8wUZvM-4PKhORVBFq8DvmMt-ra1HpQ5-PYbUxPZkMKBSY7Oh8Rd4u2uBEjbEQ8Gm0V5xW-wGF7b1qy2HMHNouz1jxUYTfVvVq17AYLxYP6GpGsg2qJoxmrsq8N_CSDszzvJOAlw28-5gXuvUQqUGAX0HanQBq6Zfcv2bs57HBBNNON7QHoZ5uBQv6pSO4enAb-5zg5DP5LEhnGNcXQ9EbTkIoBcIxQw"></div></div>
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Executive Bedroom" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0LV39Mq5DL9tDcpnHWagz3nNrcsHEoWPuHy3dJp1Cojbq---WIRwFNywV6Xh7Knx8hqTIZvP7iriqIj9JZtlN0ttPWg8o46kB7WQ0VL1zZuGIwc4l3ERvgL3QlcHbwfx6eb4gD6bO7iCy4u8FQBOA7shrDMWyxgrgf60WdJ4r1Wf8uHu0VmnL2hLwwWWcMGmrdHGmfG1d7NY-1ucUuzlkrzgO_3V9cAVmdxiE7QEd1pQi5fQ-gLC8gTzjuQZkPkQoea0"></div></div>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+
+        <!-- Contact Form & Coordinates Section -->
+        <section id="contact" class="py-20 md:py-28 px-6 bg-background">
+            <div class="max-w-7xl mx-auto">
+                
+                <div class="text-center mb-16 space-y-4">
+                    <div class="inline-block px-4 py-1.5 rounded-full neomorph-inset text-primary text-sm font-semibold tracking-wide border border-primary/10">
+                        Inquiries &amp; Coordinates
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-on-surface tracking-tight">Connect With Our Management</h2>
+                    <p class="text-on-surface-variant max-w-xl mx-auto text-base">
+                        Get in touch for availability, direct contracting structures, or custom long-term stay configurations.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                    
+                    <!-- Left Side: Contact Information Quick Cards -->
+                    <div class="lg:col-span-5 flex flex-col gap-6 justify-between">
+                        <div class="space-y-6">
+                            
+                            <!-- Card 1: Our Location -->
+                            <div class="neomorph-raised p-6 rounded-2xl flex items-start gap-4">
+                                <div class="neomorph-inset p-3 rounded-xl text-primary">
+                                    <span class="material-symbols-outlined text-2xl">location_on</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-on-surface mb-1">Establishment Address</h4>
+                                    <p class="text-on-surface-variant text-sm leading-relaxed">
+                                        Postmasburg, Northern Cape,<br>
+                                        8420, South Africa
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Direct Contact -->
+                            <div class="neomorph-raised p-6 rounded-2xl flex items-start gap-4">
+                                <div class="neomorph-inset p-3 rounded-xl text-secondary">
+                                    <span class="material-symbols-outlined text-2xl">contact_support</span>
+                                </div>
+                                <div class="w-full">
+                                    <h4 class="font-bold text-on-surface mb-1">Direct Booking Info</h4>
+                                    <div class="flex flex-col gap-1.5 pt-1">
+                                        <a class="text-on-surface-variant text-sm hover:text-primary transition-colors flex items-center gap-2" href="tel:+27533130000">
+                                            <span class="material-symbols-outlined text-sm text-primary">call</span>
+                                            +27 (0) 53 313 0000
+                                        </a>
+                                        <a class="text-on-surface-variant text-sm hover:text-primary transition-colors flex items-center gap-2" href="mailto:info@reemeguesthouse.co.za">
+                                            <span class="material-symbols-outlined text-sm text-primary">mail</span>
+                                            info@reemeguesthouse.co.za
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Contractor Info -->
+                            <div class="neomorph-inset p-6 rounded-2xl border border-primary/10">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="material-symbols-outlined text-primary text-2xl">engineering</span>
+                                    <h4 class="font-bold text-on-surface">Mining Contractor Packages</h4>
+                                </div>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    We offer corporate packages including laundry services, specific meal plans, and monthly billing options for mining groups or contractor teams.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <!-- Location Mini Map -->
+                        <div class="neomorph-raised rounded-2xl overflow-hidden h-52 w-full relative border border-primary/5 shadow-inner">
+                            <img class="w-full h-full object-cover grayscale opacity-80 contrast-125" alt="Map View of Postmasburg, Northern Cape, South Africa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQbUiF5eHlc-Gtmupp0SAtiWlO4wxyrrOH9GsvTsx-B9evSz4L9Jr_z08tiaEsgNMOAS3VtMuyUEHR7SlRNITdx447MR9qjqlFPC10zADgd1l1nRJTHkatsVCeuWpYrCBYdKGFrs1p7oLW-5nEZjc3PDQcz-bafDsEJzkTnptnFNzsVIjz8zWsjAsWdiamx5HdRAh1GXZLYbGhig84ITofhQMRpPDac1jsytOu7J-sBMOwL41cVtM3TA">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="neomorph-raised bg-background/90 px-4 py-2 rounded-xl backdrop-blur-sm border border-primary/20">
+                                    <span class="text-xs font-bold text-primary tracking-wider">FIND US IN POSTMASBURG</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Side: Booking Inquiry Form -->
+                    <div class="lg:col-span-7">
+                        <div class="neomorph-raised p-8 md:p-10 rounded-3xl h-full border border-primary/5 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-2xl font-bold text-on-surface mb-2">Inquiry Form</h3>
+                                <p class="text-on-surface-variant text-sm mb-6">Complete your requirements below and our administration team will contact you within 2 hours.</p>
+                            </div>
+                            <form class="space-y-6" onsubmit="event.preventDefault(); alert('Booking inquiry sent successfully! Our office will contact you shortly.');">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="space-y-2">
+                                        <label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1" id="label-name">Full Name</label>
+                                        <input class="w-full bg-background neomorph-inset border border-primary/10 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-1 focus:ring-primary/45 transition-all text-on-surface placeholder:text-outline/40" placeholder="John Doe" type="text" required>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1" id="label-email">Email Address</label>
+                                        <input class="w-full bg-background neomorph-inset border border-primary/10 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-1 focus:ring-primary/45 transition-all text-on-surface placeholder:text-outline/40" placeholder="john@company.com" type="email" required>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1" id="label-subject">Stay Configuration</label>
+                                    <select class="w-full bg-background neomorph-inset border border-primary/10 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-1 focus:ring-primary/45 transition-all text-on-surface appearance-none">
+                                        <option>Long-Term Corporate Stay (House Booking)</option>
+                                        <option>Short-Term Lodging Stay</option>
+                                        <option>Weekend Leisure Package</option>
+                                        <option>General Reservation Query</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1" id="label-message">Inquiry Details</label>
+                                    <textarea class="w-full bg-background neomorph-inset border border-primary/10 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-1 focus:ring-primary/45 transition-all text-on-surface placeholder:text-outline/40" placeholder="Specify proposed stay dates and number of guests..." rows="4" required></textarea>
+                                </div>
+                                <div class="pt-2">
+                                    <button class="w-full md:w-auto px-8 py-4 bg-primary text-white font-bold rounded-xl transition-all duration-300 shadow-md hover:bg-primary/95 click-shrink" type="submit">
+                                        Submit Booking Inquiry
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="w-full mt-auto bg-surface-container border-t border-primary/5">
+        <div class="flex flex-col md:flex-row justify-between items-center px-6 py-12 gap-8 max-w-7xl mx-auto w-full">
+            <!-- Brand Column -->
+            <div class="space-y-3 text-center md:text-left">
+                <a href="#home" class="inline-flex items-center gap-2 text-lg font-bold text-primary click-shrink">
+                    <span class="material-symbols-outlined filled text-secondary">house</span>
+                    <span>Reeme Guest House</span>
+                </a>
+                <p class="font-body text-xs text-on-surface-variant max-w-xs leading-normal">
+                    © 2026 Reeme Guest House. Postmasburg, Northern Cape, South Africa. Protected by 24/7 Monitored Security.
+                </p>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="flex flex-wrap justify-center gap-6 md:gap-8">
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#about">Directions &amp; Map</a>
+            </div>
+
+            <!-- Social Action Buttons (Soft UI) -->
+            <div class="flex gap-4">
+                <button class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink" aria-label="Share Information">
+                    <span class="material-symbols-outlined text-lg">share</span>
+                </button>
+                <button class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink" aria-label="Mail Reservations">
+                    <span class="material-symbols-outlined text-lg">mail</span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripting -->
+    <script>
+        // Responsive Mobile Menu Drawer Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('.material-symbols-outlined');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.textContent = 'menu';
+            } else {
+                icon.textContent = 'close';
+            }
+        });
+
+        // Hide mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuBtn.querySelector('.material-symbols-outlined').textContent = 'menu';
+            });
+        });
+
+        // Dynamic Form Label Highlights
+        const formInputs = document.querySelectorAll('input, textarea, select');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                const label = input.parentElement.querySelector('label');
+                if (label) label.classList.add('text-primary');
+            });
+            input.addEventListener('blur', () => {
+                const label = input.parentElement.querySelector('label');
+                if (label) label.classList.remove('text-primary');
+            });
+        });
+
+        // Simple Fade-in animation on scroll using Intersection Observer
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-6');
+                }
+            });
+        }, { threshold: 0.08 });
+
+        document.querySelectorAll('.neomorph-raised, .neomorph-card-dark').forEach(el => {
+            // Exclude hero sections from fade-in animations to avoid loading latency
+            if (!el.closest('#home')) { 
+                el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-6');
+                scrollObserver.observe(el);
+            }
+        });
+
+        // Hero Background Carousel Rotation
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-carousel-item');
+        
+        function rotateHeroSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        if (slides.length > 1) {
+            setInterval(rotateHeroSlide, 6000); // Change image every 6 seconds
+        }
+    </script>
+</body>
+</html>
