@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="scroll-smooth light" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>About Us | Reeme Guest House Postmasburg</title>
+    <meta name="description" content="Learn about Reeme Guest House, our hybrid solar backup systems, 24/7 surveillance security monitoring, and our hospitality philosophy in Postmasburg.">
+    
+    <!-- Scripts & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "background": "#F5F2EB",
+              "surface": "#F5F2EB",
+              "primary": "#A76B46",
+              "secondary": "#C5A059",
+              "on-surface": "#2D2722",
+              "on-surface-variant": "#6E6259",
+              "surface-container": "#EFECE2",
+              "surface-container-low": "#F2EFE6",
+              "surface-container-lowest": "#FAF8F5",
+              "surface-container-high": "#E7E3D8",
+              "surface-container-highest": "#DED9CC",
+              "outline": "#8C8276",
+              "outline-variant": "#D5CFC2",
+              "error": "#b91c1c",
+              "error-container": "#fef2f2"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "2xl": "2rem",
+              "3xl": "2.5rem",
+              "full": "9999px"
+            },
+            "fontFamily": {
+              "sans": ["Plus Jakarta Sans", "sans-serif"],
+              "headline": ["Plus Jakarta Sans", "sans-serif"],
+              "display": ["Plus Jakarta Sans", "sans-serif"],
+              "body": ["Plus Jakarta Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+    
+    <!-- Custom Neomorphic / Soft UI CSS -->
+    <style>
+        body {
+            background-color: #F5F2EB;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2D2722;
+        }
+
+        /* Neomorphic Raised Shadow (Option A - Warm Shadows) */
+        .neomorph-raised {
+            background-color: #F5F2EB;
+            box-shadow: 6px 6px 12px rgba(140, 110, 80, 0.08), -6px -6px 12px rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(167, 107, 70, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .neomorph-raised:hover {
+            box-shadow: 8px 8px 16px rgba(140, 110, 80, 0.12), -8px -8px 16px rgba(255, 255, 255, 0.95);
+        }
+
+        /* Neomorphic Inset Shadow (Option A - Warm Shadows) */
+        .neomorph-inset {
+            background-color: #F5F2EB;
+            box-shadow: inset 4px 4px 8px rgba(140, 110, 80, 0.06), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(167, 107, 70, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Interactive Element Micro-actions */
+        .click-shrink {
+            transition: transform 0.15s ease-in-out;
+        }
+        .click-shrink:active {
+            transform: scale(0.96);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Navigation Bar (Sticky Overlay constantly visible) -->
+    <header class="w-full sticky top-0 z-50 bg-[#2D2722]/95 backdrop-blur-md border-b border-white/5 text-white shadow-md">
+        <nav class="flex justify-between items-center px-6 py-5 max-w-7xl mx-auto w-full">
+            
+            <!-- Left Side: Capsule Button Menu | Reserve -->
+            <div class="flex items-center">
+                <div class="flex items-center bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 text-white text-xs font-semibold uppercase tracking-wider gap-3 shadow-sm">
+                    <button id="menu-trigger-btn" class="hover:text-secondary flex items-center gap-1.5 transition-colors click-shrink focus:outline-none">
+                        <span class="material-symbols-outlined text-base">menu</span>
+                        <span>Menu</span>
+                    </button>
+                    <span class="text-white/30 font-light">|</span>
+                    <a href="contact.html" class="hover:text-secondary transition-colors click-shrink">Reserve</a>
+                </div>
+            </div>
+            
+            <!-- Center Logo: Elegant serif display style with letter-spacing -->
+            <div class="absolute left-1/2 -translate-x-1/2 text-center pointer-events-auto">
+                <a href="index.html" class="text-lg sm:text-2xl font-extrabold text-white tracking-[0.25em] uppercase hover:opacity-90 transition-all leading-none block font-display">
+                    REEME
+                </a>
+            </div>
+
+            <!-- Right Side: Weather/Local details | Contact Link -->
+            <div class="hidden sm:flex items-center">
+                <div class="flex items-center text-white text-xs font-semibold uppercase tracking-wider gap-3">
+                    <div class="flex items-center gap-1 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 opacity-90">
+                        <span class="material-symbols-outlined text-sm text-secondary">wb_sunny</span>
+                        <span>22°C / 71.6°F</span>
+                    </div>
+                    <a href="contact.html" class="hover:text-secondary transition-all bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 click-shrink">Contact</a>
+                </div>
+            </div>
+            
+            <!-- Mobile Right Action (Visible only on mobile) -->
+            <div class="sm:hidden flex items-center">
+                <a href="contact.html" class="text-white text-xs bg-white/10 backdrop-blur-sm px-3.5 py-2 border border-white/10 rounded-full font-semibold uppercase tracking-wider hover:text-secondary transition-all click-shrink">Contact</a>
+            </div>
+        </nav>
+
+        <!-- Sidebar / Drawer Navigation Menu -->
+        <div id="sidebar-menu" class="fixed inset-y-0 left-0 w-80 max-w-full bg-[#2D2722] text-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-8 border-r border-white/5">
+            <div class="space-y-8">
+                <!-- Close Button & Header -->
+                <div class="flex justify-between items-center pb-6 border-b border-white/10">
+                    <span class="text-xs font-bold uppercase tracking-widest text-secondary">Navigation</span>
+                    <button id="sidebar-close-btn" class="p-2 rounded-full hover:bg-white/5 transition-colors click-shrink focus:outline-none">
+                        <span class="material-symbols-outlined text-2xl">close</span>
+                    </button>
+                </div>
+                <!-- Links -->
+                <nav class="flex flex-col gap-6 text-xl font-medium tracking-wide">
+                    <a class="hover:text-secondary transition-colors" href="index.html">Home</a>
+                    <a class="hover:text-secondary transition-colors" href="about.html">About Us</a>
+                    <a class="hover:text-secondary transition-colors" href="rooms.html">Accommodations</a>
+                    <a class="hover:text-secondary transition-colors" href="contact.html">Contact</a>
+                </nav>
+            </div>
+            <!-- Drawer Footer details -->
+            <div class="space-y-4 pt-6 border-t border-white/10 text-stone-300 text-xs leading-relaxed">
+                <div>
+                    <span class="block font-bold text-white uppercase text-[10px] tracking-wider mb-1">Establishment</span>
+                    7511 Dibange Makape Street, Airfield, Postmasburg, 8420
+                </div>
+                <a href="tel:+27614713679" class="block text-sm font-semibold hover:text-secondary text-white transition-colors">+27 61 471 3679</a>
+                <a href="contact.html" class="click-shrink block text-center w-full py-3 bg-primary text-white font-bold rounded-xl transition-all">Book Room</a>
+            </div>
+        </div>
+        
+        <!-- Sidebar Backdrop Overlay -->
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-neutral-950/40 backdrop-blur-sm z-40 hidden transition-opacity duration-300 opacity-0"></div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- About Header & Detailed Bento Grid -->
+        <section class="py-16 md:py-24 px-6 bg-background">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Page Title -->
+                <div class="text-center mb-16 space-y-4">
+                    <div class="inline-block px-4 py-1.5 rounded-full neomorph-inset text-primary text-sm font-semibold tracking-wide border border-primary/10">
+                        About Reeme Guest House
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-on-surface tracking-tight">Our Story &amp; Pillars</h1>
+                    <p class="text-on-surface-variant max-w-xl mx-auto text-base">
+                        Dedicated to providing a high-end contractor-friendly and family-friendly home away from home in Postmasburg.
+                    </p>
+                </div>
+
+                <!-- Deep Narrative Card -->
+                <div class="neomorph-raised p-8 md:p-12 rounded-3xl mb-16 space-y-6">
+                    <h3 class="text-2xl font-bold text-on-surface flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-2xl">history_edu</span>
+                        Who We Are
+                    </h3>
+                    <p class="text-on-surface-variant leading-relaxed text-base">
+                        Welcome to Reeme Guest House. We are a young established guesthouse dedicated to providing a home-away-from-home experience. Whether you are a corporate contractor working in the area, a family on holiday, or a couple on a weekend retreat, we exist to offer a safe, comfortable, and personal stay tailored to your needs.
+                    </p>
+                    <p class="text-on-surface-variant leading-relaxed text-base">
+                        Our management team, led by Didintle Thupae, works closely with mining houses and engineering houses in the Northern Cape to accommodate teams for short or long projects. We coordinate directly with procurement partners to simplify contractor stays, offering tailored packages and complete comfort tools.
+                    </p>
+                </div>
+
+                <!-- Bento Grid Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <!-- Bento Item 1: Security -->
+                    <div id="security" class="neomorph-raised p-8 rounded-3xl space-y-6 md:col-span-2 flex flex-col justify-between">
+                        <div class="flex justify-between items-start">
+                            <div class="neomorph-inset p-4 rounded-2xl text-primary">
+                                <span class="material-symbols-outlined text-3xl text-primary">verified_user</span>
+                            </div>
+                            <span class="px-4 py-1.5 neomorph-inset rounded-full text-xs font-bold text-on-surface-variant uppercase tracking-wider border border-primary/5">24/7 Monitored Protection</span>
+                        </div>
+                        <div class="space-y-3">
+                            <h3 class="text-2xl font-bold text-on-surface">Advanced Secure Premises</h3>
+                            <p class="text-on-surface-variant leading-relaxed text-sm">
+                                Your peace of mind is our absolute priority. Our lodge features 24-hour high-definition security camera monitoring, electric boundary fencing, security motion sensors, panic buttons, and walled parking. Rest easy knowing your vehicles and equipment are fully secured.
+                            </p>
+                        </div>
+                        <div class="relative h-56 rounded-2xl overflow-hidden mt-4 border border-primary/5 shadow-inner">
+                            <img class="w-full h-full object-cover" alt="Sleek, high-security gate entrance with surveillance cameras, beautifully lit in warm colors at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaNFR3XPKvFwqLuZDlzdbL3SVKcKgLEQWLzmtkcgY6EVD-OWET3Fnqh04Rcl-oWOZE4FPH1Su29ZmQTcEd5YIgK1cJI8M979lPA2tT_kNUr8YDBDC9BVqPaNA2zJq9PrS_kBscn3jMePbSvgvsCsotLYEmnLoOr5ly7YnC-uTxdLeKVjJEd_EREZuHNpkkf_pokslMeBgZFmdZESzNAWPXoGQQfCzuFWgRyZX4ILBRUCWoyW48y-A0Kz4eQ9dewUqNPzXt52Zp80BtViQ">
+                        </div>
+                    </div>
+
+                    <!-- Bento Item 2: Hybrid Power System -->
+                    <div id="utilities" class="neomorph-raised p-8 rounded-3xl space-y-6 flex flex-col justify-between">
+                        <div>
+                            <div class="neomorph-inset p-4 rounded-2xl text-secondary w-fit mb-6">
+                                <span class="material-symbols-outlined text-3xl">solar_power</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-on-surface mb-3">Uninterrupted Power</h3>
+                            <p class="text-on-surface-variant leading-relaxed text-sm">
+                                Load shedding won't affect your stay. Our solar array combined with backup generator storage keeps the lights on, rooms heated, and high-speed fiber Wi-Fi operational at all times.
+                            </p>
+                        </div>
+                        <div class="neomorph-inset p-5 rounded-2xl border border-primary/5">
+                            <div class="flex items-center justify-between text-xs font-bold mb-3 uppercase tracking-wider">
+                                <span class="text-on-surface">Utility Status</span>
+                                <span class="text-emerald-600 flex items-center gap-1">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    Active / Backed-up
+                                </span>
+                            </div>
+                            <div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+                                <div class="h-full bg-primary w-[98%]"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento Item 3: Freshly Launched -->
+                    <div class="neomorph-raised p-8 rounded-3xl space-y-4 flex flex-col items-center text-center">
+                        <div class="neomorph-inset p-4 rounded-full text-primary">
+                            <span class="material-symbols-outlined text-3xl">new_releases</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-on-surface">Freshly Opened</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            With only 6 months since our doors opened, we offer brand new beds, contemporary furniture, clean kitchenware, and modern linens for a pristine lodging experience.
+                        </p>
+                    </div>
+
+                    <!-- Bento Item 4: Location Map details -->
+                    <div class="neomorph-raised p-8 rounded-3xl space-y-6 md:col-span-2 flex flex-col md:flex-row gap-6 items-center">
+                        <div class="flex-1 space-y-4 text-left">
+                            <h3 class="text-2xl font-bold text-on-surface">Quiet, Suburban Lodge</h3>
+                            <p class="text-on-surface-variant text-sm leading-relaxed">
+                                Located on Dibange Makape Street in Postmasburg, Reeme Guest House offers quick access to local mines, shopping centers, and main travel routes while ensuring peace and privacy.
+                            </p>
+                        </div>
+                        <div class="w-full md:w-60 h-44 neomorph-inset rounded-2xl overflow-hidden relative border border-primary/5">
+                            <img class="w-full h-full object-cover grayscale opacity-90 contrast-125" alt="Clean satellite view of Postmasburg, South Africa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQbUiF5eHlc-Gtmupp0SAtiWlO4wxyrrOH9GsvTsx-B9evSz4L9Jr_z08tiaEsgNMOAS3VtMuyUEHR7SlRNITdx447MR9qjqlFPC10zADgd1l1nRJTHkatsVCeuWpYrCBYdKGFrs1p7oLW-5nEZjc3PDQcz-bafDsEJzkTnptnFNzsVIjz8zWsjAsWdiamx5HdRAh1GXZLYbGhig84ITofhQMRpPDac1jsytOu7J-sBMOwL41cVtM3TA">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="bg-background/90 px-3 py-1.5 rounded-lg shadow-sm border border-primary/20 backdrop-blur-sm text-center">
+                                    <span class="text-[10px] font-bold text-primary tracking-widest uppercase">Postmasburg</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Metric Panels -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="p-6 rounded-2xl neomorph-inset text-center border border-primary/5">
+                        <div class="text-3xl font-extrabold text-primary mb-1">6+</div>
+                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Months Since Launch</div>
+                    </div>
+                    <div class="p-6 rounded-2xl neomorph-inset text-center border border-primary/5">
+                        <div class="text-3xl font-extrabold text-secondary mb-1">24/7</div>
+                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Camera Monitored</div>
+                    </div>
+                    <div class="p-6 rounded-2xl neomorph-inset text-center border border-primary/5">
+                        <div class="text-3xl font-extrabold text-primary mb-1">100%</div>
+                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Power Backup Status</div>
+                    </div>
+                    <div class="p-6 rounded-2xl neomorph-inset text-center border border-primary/5">
+                        <div class="text-3xl font-extrabold text-secondary mb-1">Dual</div>
+                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Solar Heating Systems</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="w-full mt-auto bg-surface-container border-t border-primary/5">
+        <div class="flex flex-col md:flex-row justify-between items-start px-6 py-12 gap-8 max-w-7xl mx-auto w-full">
+            
+            <!-- Brand & Address Column -->
+            <div class="space-y-4 text-center md:text-left">
+                <a href="index.html" class="inline-flex items-center gap-2 text-lg font-bold text-primary click-shrink">
+                    <span class="material-symbols-outlined filled text-secondary">house</span>
+                    <span>Reeme Guest House</span>
+                </a>
+                <p class="font-body text-xs text-on-surface-variant max-w-xs leading-normal">
+                    © 2026 Reeme Guest House. 7511 Dibange Makape Street, Airfield, Postmasburg, 8420. Protected by 24/7 Monitored Security.
+                </p>
+                <div class="text-xs text-on-surface-variant space-y-1.5 pt-1">
+                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="material-symbols-outlined text-sm text-primary">person</span>
+                        <span>Manager: Didintle Thupae</span>
+                    </p>
+                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="material-symbols-outlined text-sm text-primary">call</span>
+                        <a href="tel:+27614713679" class="hover:text-primary transition-colors">+27 61 471 3679</a>
+                    </p>
+                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="material-symbols-outlined text-sm text-primary">mail</span>
+                        <a href="mailto:Didintlethupae@gmail.com" class="hover:text-primary transition-colors">Didintlethupae@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="flex flex-wrap justify-center gap-6 md:gap-8 self-center">
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="about.html">Directions &amp; Map</a>
+            </div>
+
+            <!-- Social Action Buttons (Soft UI) -->
+            <div class="flex gap-4 self-center md:self-auto">
+                <button class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink" aria-label="Share Information">
+                    <span class="material-symbols-outlined text-lg">share</span>
+                </button>
+                <a href="mailto:Didintlethupae@gmail.com" class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink flex items-center justify-center" aria-label="Mail Reservations">
+                    <span class="material-symbols-outlined text-lg">mail</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Drawer Scripting -->
+    <script>
+        const sidebarMenu = document.getElementById('sidebar-menu');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const menuTrigger = document.getElementById('menu-trigger-btn');
+        const sidebarClose = document.getElementById('sidebar-close-btn');
+
+        function openSidebar() {
+            sidebarMenu.classList.remove('-translate-x-full');
+            sidebarMenu.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+            setTimeout(() => {
+                sidebarBackdrop.classList.add('opacity-100');
+                sidebarBackdrop.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeSidebar() {
+            sidebarMenu.classList.add('-translate-x-full');
+            sidebarMenu.classList.remove('translate-x-0');
+            sidebarBackdrop.classList.remove('opacity-100');
+            sidebarBackdrop.classList.add('opacity-0');
+            setTimeout(() => {
+                sidebarBackdrop.classList.add('hidden');
+            }, 300);
+        }
+
+        if (menuTrigger) menuTrigger.addEventListener('click', openSidebar);
+        if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+        if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+
+        sidebarMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+    </script>
+</body>
+</html>
