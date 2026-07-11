@@ -26,7 +26,7 @@ For the neomorphic effect to remain warm and cohesive on the `#F5F2EB` sand surf
 ---
 
 ## 🏛️ Code & Layout Rules
-1. **Single Page Application (SPA):** Combine all sections into a single `index.html` file at the root. Use hash links (e.g., `#home`, `#about`, `#rooms`, `#contact`) with smooth scrolling.
+1. **Multi-Page Architecture:** Separate the website sections into dedicated pages (index.html for home, about.html for About Us, rooms.html for Accommodations, and contact.html for Contact Us). Each page must import the shared navigation header and footer.
 2. **Clean Syntax:** Never permit stray Markdown code fences (e.g., ````html` or ```` `) in final HTML code files.
 3. **Typography:** Use the font `Plus Jakarta Sans` across all headings, body copies, and button labels. Avoid pure bold weights; favor medium and semibold weights.
 4. **Tailwind Config:** Maintain the tailwind config object dynamically inside the index.html head. Overwrite the colors in the `extend` block.
