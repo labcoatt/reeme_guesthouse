@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html class="scroll-smooth light" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Accommodations | Reeme Guest House Postmasburg</title>
+    <meta name="description" content="Explore our en-suite executive lodging packages. Offering comfortable corporate long-term stays and short-term room bookings in Postmasburg.">
+    
+    <!-- Scripts & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "background": "#F5F2EB",
+              "surface": "#F5F2EB",
+              "primary": "#A76B46",
+              "secondary": "#C5A059",
+              "on-surface": "#2D2722",
+              "on-surface-variant": "#6E6259",
+              "surface-container": "#EFECE2",
+              "surface-container-low": "#F2EFE6",
+              "surface-container-lowest": "#FAF8F5",
+              "surface-container-high": "#E7E3D8",
+              "surface-container-highest": "#DED9CC",
+              "outline": "#8C8276",
+              "outline-variant": "#D5CFC2",
+              "error": "#b91c1c",
+              "error-container": "#fef2f2"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "2xl": "2rem",
+              "3xl": "2.5rem",
+              "full": "9999px"
+            },
+            "fontFamily": {
+              "sans": ["Plus Jakarta Sans", "sans-serif"],
+              "headline": ["Plus Jakarta Sans", "sans-serif"],
+              "display": ["Plus Jakarta Sans", "sans-serif"],
+              "body": ["Plus Jakarta Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+    
+    <!-- Custom Neomorphic / Soft UI CSS -->
+    <style>
+        body {
+            background-color: #F5F2EB;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2D2722;
+        }
+
+        /* Neomorphic Raised Shadow (Option A - Warm Shadows) */
+        .neomorph-raised {
+            background-color: #F5F2EB;
+            box-shadow: 6px 6px 12px rgba(140, 110, 80, 0.08), -6px -6px 12px rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(167, 107, 70, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .neomorph-raised:hover {
+            box-shadow: 8px 8px 16px rgba(140, 110, 80, 0.12), -8px -8px 16px rgba(255, 255, 255, 0.95);
+        }
+
+        /* Neomorphic Inset Shadow (Option A - Warm Shadows) */
+        .neomorph-inset {
+            background-color: #F5F2EB;
+            box-shadow: inset 4px 4px 8px rgba(140, 110, 80, 0.06), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(167, 107, 70, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Interactive Element Micro-actions */
+        .click-shrink {
+            transition: transform 0.15s ease-in-out;
+        }
+        .click-shrink:active {
+            transform: scale(0.96);
+        }
+
+        /* Marquee Gallery Styles */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 35s linear infinite;
+        }
+        .carousel-container:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+        .glass-fade-left {
+            background: linear-gradient(to right, #F5F2EB 0%, rgba(245, 242, 235, 0) 100%);
+        }
+        .glass-fade-right {
+            background: linear-gradient(to left, #F5F2EB 0%, rgba(245, 242, 235, 0) 100%);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Navigation Bar (Sticky Overlay constantly visible) -->
+    <header class="w-full sticky top-0 z-50 bg-[#2D2722]/95 backdrop-blur-md border-b border-white/5 text-white shadow-md">
+        <nav class="flex justify-between items-center px-6 py-5 max-w-7xl mx-auto w-full">
+            
+            <!-- Left Side: Capsule Button Menu | Reserve -->
+            <div class="flex items-center">
+                <div class="flex items-center bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 text-white text-xs font-semibold uppercase tracking-wider gap-3 shadow-sm">
+                    <button id="menu-trigger-btn" class="hover:text-secondary flex items-center gap-1.5 transition-colors click-shrink focus:outline-none">
+                        <span class="material-symbols-outlined text-base">menu</span>
+                        <span>Menu</span>
+                    </button>
+                    <span class="text-white/30 font-light">|</span>
+                    <a href="contact.html" class="hover:text-secondary transition-colors click-shrink">Reserve</a>
+                </div>
+            </div>
+            
+            <!-- Center Logo: Elegant serif display style with letter-spacing -->
+            <div class="absolute left-1/2 -translate-x-1/2 text-center pointer-events-auto">
+                <a href="index.html" class="text-lg sm:text-2xl font-extrabold text-white tracking-[0.25em] uppercase hover:opacity-90 transition-all leading-none block font-display">
+                    REEME
+                </a>
+            </div>
+
+            <!-- Right Side: Weather/Local details | Contact Link -->
+            <div class="hidden sm:flex items-center">
+                <div class="flex items-center text-white text-xs font-semibold uppercase tracking-wider gap-3">
+                    <div class="flex items-center gap-1 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 opacity-90">
+                        <span class="material-symbols-outlined text-sm text-secondary">wb_sunny</span>
+                        <span>22°C / 71.6°F</span>
+                    </div>
+                    <a href="contact.html" class="hover:text-secondary transition-all bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 click-shrink">Contact</a>
+                </div>
+            </div>
+            
+            <!-- Mobile Right Action (Visible only on mobile) -->
+            <div class="sm:hidden flex items-center">
+                <a href="contact.html" class="text-white text-xs bg-white/10 backdrop-blur-sm px-3.5 py-2 border border-white/10 rounded-full font-semibold uppercase tracking-wider hover:text-secondary transition-all click-shrink">Contact</a>
+            </div>
+        </nav>
+
+        <!-- Sidebar / Drawer Navigation Menu -->
+        <div id="sidebar-menu" class="fixed inset-y-0 left-0 w-80 max-w-full bg-[#2D2722] text-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-8 border-r border-white/5">
+            <div class="space-y-8">
+                <!-- Close Button & Header -->
+                <div class="flex justify-between items-center pb-6 border-b border-white/10">
+                    <span class="text-xs font-bold uppercase tracking-widest text-secondary">Navigation</span>
+                    <button id="sidebar-close-btn" class="p-2 rounded-full hover:bg-white/5 transition-colors click-shrink focus:outline-none">
+                        <span class="material-symbols-outlined text-2xl">close</span>
+                    </button>
+                </div>
+                <!-- Links -->
+                <nav class="flex flex-col gap-6 text-xl font-medium tracking-wide">
+                    <a class="hover:text-secondary transition-colors" href="index.html">Home</a>
+                    <a class="hover:text-secondary transition-colors" href="about.html">About Us</a>
+                    <a class="hover:text-secondary transition-colors" href="rooms.html">Accommodations</a>
+                    <a class="hover:text-secondary transition-colors" href="contact.html">Contact</a>
+                </nav>
+            </div>
+            <!-- Drawer Footer details -->
+            <div class="space-y-4 pt-6 border-t border-white/10 text-stone-300 text-xs leading-relaxed">
+                <div>
+                    <span class="block font-bold text-white uppercase text-[10px] tracking-wider mb-1">Establishment</span>
+                    7511 Dibange Makape Street, Airfield, Postmasburg, 8420
+                </div>
+                <a href="tel:+27614713679" class="block text-sm font-semibold hover:text-secondary text-white transition-colors">+27 61 471 3679</a>
+                <a href="contact.html" class="click-shrink block text-center w-full py-3 bg-primary text-white font-bold rounded-xl transition-all">Book Room</a>
+            </div>
+        </div>
+        
+        <!-- Sidebar Backdrop Overlay -->
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-neutral-950/40 backdrop-blur-sm z-40 hidden transition-opacity duration-300 opacity-0"></div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- Accommodations Grid Section -->
+        <section class="py-16 md:py-24 px-6 bg-background">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Section Header -->
+                <div class="text-center mb-16 space-y-4">
+                    <div class="inline-block px-4 py-1.5 rounded-full neomorph-inset text-primary text-sm font-semibold tracking-wide border border-primary/10">
+                        Tailored Guest Packages
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-on-surface tracking-tight">Accommodations Directory</h1>
+                    <p class="text-on-surface-variant max-w-xl mx-auto text-base">
+                        Experience hotel-tier luxury blended with home comforts. Standardized en-suites built to host mining corporate stays and short-term visits.
+                    </p>
+                </div>
+
+                <!-- Accommodations Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+                    
+                    <!-- Accommodation Card 1: Long-Term Corporate Stays -->
+                    <div class="neomorph-raised bg-background rounded-3xl p-8 flex flex-col justify-between group h-full">
+                        <div class="space-y-6">
+                            <div class="aspect-video w-full rounded-2xl overflow-hidden neomorph-inset border border-primary/5 relative">
+                                <img alt="Luxury contemporary guest house exterior with manicured gardens under warm sunset glow" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMrhQr49OBUFrhNfWh73vHIrmiSC_yWK6Mm8f870YWYy1zOom4PV9_F30l11-34HnIko7Ik9iQ6I-ZcdlXcOpPSgEHzEhRG7BhZsPQMB_M02xIWo1Mr0VNpHDb54_Y-nCzbGwwqUpA3xXfNf3S4aTAq4bkCBBOhkTL28htxPRcgHHOz6Aia9sYF6sBsP_kHvIrYR4LiPZ4w12wg3JYHQkGm55k5FTuin83HU2YNwriWXs63EsdYkCIX5lJfSdCChkSh0ov2_DT4BIHI_A">
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-3xl text-primary">corporate_fare</span>
+                                    <h3 class="text-2xl font-bold text-on-surface">Long-Term Corporate Stays</h3>
+                                </div>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Our executive house setup is optimized for mining professionals, engineers, and company managers requiring long-term comfort while working in the Postmasburg sector.
+                                </p>
+                            </div>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-primary text-lg">house</span>
+                                    4-bedroom en-suite layouts
+                                </li>
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-primary text-lg">cooking</span>
+                                    Full kitchen (Gas & Electric)
+                                </li>
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-primary text-lg">flatware</span>
+                                    Full self-catering capabilities
+                                </li>
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-primary text-lg">cleaning_services</span>
+                                    Daily daily maid & laundry service
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Standard Excellence stats footer -->
+                        <div class="mt-8 pt-6 border-t border-primary/10 flex items-center justify-between">
+                            <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Fully Serviced</span>
+                            <a href="contact.html?type=corporate" class="click-shrink bg-primary text-white text-sm font-bold px-6 py-3 rounded-xl shadow-md hover:bg-primary/95 transition-all">
+                                Request Long Rates
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Accommodation Card 2: Short-Term Lodging -->
+                    <div class="neomorph-raised bg-background rounded-3xl p-8 flex flex-col justify-between group h-full">
+                        <div class="space-y-6">
+                            <div class="aspect-video w-full rounded-2xl overflow-hidden neomorph-inset border border-primary/5 relative">
+                                <img alt="Luxury cozy suite guest bedroom with high-end linens, fresh towels and breakfast tray" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbWdu1ws2pc6lNTZ3E9HyC8XsxNB1arn6-4Pdwyb8Up1XjYuDJo7FMr6qvWXyr6KbkX6L-nHDHfLKkYKZLTy0hWKEZHFfBw16XtvU_ETFX1b7eVk2EzEHJA0R_IORygHZgrSRgJ4FZGhFsTee59uhlTx9jrKcjRnKFHiMynQG75OZ13wtn9lb3G-azdUEygTjgG4RNTJevVNIqIqazUwp6cCOkq9BgmrWOU7cOlEzaubfzvtPcbCAs_EmeQ0ZB1UKQwCp73UIl7aNGBLo">
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-3xl text-secondary">bed</span>
+                                    <h3 class="text-2xl font-bold text-on-surface">Short-Term Lodging Stays</h3>
+                                </div>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Perfect for business trips, visiting consultants, or weekend couples seeking quiet hospitality. Each room provides elegant privacy with hotel-grade comforts.
+                                </p>
+                            </div>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-secondary text-lg">breakfast_dining</span>
+                                    Breakfast included daily
+                                </li>
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-secondary text-lg">confirmation_number</span>
+                                    Contractor food vouchers accepted
+                                </li>
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-secondary text-lg">tv</span>
+                                    Netflix, Waka TV & Fiber Wi-Fi
+                                </li>
+                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
+                                    <span class="material-symbols-outlined text-secondary text-lg">soap</span>
+                                    Premium towels & toiletries
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Standard Excellence stats footer -->
+                        <div class="mt-8 pt-6 border-t border-primary/10 flex items-center justify-between">
+                            <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Breakfast Included</span>
+                            <a href="contact.html?type=short" class="click-shrink bg-background border border-primary/30 text-primary text-sm font-bold px-6 py-3 rounded-xl neomorph-raised hover:bg-surface-container-low transition-all">
+                                Book Short Stay
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Continuous Highlight Gallery Marquee -->
+                <section class="overflow-hidden relative carousel-container py-6 rounded-3xl border border-primary/5 bg-background">
+                    <!-- Ambient fading shadows -->
+                    <div class="absolute left-0 top-0 bottom-0 w-24 glass-fade-left z-10 pointer-events-none"></div>
+                    <div class="absolute right-0 top-0 bottom-0 w-24 glass-fade-right z-10 pointer-events-none"></div>
+                    
+                    <div class="animate-marquee flex gap-6 px-4">
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Lounge Area" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEL477ryB05Lx0_dMsHwQG1NflEpJmvdjYQ3G-U1_Rk4eVWUb6I5mu0yLoeikNcbz-aEnFyAkdw6t1nSKE_nOj53N5tdyzip3NivLtA06ttet7AGOygm5iWcgcVApOIsxOS8l-eQiLeMlwKiF5QRUnPxcspq5bEAYY9w1YLzxjRsqFAFaLYHLL_rEmufb7477UPttj5wu8pWqvjqQd5M-emqHiRq1GN2DTyNSGN4oICKhrZUHOR73C-FQB0sUsDTq2fk8"></div></div>
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Dining Setup" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuaQ8lxKDFe8EyT-NONOGbHr35Keak9rKMyrtl8wUZvM-4PKhORVBFq8DvmMt-ra1HpQ5-PYbUxPZkMKBSY7Oh8Rd4u2uBEjbEQ8Gm0V5xW-wGF7b1qy2HMHNouz1jxUYTfVvVq17AYLxYP6GpGsg2qJoxmrsq8N_CSDszzvJOAlw28-5gXuvUQqUGAX0HanQBq6Zfcv2bs57HBBNNON7QHoZ5uBQv6pSO4enAb-5zg5DP5LEhnGNcXQ9EbTkIoBcIxQw"></div></div>
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Executive Bedroom" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0LV39Mq5DL9tDcpnHWagz3nNrcsHEoWPuHy3dJp1Cojbq---WIRwFNywV6Xh7Knx8hqTIZvP7iriqIj9JZtlN0ttPWg8o46kB7WQ0VL1zZuGIwc4l3ERvgL3QlcHbwfx6eb4gD6bO7iCy4u8FQBOA7shrDMWyxgrgf60WdJ4r1Wf8uHu0VmnL2hLwwWWcMGmrdHGmfG1d7NY-1ucUuzlkrzgO_3V9cAVmdxiE7QEd1pQi5fQ-gLC8gTzjuQZkPkQoea0"></div></div>
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Exterior View" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNwLH5y_V5OB3jSR9SIxEXFatI3HTboaRfAt1XQro9zv9SUaD02bmfR9mCEhgUP0YZVoM8l_WzX27akTja07Nz76epKfUB8jDiCCQpextjArNmfsSw7Cw0zA6V41_1WNpFNR2ZGzwfiZhAeAKUkMJs51D433b8rEmVLIs7mRkzx4h0eJYN9hxV4HITczCHGpcrO1oBBOUKaYkItTJ1Nit99FAZDo99WRia40i1WW7EJShdPzZLiucybEuqKElRMIkg6Y0"></div></div>
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Bathroom Layout" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLBkmBjxwXJZBr0Tyg5OJcs1gzW4UsXmFNMFZfzLwhHhxyexHJljWPjeuzU6Q9hMUbrF2Uviz1Qfe04uN2Fd5qrlFEF_wSRLXlRaBFtpovrYqTZuwwddXmfqx1OdPesAGUvl0ph59SqqiHRPEBaFkxySew_2jCUX66Uiqc9OvAA8dGXS2XHJ9lpML5OF1gekhrSSHYKuwCTxfiTHkhO4h1zo-_WL6XOKhmJ-Si-vLNYmO7P-Na4LbNfVviA0bFnxTis_c"></div></div>
+                        <!-- Repeats loop -->
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Lounge Area" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEL477ryB05Lx0_dMsHwQG1NflEpJmvdjYQ3G-U1_Rk4eVWUb6I5mu0yLoeikNcbz-aEnFyAkdw6t1nSKE_nOj53N5tdyzip3NivLtA06ttet7AGOygm5iWcgcVApOIsxOS8l-eQiLeMlwKiF5QRUnPxcspq5bEAYY9w1YLzxjRsqFAFaLYHLL_rEmufb7477UPttj5wu8pWqvjqQd5M-emqHiRq1GN2DTyNSGN4oICKhrZUHOR73C-FQB0sUsDTq2fk8"></div></div>
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Dining Setup" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuaQ8lxKDFe8EyT-NONOGbHr35Keak9rKMyrtl8wUZvM-4PKhORVBFq8DvmMt-ra1HpQ5-PYbUxPZkMKBSY7Oh8Rd4u2uBEjbEQ8Gm0V5xW-wGF7b1qy2HMHNouz1jxUYTfVvVq17AYLxYP6GpGsg2qJoxmrsq8N_CSDszzvJOAlw28-5gXuvUQqUGAX0HanQBq6Zfcv2bs57HBBNNON7QHoZ5uBQv6pSO4enAb-5zg5DP5LEhnGNcXQ9EbTkIoBcIxQw"></div></div>
+                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Executive Bedroom" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0LV39Mq5DL9tDcpnHWagz3nNrcsHEoWPuHy3dJp1Cojbq---WIRwFNywV6Xh7Knx8hqTIZvP7iriqIj9JZtlN0ttPWg8o46kB7WQ0VL1zZuGIwc4l3ERvgL3QlcHbwfx6eb4gD6bO7iCy4u8FQBOA7shrDMWyxgrgf60WdJ4r1Wf8uHu0VmnL2hLwwWWcMGmrdHGmfG1d7NY-1ucUuzlkrzgO_3V9cAVmdxiE7QEd1pQi5fQ-gLC8gTzjuQZkPkQoea0"></div></div>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="w-full mt-auto bg-surface-container border-t border-primary/5">
+        <div class="flex flex-col md:flex-row justify-between items-start px-6 py-12 gap-8 max-w-7xl mx-auto w-full">
+            
+            <!-- Brand & Address Column -->
+            <div class="space-y-4 text-center md:text-left">
+                <a href="index.html" class="inline-flex items-center gap-2 text-lg font-bold text-primary click-shrink">
+                    <span class="material-symbols-outlined filled text-secondary">house</span>
+                    <span>Reeme Guest House</span>
+                </a>
+                <p class="font-body text-xs text-on-surface-variant max-w-xs leading-normal">
+                    © 2026 Reeme Guest House. 7511 Dibange Makape Street, Airfield, Postmasburg, 8420. Protected by 24/7 Monitored Security.
+                </p>
+                <div class="text-xs text-on-surface-variant space-y-1.5 pt-1">
+                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="material-symbols-outlined text-sm text-primary">person</span>
+                        <span>Manager: Didintle Thupae</span>
+                    </p>
+                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="material-symbols-outlined text-sm text-primary">call</span>
+                        <a href="tel:+27614713679" class="hover:text-primary transition-colors">+27 61 471 3679</a>
+                    </p>
+                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="material-symbols-outlined text-sm text-primary">mail</span>
+                        <a href="mailto:Didintlethupae@gmail.com" class="hover:text-primary transition-colors">Didintlethupae@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="flex flex-wrap justify-center gap-6 md:gap-8 self-center">
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="about.html">Directions &amp; Map</a>
+            </div>
+
+            <!-- Social Action Buttons (Soft UI) -->
+            <div class="flex gap-4 self-center md:self-auto">
+                <button class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink" aria-label="Share Information">
+                    <span class="material-symbols-outlined text-lg">share</span>
+                </button>
+                <a href="mailto:Didintlethupae@gmail.com" class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink flex items-center justify-center" aria-label="Mail Reservations">
+                    <span class="material-symbols-outlined text-lg">mail</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Drawer Scripting -->
+    <script>
+        const sidebarMenu = document.getElementById('sidebar-menu');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const menuTrigger = document.getElementById('menu-trigger-btn');
+        const sidebarClose = document.getElementById('sidebar-close-btn');
+
+        function openSidebar() {
+            sidebarMenu.classList.remove('-translate-x-full');
+            sidebarMenu.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+            setTimeout(() => {
+                sidebarBackdrop.classList.add('opacity-100');
+                sidebarBackdrop.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeSidebar() {
+            sidebarMenu.classList.add('-translate-x-full');
+            sidebarMenu.classList.remove('translate-x-0');
+            sidebarBackdrop.classList.remove('opacity-100');
+            sidebarBackdrop.classList.add('opacity-0');
+            setTimeout(() => {
+                sidebarBackdrop.classList.add('hidden');
+            }, 300);
+        }
+
+        if (menuTrigger) menuTrigger.addEventListener('click', openSidebar);
+        if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+        if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+
+        sidebarMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+    </script>
+</body>
+</html>
