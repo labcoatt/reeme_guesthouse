@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html class="scroll-smooth light" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Contact Us | Reeme Guest House Postmasburg</title>
+    <meta name="description" content="Get in touch with Reeme Guest House. Book long-term corporate contractor stays or short-term lodging on Dibange Makape Street, Postmasburg.">
+    
+    <!-- Scripts & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "background": "#F5F2EB",
+              "surface": "#F5F2EB",
+              "primary": "#A76B46",
+              "secondary": "#C5A059",
+              "on-surface": "#2D2722",
+              "on-surface-variant": "#6E6259",
+              "surface-container": "#EFECE2",
+              "surface-container-low": "#F2EFE6",
+              "surface-container-lowest": "#FAF8F5",
+              "surface-container-high": "#E7E3D8",
+              "surface-container-highest": "#DED9CC",
+              "outline": "#8C8276",
+              "outline-variant": "#D5CFC2",
+              "error": "#b91c1c",
+              "error-container": "#fef2f2"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "2xl": "2rem",
+              "3xl": "2.5rem",
+              "full": "9999px"
+            },
+            "fontFamily": {
+              "sans": ["Plus Jakarta Sans", "sans-serif"],
+              "headline": ["Plus Jakarta Sans", "sans-serif"],
+              "display": ["Plus Jakarta Sans", "sans-serif"],
+              "body": ["Plus Jakarta Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+    
+    <!-- Custom Neomorphic / Soft UI CSS -->
+    <style>
+        body {
+            background-color: #F5F2EB;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2D2722;
+        }
+
+        /* Neomorphic Raised Shadow (Option A - Warm Shadows) */
+        .neomorph-raised {
+            background-color: #F5F2EB;
+            box-shadow: 6px 6px 12px rgba(140, 110, 80, 0.08), -6px -6px 12px rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(167, 107, 70, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .neomorph-raised:hover {
+            box-shadow: 8px 8px 16px rgba(140, 110, 80, 0.12), -8px -8px 16px rgba(255, 255, 255, 0.95);
+        }
+
+        /* Neomorphic Inset Shadow (Option A - Warm Shadows) */
+        .neomorph-inset {
+            background-color: #F5F2EB;
+            box-shadow: inset 4px 4px 8px rgba(140, 110, 80, 0.06), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(167, 107, 70, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Interactive Element Micro-actions */
+        .click-shrink {
+            transition: transform 0.15s ease-in-out;
+        }
+        .click-shrink:active {
+            transform: scale(0.96);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Navigation Bar (Sticky Overlay constantly visible) -->
+    <header class="w-full sticky top-0 z-50 bg-[#2D2722]/95 backdrop-blur-md border-b border-white/5 text-white shadow-md">
+        <nav class="flex justify-between items-center px-6 py-5 max-w-7xl mx-auto w-full">
+            
+            <!-- Left Side: Capsule Button Menu | Reserve -->
+            <div class="flex items-center">
+                <div class="flex items-center bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 text-white text-xs font-semibold uppercase tracking-wider gap-3 shadow-sm">
+                    <button id="menu-trigger-btn" class="hover:text-secondary flex items-center gap-1.5 transition-colors click-shrink focus:outline-none">
+                        <span class="material-symbols-outlined text-base">menu</span>
+                        <span>Menu</span>
+                    </button>
+                    <span class="text-white/30 font-light">|</span>
+                    <a href="contact.html" class="hover:text-secondary transition-colors click-shrink font-semibold text-secondary">Reserve</a>
+                </div>
+            </div>
+            
+            <!-- Center Logo: Elegant serif display style with letter-spacing -->
+            <div class="absolute left-1/2 -translate-x-1/2 text-center pointer-events-auto">
+                <a href="index.html" class="text-lg sm:text-2xl font-extrabold text-white tracking-[0.25em] uppercase hover:opacity-90 transition-all leading-none block font-display">
+                    REEME
+                </a>
+            </div>
+
+            <!-- Right Side: Weather/Local details | Contact Link -->
+            <div class="hidden sm:flex items-center">
+                <div class="flex items-center text-white text-xs font-semibold uppercase tracking-wider gap-3">
+                    <div class="flex items-center gap-1 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 opacity-90">
+                        <span class="material-symbols-outlined text-sm text-secondary">wb_sunny</span>
+                        <span>22°C / 71.6°F</span>
+                    </div>
+                    <a href="contact.html" class="hover:text-secondary transition-all bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 click-shrink font-semibold text-secondary">Contact</a>
+                </div>
+            </div>
+            
+            <!-- Mobile Right Action (Visible only on mobile) -->
+            <div class="sm:hidden flex items-center">
+                <a href="contact.html" class="text-secondary text-xs bg-white/10 backdrop-blur-sm px-3.5 py-2 border border-white/10 rounded-full font-semibold uppercase tracking-wider hover:text-secondary transition-all click-shrink">Contact</a>
+            </div>
+        </nav>
+
+        <!-- Sidebar / Drawer Navigation Menu -->
+        <div id="sidebar-menu" class="fixed inset-y-0 left-0 w-80 max-w-full bg-[#2D2722] text-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-8 border-r border-white/5">
+            <div class="space-y-8">
+                <!-- Close Button & Header -->
+                <div class="flex justify-between items-center pb-6 border-b border-white/10">
+                    <span class="text-xs font-bold uppercase tracking-widest text-secondary">Navigation</span>
+                    <button id="sidebar-close-btn" class="p-2 rounded-full hover:bg-white/5 transition-colors click-shrink focus:outline-none">
+                        <span class="material-symbols-outlined text-2xl">close</span>
+                    </button>
+                </div>
+                <!-- Links -->
+                <nav class="flex flex-col gap-6 text-xl font-medium tracking-wide">
+                    <a class="hover:text-secondary transition-colors" href="index.html">Home</a>
+                    <a class="hover:text-secondary transition-colors" href="about.html">About Us</a>
+                    <a class="hover:text-secondary transition-colors" href="rooms.html">Accommodations</a>
+                    <a class="hover:text-secondary transition-colors" href="contact.html">Contact</a>
+                </nav>
+            </div>
+            <!-- Drawer Footer details -->
+            <div class="space-y-4 pt-6 border-t border-white/10 text-stone-300 text-xs leading-relaxed">
+                <div>
+                    <span class="block font-bold text-white uppercase text-[10px] tracking-wider mb-1">Establishment</span>
+                    7511 Dibange Makape Street, Airfield, Postmasburg, 8420
+                </div>
+                <a href="tel:+27614713679" class="block text-sm font-semibold hover:text-secondary text-white transition-colors">+27 61 471 3679</a>
+                <a href="contact.html" class="click-shrink block text-center w-full py-3 bg-primary text-white font-bold rounded-xl transition-all">Book Room</a>
+            </div>
+        </div>
+        
+        <!-- Sidebar Backdrop Overlay -->
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-neutral-950/40 backdrop-blur-sm z-40 hidden transition-opacity duration-300 opacity-0"></div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- Contact details and Inquiry Form -->
+        <section class="py-16 md:py-24 px-6 bg-background">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Page Title -->
+                <div class="text-center mb-16 space-y-4">
+                    <div class="inline-block px-4 py-1.5 rounded-full neomorph-inset text-primary text-sm font-semibold tracking-wide border border-primary/10">
+                        Inquiries &amp; Coordinates
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-on-surface tracking-tight">Connect With Our Management</h1>
+                    <p class="text-on-surface-variant max-w-xl mx-auto text-base">
+                        Have specific dates or requirements? Contact manager Didintle Thupae directly or complete our structured booking inquiry.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                    
+                    <!-- Left Column: Contact Cards -->
+                    <div class="lg:col-span-5 flex flex-col gap-6 justify-between">
+                        <div class="space-y-6">
+                            
+                            <!-- Location Address Card -->
+                            <div class="neomorph-raised p-6 rounded-2xl flex items-start gap-4">
+                                <div class="neomorph-inset p-3 rounded-xl text-primary">
+                                    <span class="material-symbols-outlined text-2xl">location_on</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-on-surface mb-1">Establishment Address</h4>
+                                    <p class="text-on-surface-variant text-sm leading-relaxed">
+                                        7511 Dibange Makape Street,<br>
+                                        Airfield, Postmasburg,<br>
+                                        8420, South Africa
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Direct Booking Contacts Card -->
+                            <div class="neomorph-raised p-6 rounded-2xl flex items-start gap-4">
+                                <div class="neomorph-inset p-3 rounded-xl text-secondary">
+                                    <span class="material-symbols-outlined text-2xl">contact_support</span>
+                                </div>
+                                <div class="w-full">
+                                    <h4 class="font-bold text-on-surface mb-1">Direct Contacts</h4>
+                                    <div class="space-y-2 pt-2">
+                                        <p class="flex items-center gap-2 text-sm text-on-surface-variant">
+                                            <span class="material-symbols-outlined text-base text-primary">person</span>
+                                            <span>Manager: Didintle Thupae</span>
+                                        </p>
+                                        <a class="text-on-surface-variant text-sm hover:text-primary transition-colors flex items-center gap-2" href="tel:+27614713679">
+                                            <span class="material-symbols-outlined text-base text-primary">call</span>
+                                            +27 61 471 3679
+                                        </a>
+                                        <a class="text-on-surface-variant text-sm hover:text-primary transition-colors flex items-center gap-2" href="mailto:Didintlethupae@gmail.com">
+                                            <span class="material-symbols-outlined text-base text-primary">mail</span>
+                                            Didintlethupae@gmail.com
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Corporate contractor notice card -->
+                            <div class="neomorph-inset p-6 rounded-2xl border border-primary/10">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="material-symbols-outlined text-primary text-2xl">engineering</span>
+                                    <h4 class="font-bold text-on-surface">Mining Contractor packages</h4>
+                                </div>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    We tailor stay contracts for mining consultants, engineering crews, and corporate contractors. Tell us your team numbers and meal plan criteria in the details.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <!-- Satellite Map View -->
+                        <div class="neomorph-raised rounded-2xl overflow-hidden h-52 w-full relative border border-primary/5 shadow-inner">
+                            <img class="w-full h-full object-cover grayscale opacity-80 contrast-125" alt="Map View of Dibange Makape Street, Postmasburg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQbUiF5eHlc-Gtmupp0SAtiWlO4wxyrrOH9GsvTsx-B9evSz4L9Jr_z08tiaEsgNMOAS3VtMuyUEHR7SlRNITdx447MR9qjqlFPC10zADgd1l1nRJTHkatsVCeuWpYrCBYdKGFrs1p7oLW-5nEZjc3PDQcz-bafDsEJzkTnptnFNzsVIjz8zWsjAsWdiamx5HdRAh1GXZLYbGhig84ITofhQMRpPDac1jsytOu7J-sBMOwL41cVtM3TA">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="neomorph-raised bg-background/90 px-4 py-2 rounded-xl backdrop-blur-sm border border-primary/20">
+                                    <span class="text-xs font-bold text-primary tracking-wider">7511 DIBANGE MAKAPE ST</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Booking Form -->
+                    <div class="lg:col-span-7">
+                        <div class="neomorph-raised p-8 md:p-10 rounded-3xl h-full border border-primary/5 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-2xl font-bold text-on-surface mb-2">Inquiry Form</h3>
+                                <p class="text-on-surface-variant text-sm mb-6">Specify your dates and requirements. We reply within 2 hours with pricing structures.</p>
+                            </div>
+                            <form class="space-y-6" onsubmit="event.preventDefault(); alert('Booking inquiry sent successfully! Manager Didintle Thupae will contact you shortly.');">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="space-y-2">
+                                        <label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1" id="label-name">Full Name</label>
+                                        <input class="w-full bg-background neomorph-inset border border-primary/10 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-1 focus:ring-primary/45 transition-all text-on-surface placeholder:text-outline/40" placeholder="John Doe" type="text" required>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1" id="label-email">Email Address</label>
+                                        <input class="w-full bg-background neomorph-inset border border-primary/10 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-1 focus:ring-primary/45 transition-all text-on-surface placeholder:text-outline/40" placeholder="john@company.com" type="email" required>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1" id="label-subject">Stay Configuration</label>
+                                    <select id="stay-type-select" class="w-full bg-background neomorph-inset border border-primary/10 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-1 focus:ring-primary/45 transition-all text-on-surface appearance-none">
+                                        <option value="corporate">Long-Term Corporate Stay (House Booking)</option>
+                                        <option value="short">Short-Term Lodging Stay</option>
+                                        <option value="leisure">Weekend Leisure Package</option>
+                                        <option value="general">General Reservation Query</option>
+                                    </select>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1" id="label-message">Inquiry Details</label>
+                                    <textarea class="w-full bg-background neomorph-inset border border-primary/10 rounded-xl px-4 py-3.5 focus:outline-none focus:ring-1 focus:ring-primary/45 transition-all text-on-surface placeholder:text-outline/40" placeholder="Specify proposed dates, contractor team numbers, or meal plan criteria..." rows="5" required></textarea>
+                                </div>
+                                <div class="pt-2">
+                                    <button class="w-full md:w-auto px-8 py-4 bg-primary text-white font-bold rounded-xl transition-all duration-300 shadow-md hover:bg-primary/95 click-shrink" type="submit">
+                                        Submit Booking Inquiry
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="w-full mt-auto bg-surface-container border-t border-primary/5">
+        <div class="flex flex-col md:flex-row justify-between items-start px-6 py-12 gap-8 max-w-7xl mx-auto w-full">
+            
+            <!-- Brand & Address Column -->
+            <div class="space-y-4 text-center md:text-left">
+                <a href="index.html" class="inline-flex items-center gap-2 text-lg font-bold text-primary click-shrink">
+                    <span class="material-symbols-outlined filled text-secondary">house</span>
+                    <span>Reeme Guest House</span>
+                </a>
+                <p class="font-body text-xs text-on-surface-variant max-w-xs leading-normal">
+                    © 2026 Reeme Guest House. 7511 Dibange Makape Street, Airfield, Postmasburg, 8420. Protected by 24/7 Monitored Security.
+                </p>
+                <div class="text-xs text-on-surface-variant space-y-1.5 pt-1">
+                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="material-symbols-outlined text-sm text-primary">person</span>
+                        <span>Manager: Didintle Thupae</span>
+                    </p>
+                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="material-symbols-outlined text-sm text-primary">call</span>
+                        <a href="tel:+27614713679" class="hover:text-primary transition-colors">+27 61 471 3679</a>
+                    </p>
+                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="material-symbols-outlined text-sm text-primary">mail</span>
+                        <a href="mailto:Didintlethupae@gmail.com" class="hover:text-primary transition-colors">Didintlethupae@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="flex flex-wrap justify-center gap-6 md:gap-8 self-center">
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="about.html">Directions &amp; Map</a>
+            </div>
+
+            <!-- Social Action Buttons (Soft UI) -->
+            <div class="flex gap-4 self-center md:self-auto">
+                <button class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink" aria-label="Share Information">
+                    <span class="material-symbols-outlined text-lg">share</span>
+                </button>
+                <a href="mailto:Didintlethupae@gmail.com" class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink flex items-center justify-center" aria-label="Mail Reservations">
+                    <span class="material-symbols-outlined text-lg">mail</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive scripting & URL pre-fill logic -->
+    <script>
+        // Sidebar Menu Control
+        const sidebarMenu = document.getElementById('sidebar-menu');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const menuTrigger = document.getElementById('menu-trigger-btn');
+        const sidebarClose = document.getElementById('sidebar-close-btn');
+
+        function openSidebar() {
+            sidebarMenu.classList.remove('-translate-x-full');
+            sidebarMenu.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+            setTimeout(() => {
+                sidebarBackdrop.classList.add('opacity-100');
+                sidebarBackdrop.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeSidebar() {
+            sidebarMenu.classList.add('-translate-x-full');
+            sidebarMenu.classList.remove('translate-x-0');
+            sidebarBackdrop.classList.remove('opacity-100');
+            sidebarBackdrop.classList.add('opacity-0');
+            setTimeout(() => {
+                sidebarBackdrop.classList.add('hidden');
+            }, 300);
+        }
+
+        if (menuTrigger) menuTrigger.addEventListener('click', openSidebar);
+        if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+        if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+
+        sidebarMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+
+        // Form Label Focus highlights
+        const formInputs = document.querySelectorAll('input, textarea, select');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                const label = input.parentElement.querySelector('label');
+                if (label) label.classList.add('text-primary');
+            });
+            input.addEventListener('blur', () => {
+                const label = input.parentElement.querySelector('label');
+                if (label) label.classList.remove('text-primary');
+            });
+        });
+
+        // Parse query params to select option automatically
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectType = urlParams.get('type');
+            if (selectType) {
+                const selectElement = document.getElementById('stay-type-select');
+                if (selectElement) {
+                    selectElement.value = selectType;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
