@@ -99,47 +99,38 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Top Navigation Bar (Sticky Overlay constantly visible) -->
-    <header class="w-full sticky top-0 z-50 bg-[#2D2722]/95 backdrop-blur-md border-b border-white/5 text-white shadow-md">
-        <nav class="flex justify-between items-center px-6 py-5 max-w-7xl mx-auto w-full">
+    <!-- Top Navigation Bar (Sticky constantly visible) -->
+    <header class="w-full sticky top-0 z-50 bg-[#F5F2EB]/95 backdrop-blur-md border-b border-primary/10 text-on-surface shadow-sm">
+        <nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto w-full">
             
-            <!-- Left Side: Capsule Button Menu | Reserve -->
-            <div class="flex items-center">
-                <div class="flex items-center bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 text-white text-xs font-semibold uppercase tracking-wider gap-3 shadow-sm">
-                    <button id="menu-trigger-btn" class="hover:text-secondary flex items-center gap-1.5 transition-colors click-shrink focus:outline-none">
-                        <span class="material-symbols-outlined text-base">menu</span>
-                        <span>Menu</span>
-                    </button>
-                    <span class="text-white/30 font-light">|</span>
-                    <a href="contact.html" class="hover:text-secondary transition-colors click-shrink font-semibold text-secondary">Reserve</a>
-                </div>
-            </div>
+            <!-- Left Side: Brand Logo -->
+            <a href="index.html" class="flex items-center gap-2 text-lg font-bold text-primary tracking-tight click-shrink">
+                <span class="material-symbols-outlined text-2xl filled text-secondary">house</span>
+                <span class="font-display uppercase tracking-widest text-[#2D2722]">Reeme</span>
+            </a>
             
-            <!-- Center Logo: Elegant serif display style with letter-spacing -->
-            <div class="absolute left-1/2 -translate-x-1/2 text-center pointer-events-auto">
-                <a href="index.html" class="text-lg sm:text-2xl font-extrabold text-white tracking-[0.25em] uppercase hover:opacity-90 transition-all leading-none block font-display">
-                    REEME
-                </a>
+            <!-- Center: Desktop Links (Display Menu Options directly in Navbar) -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-semibold tracking-wider uppercase">
+                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="index.html">Home</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="about.html">About Us</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="rooms.html">Accommodations</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="contact.html">Contact</a>
             </div>
 
-            <!-- Right Side: Weather/Local details | Contact Link -->
-            <div class="hidden sm:flex items-center">
-                <div class="flex items-center text-white text-xs font-semibold uppercase tracking-wider gap-3">
-                    <div class="flex items-center gap-1 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 opacity-90">
-                        <span class="material-symbols-outlined text-sm text-secondary">wb_sunny</span>
-                        <span>22°C / 71.6°F</span>
-                    </div>
-                    <a href="contact.html" class="hover:text-secondary transition-all bg-white/10 backdrop-blur-md rounded-full px-4 py-2 border border-white/10 click-shrink font-semibold text-secondary">Contact</a>
-                </div>
-            </div>
-            
-            <!-- Mobile Right Action (Visible only on mobile) -->
-            <div class="sm:hidden flex items-center">
-                <a href="contact.html" class="text-secondary text-xs bg-white/10 backdrop-blur-sm px-3.5 py-2 border border-white/10 rounded-full font-semibold uppercase tracking-wider hover:text-secondary transition-all click-shrink">Contact</a>
+            <!-- Right: Book Stay Button (Desktop) / Hamburger Trigger (Mobile) -->
+            <div class="flex items-center gap-4">
+                <a href="contact.html" class="hidden md:inline-block neomorph-raised click-shrink bg-background text-primary font-bold px-6 py-2.5 rounded-xl border border-primary/20 text-xs uppercase tracking-wider">
+                    Book Stay
+                </a>
+                
+                <!-- Mobile Hamburger Menu Button -->
+                <button id="menu-trigger-btn" class="md:hidden neomorph-raised p-2.5 rounded-xl text-primary click-shrink focus:outline-none" aria-label="Open Navigation Menu">
+                    <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
             </div>
         </nav>
 
-        <!-- Sidebar / Drawer Navigation Menu -->
+        <!-- Sidebar / Drawer Navigation Menu for Mobile -->
         <div id="sidebar-menu" class="fixed inset-y-0 left-0 w-80 max-w-full bg-[#2D2722] text-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-8 border-r border-white/5">
             <div class="space-y-8">
                 <!-- Close Button & Header -->
@@ -168,8 +159,8 @@
             </div>
         </div>
         
-        <!-- Sidebar Backdrop Overlay -->
-        <div id="sidebar-backdrop" class="fixed inset-0 bg-neutral-950/40 backdrop-blur-sm z-40 hidden transition-opacity duration-300 opacity-0"></div>
+        <!-- Sidebar Backdrop Overlay (Clearer opacity / blur) -->
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-neutral-950/60 backdrop-blur-sm z-40 hidden transition-opacity duration-300 opacity-0"></div>
     </header>
 
     <main class="flex-grow">
