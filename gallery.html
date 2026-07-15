@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html class="scroll-smooth light" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Gallery | Reeme Guest House Postmasburg</title>
+    <meta name="description" content="Take a virtual tour of Reeme Guest House. View photos of our secure premises, brick styling, solar geysers, water filters, and executive rooms in Postmasburg.">
+    
+    <!-- Scripts & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Configuration -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "background": "#F5F2EB",
+              "surface": "#F5F2EB",
+              "primary": "#A76B46",
+              "secondary": "#C5A059",
+              "on-surface": "#2D2722",
+              "on-surface-variant": "#6E6259",
+              "surface-container": "#EFECE2",
+              "surface-container-low": "#F2EFE6",
+              "surface-container-lowest": "#FAF8F5",
+              "surface-container-high": "#E7E3D8",
+              "surface-container-highest": "#DED9CC",
+              "outline": "#8C8276",
+              "outline-variant": "#D5CFC2",
+              "error": "#b91c1c",
+              "error-container": "#fef2f2"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "2xl": "2rem",
+              "3xl": "2.5rem",
+              "full": "9999px"
+            },
+            "fontFamily": {
+              "sans": ["Plus Jakarta Sans", "sans-serif"],
+              "headline": ["Plus Jakarta Sans", "sans-serif"],
+              "display": ["Plus Jakarta Sans", "sans-serif"],
+              "body": ["Plus Jakarta Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+    
+    <!-- Custom Neomorphic / Soft UI CSS & Carousel Animations -->
+    <style>
+        body {
+            background-color: #F5F2EB;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2D2722;
+        }
+
+        /* Neomorphic Raised Shadow (Option A - Warm Shadows) */
+        .neomorph-raised {
+            background-color: #F5F2EB;
+            box-shadow: 6px 6px 12px rgba(140, 110, 80, 0.08), -6px -6px 12px rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(167, 107, 70, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .neomorph-raised:hover {
+            box-shadow: 8px 8px 16px rgba(140, 110, 80, 0.12), -8px -8px 16px rgba(255, 255, 255, 0.95);
+        }
+
+        /* Neomorphic Inset Shadow (Option A - Warm Shadows) */
+        .neomorph-inset {
+            background-color: #F5F2EB;
+            box-shadow: inset 4px 4px 8px rgba(140, 110, 80, 0.06), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(167, 107, 70, 0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Interactive Element Micro-actions */
+        .click-shrink {
+            transition: transform 0.15s ease-in-out;
+        }
+        .click-shrink:active {
+            transform: scale(0.96);
+        }
+
+        /* Carousel Cross-fade Styles */
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 0;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        /* Lightbox modal animation scales */
+        #lightbox-image {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Navigation Bar (Sticky constantly visible) -->
+    <header class="w-full sticky top-0 z-50 bg-[#F5F2EB]/95 backdrop-blur-md border-b border-primary/10 text-on-surface shadow-sm">
+        <nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto w-full">
+            
+            <!-- Left Side: Brand Logo -->
+            <a href="index.html" class="flex items-center gap-2 text-lg font-bold text-primary tracking-tight click-shrink">
+                <span class="material-symbols-outlined text-2xl filled text-secondary">house</span>
+                <span class="font-display uppercase tracking-widest text-[#2D2722]">Reeme</span>
+            </a>
+            
+            <!-- Center: Desktop Links (Display Menu Options directly in Navbar) -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-semibold tracking-wider uppercase">
+                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="index.html">Home</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="about.html">About Us</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="rooms.html">Accommodations</a>
+                <a class="text-primary hover:text-primary font-bold transition-all duration-200" href="gallery.html">Gallery</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="contact.html">Contact</a>
+            </div>
+
+            <!-- Right: Book Stay Button (Desktop) / Hamburger Trigger (Mobile) -->
+            <div class="flex items-center gap-4">
+                <a href="contact.html" class="hidden md:inline-block neomorph-raised click-shrink bg-background text-primary font-bold px-6 py-2.5 rounded-xl border border-primary/20 text-xs uppercase tracking-wider">
+                    Book Stay
+                </a>
+                
+                <!-- Mobile Hamburger Menu Button -->
+                <button id="menu-trigger-btn" class="md:hidden neomorph-raised p-2.5 rounded-xl text-primary click-shrink focus:outline-none" aria-label="Open Navigation Menu">
+                    <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Sidebar / Drawer Navigation Menu for Mobile -->
+        <div id="sidebar-menu" class="fixed inset-y-0 left-0 w-80 max-w-full bg-[#2D2722] text-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-8 border-r border-white/5">
+            <div class="space-y-8">
+                <!-- Close Button & Header -->
+                <div class="flex justify-between items-center pb-6 border-b border-white/10">
+                    <span class="text-xs font-bold uppercase tracking-widest text-secondary">Navigation</span>
+                    <button id="sidebar-close-btn" class="p-2 rounded-full hover:bg-white/5 transition-colors click-shrink focus:outline-none">
+                        <span class="material-symbols-outlined text-2xl">close</span>
+                    </button>
+                </div>
+                <!-- Links -->
+                <nav class="flex flex-col gap-6 text-xl font-medium tracking-wide">
+                    <a class="hover:text-secondary transition-colors" href="index.html">Home</a>
+                    <a class="hover:text-secondary transition-colors" href="about.html">About Us</a>
+                    <a class="hover:text-secondary transition-colors" href="rooms.html">Accommodations</a>
+                    <a class="hover:text-secondary transition-colors text-secondary font-bold" href="gallery.html">Gallery</a>
+                    <a class="hover:text-secondary transition-colors" href="contact.html">Contact</a>
+                </nav>
+            </div>
+            <!-- Drawer Footer details -->
+            <div class="space-y-4 pt-6 border-t border-white/10 text-stone-300 text-xs leading-relaxed">
+                <div>
+                    <span class="block font-bold text-white uppercase text-[10px] tracking-wider mb-1">Establishment</span>
+                    7511 Dibange Makape Street, Airfield, Postmasburg, 8420
+                </div>
+                <a href="tel:+27614713679" class="block text-sm font-semibold hover:text-secondary text-white transition-colors">+27 61 471 3679</a>
+                <a href="contact.html" class="click-shrink block text-center w-full py-3 bg-primary text-white font-bold rounded-xl transition-all">Book Room</a>
+            </div>
+        </div>
+        
+        <!-- Sidebar Backdrop Overlay (Clearer opacity / blur) -->
+        <div id="sidebar-backdrop" class="fixed inset-0 bg-neutral-950/60 backdrop-blur-sm z-40 hidden transition-opacity duration-300 opacity-0"></div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- Gallery Header -->
+        <section class="py-12 md:py-16 px-6 bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-10 space-y-3">
+                    <div class="inline-block px-4 py-1.5 rounded-full neomorph-inset text-primary text-sm font-semibold tracking-wide border border-primary/10">
+                        Visual Premise Tour
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-on-surface tracking-tight">Our Gallery</h1>
+                    <p class="text-on-surface-variant max-w-xl mx-auto text-base">
+                        Take an interactive visual tour of our quiet brick lodge grounds and heavy-duty utility infrastructure backup systems.
+                    </p>
+                </div>
+
+                <!-- Automatic Cross-fade Slideshow Carousel -->
+                <div class="relative w-full h-[50vh] md:h-[65vh] rounded-3xl overflow-hidden shadow-lg border border-primary/10 bg-[#2D2722] mb-16 group">
+                    
+                    <!-- Carousel Slides -->
+                    <div class="absolute inset-0" id="slideshow-container">
+                        <!-- Slide 1: Entrance -->
+                        <div class="carousel-slide active absolute inset-0">
+                            <img src="images/entrance.jpg" alt="Establishment Entrance Facade" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 flex flex-col justify-end p-8 text-white">
+                                <span class="text-xs uppercase tracking-widest text-secondary font-bold mb-1">Establishment &amp; Grounds</span>
+                                <h3 class="text-2xl font-bold">Secure Brick Facade &amp; Main Entrance</h3>
+                                <p class="text-stone-300 text-xs mt-1 max-w-lg">Our face-brick structure is designed for quiet, luxury suburban lodging in Airfield, Postmasburg.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 2: Parking -->
+                        <div class="carousel-slide absolute inset-0">
+                            <img src="images/parking.jpg" alt="Walled Parking &amp; Carport" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 flex flex-col justify-end p-8 text-white">
+                                <span class="text-xs uppercase tracking-widest text-secondary font-bold mb-1">Establishment &amp; Grounds</span>
+                                <h3 class="text-2xl font-bold">Secure Walled Carport Parking</h3>
+                                <p class="text-stone-300 text-xs mt-1 max-w-lg">Brick-paved parking bays with heavy steel canopy covers protected by high security boundaries.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Solar Geyser -->
+                        <div class="carousel-slide absolute inset-0">
+                            <img src="images/solar_geyser.jpg" alt="Solar Water Heater Panel Array" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 flex flex-col justify-end p-8 text-white">
+                                <span class="text-xs uppercase tracking-widest text-secondary font-bold mb-1">Utility Backups</span>
+                                <h3 class="text-2xl font-bold">100% Roof Solar Heating Backup</h3>
+                                <p class="text-stone-300 text-xs mt-1 max-w-lg">Dual-backed solar water collectors on our roof ensure hot water showers even during power blackouts.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4: Water Filter -->
+                        <div class="carousel-slide absolute inset-0">
+                            <img src="images/water_filter.jpg" alt="Water Purification Filtration Cylinder" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 flex flex-col justify-end p-8 text-white">
+                                <span class="text-xs uppercase tracking-widest text-secondary font-bold mb-1">Utility Backups</span>
+                                <h3 class="text-2xl font-bold">Advanced Water Softening &amp; Filtration</h3>
+                                <p class="text-stone-300 text-xs mt-1 max-w-lg">Commercial water filtration tanks protect our municipal supply, keeping water fresh and clean.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5: AC Compressor -->
+                        <div class="carousel-slide absolute inset-0">
+                            <img src="images/ac_unit.jpg" alt="Air Conditioning Wall Unit" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 flex flex-col justify-end p-8 text-white">
+                                <span class="text-xs uppercase tracking-widest text-secondary font-bold mb-1">Utility Backups</span>
+                                <h3 class="text-2xl font-bold">Individual Room Climate Control</h3>
+                                <p class="text-stone-300 text-xs mt-1 max-w-lg">Mounted AC compressors supply independent heating and cooling directly to our guest suites.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Controls -->
+                    <button id="carousel-prev" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 neomorph-raised rounded-full p-3 bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/20 transition-all click-shrink opacity-0 group-hover:opacity-100 focus:outline-none">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    <button id="carousel-next" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 neomorph-raised rounded-full p-3 bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/20 transition-all click-shrink opacity-0 group-hover:opacity-100 focus:outline-none">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+
+                    <!-- Indicators Dots -->
+                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2.5" id="carousel-dots-container">
+                        <button class="w-2.5 h-2.5 rounded-full bg-white transition-all duration-300 opacity-100" data-index="0"></button>
+                        <button class="w-2.5 h-2.5 rounded-full bg-white transition-all duration-300 opacity-40" data-index="1"></button>
+                        <button class="w-2.5 h-2.5 rounded-full bg-white transition-all duration-300 opacity-40" data-index="2"></button>
+                        <button class="w-2.5 h-2.5 rounded-full bg-white transition-all duration-300 opacity-40" data-index="3"></button>
+                        <button class="w-2.5 h-2.5 rounded-full bg-white transition-all duration-300 opacity-40" data-index="4"></button>
+                    </div>
+                </div>
+
+                <!-- Categorized Grid Section -->
+                <div class="space-y-16">
+                    
+                    <!-- Section: Grounds & Facade -->
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-3 border-b border-primary/10 pb-3">
+                            <span class="material-symbols-outlined text-3xl text-primary">landscape</span>
+                            <h2 class="text-2xl font-bold text-on-surface">Establishment Grounds &amp; Facade</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- Image Card 1 -->
+                            <div class="neomorph-raised p-4 rounded-3xl group cursor-pointer" onclick="openLightbox(0)">
+                                <div class="aspect-video w-full rounded-2xl overflow-hidden neomorph-inset border border-primary/5 relative">
+                                    <img src="images/entrance.jpg" alt="Establishment Entrance Facade" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-300"></div>
+                                </div>
+                                <div class="pt-4 px-1 flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-bold text-on-surface text-base">Front Entrance Facade</h4>
+                                        <p class="text-on-surface-variant text-xs mt-0.5">Quiet suburban face-brick styling</p>
+                                    </div>
+                                    <span class="material-symbols-outlined text-primary text-xl">zoom_in</span>
+                                </div>
+                            </div>
+
+                            <!-- Image Card 2 -->
+                            <div class="neomorph-raised p-4 rounded-3xl group cursor-pointer" onclick="openLightbox(1)">
+                                <div class="aspect-video w-full rounded-2xl overflow-hidden neomorph-inset border border-primary/5 relative">
+                                    <img src="images/parking.jpg" alt="Walled Parking &amp; Carport" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-300"></div>
+                                </div>
+                                <div class="pt-4 px-1 flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-bold text-on-surface text-base">Walled Parking &amp; Carport</h4>
+                                        <p class="text-on-surface-variant text-xs mt-0.5">Paved parking bays with steel canopies</p>
+                                    </div>
+                                    <span class="material-symbols-outlined text-primary text-xl">zoom_in</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Premium Backup Utilities -->
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-3 border-b border-primary/10 pb-3">
+                            <span class="material-symbols-outlined text-3xl text-secondary font-bold">grid_view</span>
+                            <h2 class="text-2xl font-bold text-on-surface">Premium Utilities &amp; Infrastructure Backups</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <!-- Image Card 3 -->
+                            <div class="neomorph-raised p-4 rounded-3xl group cursor-pointer" onclick="openLightbox(2)">
+                                <div class="aspect-[4/3] w-full rounded-2xl overflow-hidden neomorph-inset border border-primary/5 relative">
+                                    <img src="images/solar_geyser.jpg" alt="Solar Water Heater Panel Array" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-300"></div>
+                                </div>
+                                <div class="pt-4 px-1 flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-bold text-on-surface text-sm">Solar Geyser System</h4>
+                                        <p class="text-on-surface-variant text-[11px] mt-0.5">Dual collectors for continuous hot water</p>
+                                    </div>
+                                    <span class="material-symbols-outlined text-primary text-lg">zoom_in</span>
+                                </div>
+                            </div>
+
+                            <!-- Image Card 4 -->
+                            <div class="neomorph-raised p-4 rounded-3xl group cursor-pointer" onclick="openLightbox(3)">
+                                <div class="aspect-[4/3] w-full rounded-2xl overflow-hidden neomorph-inset border border-primary/5 relative">
+                                    <img src="images/water_filter.jpg" alt="Water Purification Filtration Cylinder" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-300"></div>
+                                </div>
+                                <div class="pt-4 px-1 flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-bold text-on-surface text-sm">Water Softening system</h4>
+                                        <p class="text-on-surface-variant text-[11px] mt-0.5">Clean, softened water filtration</p>
+                                    </div>
+                                    <span class="material-symbols-outlined text-primary text-lg">zoom_in</span>
+                                </div>
+                            </div>
+
+                            <!-- Image Card 5 -->
+                            <div class="neomorph-raised p-4 rounded-3xl group cursor-pointer" onclick="openLightbox(4)">
+                                <div class="aspect-[4/3] w-full rounded-2xl overflow-hidden neomorph-inset border border-primary/5 relative">
+                                    <img src="images/ac_unit.jpg" alt="Air Conditioning Wall Unit" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-300"></div>
+                                </div>
+                                <div class="pt-4 px-1 flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-bold text-on-surface text-sm">Air Conditioning Compressors</h4>
+                                        <p class="text-on-surface-variant text-[11px] mt-0.5">Individual suite climate units</p>
+                                    </div>
+                                    <span class="material-symbols-outlined text-primary text-lg">zoom_in</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Lightbox Modal -->
+        <div id="lightbox-modal" class="fixed inset-0 z-50 bg-[#1c1917]/95 backdrop-blur-sm flex flex-col justify-between p-4 hidden opacity-0 transition-opacity duration-300 ease-in-out">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center w-full max-w-7xl mx-auto py-2">
+                <span class="text-stone-400 text-xs font-bold uppercase tracking-widest" id="lightbox-counter">1 / 5</span>
+                <button onclick="closeLightbox()" class="neomorph-raised p-2 rounded-full text-white bg-white/10 hover:bg-white/20 border border-white/10 click-shrink focus:outline-none" aria-label="Close Lightbox">
+                    <span class="material-symbols-outlined text-2xl">close</span>
+                </button>
+            </div>
+
+            <!-- Modal Content (Image + Arrows) -->
+            <div class="flex-grow flex items-center justify-between w-full max-w-7xl mx-auto relative px-4">
+                <button onclick="prevLightbox()" class="neomorph-raised p-3 rounded-full text-white bg-white/10 hover:bg-white/20 border border-white/10 click-shrink focus:outline-none absolute left-4 z-10" aria-label="Previous Image">
+                    <span class="material-symbols-outlined text-2xl">chevron_left</span>
+                </button>
+
+                <div class="flex-grow h-full flex items-center justify-center p-2">
+                    <img id="lightbox-image" src="" alt="Zoomed view" class="max-w-full max-h-[70vh] md:max-h-[75vh] object-contain rounded-xl shadow-2xl scale-95 border border-white/5">
+                </div>
+
+                <button onclick="nextLightbox()" class="neomorph-raised p-3 rounded-full text-white bg-white/10 hover:bg-white/20 border border-white/10 click-shrink focus:outline-none absolute right-4 z-10" aria-label="Next Image">
+                    <span class="material-symbols-outlined text-2xl">chevron_right</span>
+                </button>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="text-center w-full max-w-3xl mx-auto pb-6 space-y-1">
+                <h4 class="text-white text-lg font-bold" id="lightbox-title">Image Title</h4>
+                <p class="text-stone-400 text-sm" id="lightbox-desc">Image Description</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="w-full mt-auto bg-surface-container border-t border-primary/5">
+        <div class="flex flex-col md:flex-row justify-between items-start px-6 py-12 gap-8 max-w-7xl mx-auto w-full">
+            
+            <!-- Brand & Address Column -->
+            <div class="space-y-4 text-center md:text-left">
+                <a href="index.html" class="inline-flex items-center gap-2 text-lg font-bold text-primary click-shrink">
+                    <span class="material-symbols-outlined filled text-secondary">house</span>
+                    <span>Reeme Guest House</span>
+                </a>
+                <p class="font-body text-xs text-on-surface-variant max-w-xs leading-normal">
+                    © 2026 Reeme Guest House. 7511 Dibange Makape Street, Airfield, Postmasburg, 8420. Protected by 24/7 Monitored Security.
+                </p>
+                <div class="text-xs text-on-surface-variant space-y-1.5 pt-1">
+                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="material-symbols-outlined text-sm text-primary">person</span>
+                        <span>Manager: Didintle Thupae</span>
+                    </p>
+                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="material-symbols-outlined text-sm text-primary">call</span>
+                        <a href="tel:+27614713679" class="hover:text-primary transition-colors">+27 61 471 3679</a>
+                    </p>
+                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
+                        <span class="material-symbols-outlined text-sm text-primary">mail</span>
+                        <a href="mailto:Didintlethupae@gmail.com" class="hover:text-primary transition-colors">Didintlethupae@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="flex flex-wrap justify-center gap-6 md:gap-8 self-center">
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="about.html">Directions &amp; Map</a>
+            </div>
+
+            <!-- Social Action Buttons (Soft UI) -->
+            <div class="flex gap-4 self-center md:self-auto">
+                <button class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink" aria-label="Share Information">
+                    <span class="material-symbols-outlined text-lg">share</span>
+                </button>
+                <a href="mailto:Didintlethupae@gmail.com" class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink flex items-center justify-center" aria-label="Mail Reservations">
+                    <span class="material-symbols-outlined text-lg">mail</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive scripting, Carousel Controls, Lightbox Modal -->
+    <script>
+        // Sidebar drawer menu triggers
+        const sidebarMenu = document.getElementById('sidebar-menu');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const menuTrigger = document.getElementById('menu-trigger-btn');
+        const sidebarClose = document.getElementById('sidebar-close-btn');
+
+        function openSidebar() {
+            sidebarMenu.classList.remove('-translate-x-full');
+            sidebarMenu.classList.add('translate-x-0');
+            sidebarBackdrop.classList.remove('hidden');
+            setTimeout(() => {
+                sidebarBackdrop.classList.add('opacity-100');
+                sidebarBackdrop.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeSidebar() {
+            sidebarMenu.classList.add('-translate-x-full');
+            sidebarMenu.classList.remove('translate-x-0');
+            sidebarBackdrop.classList.remove('opacity-100');
+            sidebarBackdrop.classList.add('opacity-0');
+            setTimeout(() => {
+                sidebarBackdrop.classList.add('hidden');
+            }, 300);
+        }
+
+        if (menuTrigger) menuTrigger.addEventListener('click', openSidebar);
+        if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+        if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+
+        sidebarMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+
+        // Slideshow Carousel Logic
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('#carousel-dots-container button');
+        const btnPrev = document.getElementById('carousel-prev');
+        const btnNext = document.getElementById('carousel-next');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('opacity-100');
+            dots[currentSlide].classList.add('opacity-40');
+            
+            currentSlide = (index + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('opacity-100');
+            dots[currentSlide].classList.remove('opacity-40');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function startAutoplay() {
+            slideInterval = setInterval(nextSlide, 4500);
+        }
+
+        function stopAutoplay() {
+            clearInterval(slideInterval);
+        }
+
+        if (btnNext) btnNext.addEventListener('click', () => {
+            stopAutoplay();
+            nextSlide();
+            startAutoplay();
+        });
+
+        if (btnPrev) btnPrev.addEventListener('click', () => {
+            stopAutoplay();
+            prevSlide();
+            startAutoplay();
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                stopAutoplay();
+                const index = parseInt(e.target.getAttribute('data-index'));
+                showSlide(index);
+                startAutoplay();
+            });
+        });
+
+        startAutoplay();
+
+        // Image data structures for Lightbox
+        const imageData = [
+            {
+                src: 'images/entrance.jpg',
+                title: 'Front Entrance Facade',
+                desc: 'Quiet face-brick suburban facade at 7511 Dibange Makape Street.'
+            },
+            {
+                src: 'images/parking.jpg',
+                title: 'Walled Parking & Carport Canopy',
+                desc: 'Brick-paved parking bays covered with robust metal roof canopies for complete vehicle safety.'
+            },
+            {
+                src: 'images/solar_geyser.jpg',
+                title: 'Roof Solar Geyser System',
+                desc: 'Dual solar panel geysers installed on our roofs for continuous off-grid hot water backups.'
+            },
+            {
+                src: 'images/water_filter.jpg',
+                title: 'Commercial Water Softener & Filter',
+                desc: 'Specialized backup filtration array softening municipal supply and keeping water pristine.'
+            },
+            {
+                src: 'images/ac_unit.jpg',
+                title: 'Mounted Suite Air Conditioning',
+                desc: 'High-quality external AC units providing independent suite climate cooling and heating control.'
+            }
+        ];
+
+        let activeImageIndex = 0;
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-image');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxDesc = document.getElementById('lightbox-desc');
+
+        function openLightbox(index) {
+            activeImageIndex = index;
+            updateLightbox();
+            lightboxModal.classList.remove('hidden');
+            setTimeout(() => {
+                lightboxModal.classList.remove('opacity-0');
+                lightboxModal.classList.add('opacity-100');
+                lightboxImg.classList.remove('scale-95');
+                lightboxImg.classList.add('scale-100');
+            }, 10);
+            stopAutoplay();
+        }
+
+        function closeLightbox() {
+            lightboxModal.classList.add('opacity-0');
+            lightboxModal.classList.remove('opacity-100');
+            lightboxImg.classList.add('scale-95');
+            lightboxImg.classList.remove('scale-100');
+            setTimeout(() => {
+                lightboxModal.classList.add('hidden');
+            }, 300);
+            startAutoplay();
+        }
+
+        function updateLightbox() {
+            const data = imageData[activeImageIndex];
+            lightboxImg.src = data.src;
+            lightboxTitle.innerText = data.title;
+            lightboxDesc.innerText = data.desc;
+            lightboxCounter.innerText = `${activeImageIndex + 1} / ${imageData.length}`;
+        }
+
+        function nextLightbox() {
+            activeImageIndex = (activeImageIndex + 1) % imageData.length;
+            updateLightbox();
+        }
+
+        function prevLightbox() {
+            activeImageIndex = (activeImageIndex - 1 + imageData.length) % imageData.length;
+            updateLightbox();
+        }
+
+        // Close Lightbox on background click (except modal image/controls)
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal || e.target.id === 'lightbox-image-container' || e.target.tagName === 'DIV' && e.target.classList.contains('flex-grow')) {
+                closeLightbox();
+            }
+        });
+
+        // Key bindings
+        document.addEventListener('keydown', (e) => {
+            if (!lightboxModal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextLightbox();
+                if (e.key === 'ArrowLeft') prevLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
