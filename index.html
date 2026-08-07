@@ -120,19 +120,18 @@
             
             <!-- Center: Desktop Links (Display Menu Options directly in Navbar) -->
             <div class="hidden md:flex items-center gap-6 text-sm font-semibold tracking-wider uppercase">
-                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="index.html">Home</a>
+                <a class="text-primary font-bold border-b-2 border-primary pb-0.5" href="index.html">Home</a>
                 <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="about.html">About Us</a>
                 <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="rooms.html">Accommodations</a>
                 <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="gallery.html">Gallery</a>
-                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="contact.html">Contact</a>
+                <a href="contact.html" class="px-4 py-2 rounded-xl bg-primary/10 text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300 hover:shadow-md hover:scale-105 border border-primary/20 flex items-center gap-1.5 text-xs uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-sm">calendar_month</span>
+                    <span>Book Now</span>
+                </a>
             </div>
 
-            <!-- Right: Book Stay Button (Desktop) / Hamburger Trigger (Mobile) -->
+            <!-- Right: Mobile Trigger -->
             <div class="flex items-center gap-4">
-                <a href="contact.html" class="hidden md:inline-block neomorph-raised click-shrink bg-background text-primary font-bold px-6 py-2.5 rounded-xl border border-primary/20 text-xs uppercase tracking-wider">
-                    Book Stay
-                </a>
-                
                 <!-- Mobile Hamburger Menu Button -->
                 <button id="menu-trigger-btn" class="md:hidden neomorph-raised p-2.5 rounded-xl text-primary click-shrink focus:outline-none" aria-label="Open Navigation Menu">
                     <span class="material-symbols-outlined text-2xl">menu</span>
@@ -156,7 +155,7 @@
                     <a class="hover:text-secondary transition-colors" href="about.html">About Us</a>
                     <a class="hover:text-secondary transition-colors" href="rooms.html">Accommodations</a>
                     <a class="hover:text-secondary transition-colors" href="gallery.html">Gallery</a>
-                    <a class="hover:text-secondary transition-colors" href="contact.html">Contact</a>
+                    <a class="hover:text-secondary transition-colors" href="contact.html">Book Now</a>
                 </nav>
             </div>
             <!-- Drawer Footer details -->
@@ -359,74 +358,165 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="py-24 px-6 bg-background">
-            <div class="max-w-5xl mx-auto neomorph-raised rounded-[3rem] p-12 md:p-20 text-center space-y-10 relative overflow-hidden bg-background">
-                <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-2xl"></div>
-                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary/10 rounded-full blur-2xl"></div>
-                <div class="relative z-10 space-y-6">
-                    <h2 class="text-3xl md:text-5xl font-bold text-on-surface">Ready for a restful night?</h2>
-                    <p class="text-on-surface-variant text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+        <!-- Ready for a Restful Night CTA Section -->
+        <section class="sm:px-6 lg:px-8 py-16 md:py-24 w-full max-w-7xl mx-auto px-4 bg-background">
+            <div class="relative scroll-fade pt-8">
+                
+                <!-- Badge -->
+                <div class="flex items-center justify-center mb-6">
+                    <span class="inline-flex items-center gap-2 text-[11px] uppercase tracking-widest border rounded-full px-4 py-1.5 text-primary bg-primary/10 border-primary/20 font-bold">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-secondary"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                        Unmatched Postmasburg Hospitality
+                    </span>
+                </div>
+
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <h2 class="text-4xl md:text-6xl font-extrabold text-on-surface tracking-tight font-sans">Ready for a</h2>
+                    <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight text-on-surface mt-1 font-sans">
+                        Restful <span class="bg-clip-text italic font-serif bg-gradient-to-r from-primary via-secondary to-primary text-transparent">Night's Sleep?</span>
+                    </h2>
+                    <p class="mt-4 text-base md:text-lg text-on-surface-variant max-w-xl mx-auto font-sans leading-relaxed">
                         Join the corporate professionals and visitors who make Reeme Guest House their first choice in Postmasburg.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                        <a href="rooms.html" class="click-shrink bg-primary text-white px-8 py-4 rounded-xl font-bold text-sm shadow-md hover:bg-primary/95 transition-all text-center">
-                            Explore Accommodations
-                        </a>
-                        <a href="contact.html" class="click-shrink bg-background border border-primary/30 text-primary px-8 py-4 rounded-xl font-bold text-sm neomorph-raised hover:bg-surface-container-low transition-all text-center">
-                            Contact Reservations
+
+                    <!-- CTA Buttons Grid with Ambient Glowing Accent -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+                        
+                        <!-- Primary CTA Button with Bottom Glow Blur -->
+                        <div class="relative inline-block group">
+                            <a href="rooms.html" class="click-shrink relative z-10 inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white text-sm font-bold uppercase tracking-wider rounded-xl shadow-xl hover:bg-primary/90 transition-all font-sans overflow-hidden">
+                                <span>Explore Accommodations</span>
+                                <svg class="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"></path>
+                                </svg>
+                                <span class="pointer-events-none absolute bottom-0 left-1/2 right-1/2 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-80 transition-[left,right] duration-500 ease-out group-hover:left-0 group-hover:right-0"></span>
+                            </a>
+                            <span aria-hidden="true" class="pointer-events-none absolute -bottom-2 left-1/2 -translate-x-1/2 h-6 w-48 rounded-full opacity-70 group-hover:opacity-100 transition-opacity" style="background: radial-gradient(60% 100% at 50% 50%, rgba(167,107,70,.5), rgba(197,160,89,.3) 35%, transparent 70%); filter: blur(10px) saturate(120%);"></span>
+                        </div>
+
+                        <!-- Secondary CTA Button -->
+                        <a href="contact.html" class="click-shrink inline-flex items-center justify-center gap-2 px-8 py-4 bg-surface border border-primary/25 text-primary text-sm font-bold uppercase tracking-wider rounded-xl shadow-md hover:bg-surface-container-low transition-all font-sans">
+                            <span>Contact Reservations</span>
                         </a>
                     </div>
+
+                    <!-- Direct Contact Links Bar -->
+                    <div class="mt-10 flex flex-wrap items-center justify-center gap-6 text-on-surface-variant text-sm font-sans">
+                        <a href="mailto:reemeguesthouse@gmail.com" class="group hover:text-primary transition flex items-center gap-2">
+                            <span class="material-symbols-outlined text-base text-primary">mail</span>
+                            <span>reemeguesthouse@gmail.com</span>
+                        </a>
+                        <span class="h-4 w-px bg-primary/20 hidden sm:inline-block"></span>
+                        <a href="tel:0744826660" class="group hover:text-primary transition flex items-center gap-2">
+                            <span class="material-symbols-outlined text-base text-primary">call</span>
+                            <span>074 482 6660</span>
+                        </a>
+                    </div>
+
+                    <!-- Separator Line with Center Ambient Glow -->
+                    <div class="relative mt-14">
+                        <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 -top-6">
+                            <span class="block mx-auto w-80 h-10 rounded-full bg-primary/15 blur-2xl opacity-70"></span>
+                        </div>
+                        <div class="h-px w-full bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+                    </div>
+
                 </div>
             </div>
         </section>
         
     </main>
 
-    <!-- Global Footer -->
-    <footer class="w-full mt-auto bg-surface-container border-t border-primary/5">
-        <div class="flex flex-col md:flex-row justify-between items-start px-6 py-12 gap-8 max-w-7xl mx-auto w-full">
-            
-            <!-- Brand & Address Column -->
-            <div class="space-y-4 text-center md:text-left">
-                <a href="index.html" class="inline-flex items-center gap-2 text-lg font-bold text-primary click-shrink">
-                    <span class="material-symbols-outlined filled text-secondary">house</span>
-                    <span>Reeme Guest House</span>
-                </a>
-                <p class="font-body text-xs text-on-surface-variant max-w-xs leading-normal">
-                    © 2026 Reeme Guest House. 7511 Dibange Makape Street, Airfield, Postmasburg, 8420. Protected by 24/7 Monitored Security.
-                </p>
-                <div class="text-xs text-on-surface-variant space-y-1.5 pt-1">
-                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
-                        <span class="material-symbols-outlined text-sm text-primary">person</span>
-                        <span>Manager: Didintle Thupae</span>
-                    </p>
-                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
-                        <span class="material-symbols-outlined text-sm text-primary">call</span>
-                        <a href="tel:0744826660" class="hover:text-primary transition-colors">074 482 6660</a>
-                    </p>
-                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
-                        <span class="material-symbols-outlined text-sm text-primary">mail</span>
-                        <a href="mailto:reemeguesthouse@gmail.com" class="hover:text-primary transition-colors">reemeguesthouse@gmail.com</a>
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Quick Links -->
-            <div class="flex flex-wrap justify-center gap-6 md:gap-8 self-center">
-                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
-                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
-                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="about.html">Directions &amp; Map</a>
-            </div>
+    <!-- Global Footer — Shadcn Footer-01 Design -->
+    <footer class="py-12 bg-background border-t border-primary/10">
+        <div class="max-w-7xl xl:px-16 lg:px-8 px-6 mx-auto">
+            <div class="flex flex-col gap-8 sm:gap-12">
+                <div class="py-6 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-12 gap-x-8 gap-y-10">
+                    
+                    <!-- Col 1: Brand & Bio -->
+                    <div class="col-span-full lg:col-span-4 space-y-6">
+                        <a href="index.html" class="inline-flex items-center gap-2.5 text-xl font-bold text-on-surface tracking-tight click-shrink">
+                            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white shadow-md">
+                                <span class="material-symbols-outlined filled text-secondary text-2xl">house</span>
+                            </span>
+                            <span class="font-extrabold text-on-surface">Reeme Guest House</span>
+                        </a>
 
-            <!-- Social Action Buttons (Soft UI) -->
-            <div class="flex gap-4 self-center md:self-auto">
-                <button class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink" aria-label="Share Information">
-                    <span class="material-symbols-outlined text-lg">share</span>
-                </button>
-                <a href="mailto:reemeguesthouse@gmail.com" class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink flex items-center justify-center" aria-label="Mail Reservations">
-                    <span class="material-symbols-outlined text-lg">mail</span>
-                </a>
+                        <p class="text-sm font-normal text-on-surface-variant max-w-sm leading-relaxed">
+                            Empowering mining corporate teams, engineers, and visiting guests with hotel-tier executive accommodations in Postmasburg.
+                        </p>
+
+                        <!-- Social Icons -->
+                        <div class="flex items-center gap-4 text-on-surface-variant">
+                            <a href="mailto:reemeguesthouse@gmail.com" class="p-2.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary hover:text-white transition-all text-primary" aria-label="Email Us">
+                                <span class="material-symbols-outlined text-lg">mail</span>
+                            </a>
+                            <a href="tel:0744826660" class="p-2.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary hover:text-white transition-all text-primary" aria-label="Call Us">
+                                <span class="material-symbols-outlined text-lg">call</span>
+                            </a>
+                            <a href="https://wa.me/27744826660" target="_blank" class="p-2.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary hover:text-white transition-all text-primary" aria-label="WhatsApp">
+                                <span class="material-symbols-outlined text-lg">chat</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-span-1 lg:block hidden"></div>
+
+                    <!-- Col 2: Navigation Sitemap -->
+                    <div class="col-span-2 space-y-4">
+                        <p class="text-base font-semibold text-on-surface">Sitemap</p>
+                        <ul class="flex flex-col gap-3 text-sm">
+                            <li><a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors">Home</a></li>
+                            <li><a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors">About Us</a></li>
+                            <li><a href="rooms.html" class="text-on-surface-variant hover:text-primary transition-colors">Accommodations</a></li>
+                            <li><a href="contact.html" class="text-on-surface-variant hover:text-primary transition-colors">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 3: Legal & Information -->
+                    <div class="col-span-2 space-y-4">
+                        <p class="text-base font-semibold text-on-surface">Information</p>
+                        <ul class="flex flex-col gap-3 text-sm">
+                            <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors">Terms &amp; Conditions</a></li>
+                            <li><a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors">Directions &amp; Map</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 4: Contact Details -->
+                    <div class="col-span-3 space-y-4">
+                        <p class="text-base font-semibold text-on-surface">Contact Details</p>
+                        <ul class="flex flex-col gap-3 text-sm text-on-surface-variant">
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-base text-primary flex-shrink-0 mt-0.5">location_on</span>
+                                <span>7511 Dibange Makape Street, Airfield, Postmasburg, 8420</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-base text-primary flex-shrink-0">person</span>
+                                <span>Manager: Didintle Thupae</span>
+                            </li>
+                            <li>
+                                <a href="mailto:reemeguesthouse@gmail.com" class="hover:text-primary transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-base text-primary flex-shrink-0">mail</span>
+                                    reemeguesthouse@gmail.com
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:0744826660" class="hover:text-primary transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-base text-primary flex-shrink-0">call</span>
+                                    074 482 6660
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="h-px w-full bg-primary/10"></div>
+
+                <p class="text-xs font-normal text-on-surface-variant text-center">
+                    © 2026 Reeme Guest House. All Rights Reserved. Protected by 24/7 Monitored CCTV Security.
+                </p>
             </div>
         </div>
     </footer>
@@ -528,5 +618,6 @@
             setInterval(rotateHeroSlide, 6000); // Change image every 6 seconds
         }
     </script>
+    <script src="js/multi-state-button.js"></script>
 </body>
 </html>

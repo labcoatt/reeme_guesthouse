@@ -112,18 +112,17 @@
             <!-- Center: Desktop Links (Display Menu Options directly in Navbar) -->
             <div class="hidden md:flex items-center gap-6 text-sm font-semibold tracking-wider uppercase">
                 <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="index.html">Home</a>
-                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="about.html">About Us</a>
+                <a class="text-primary font-bold border-b-2 border-primary pb-0.5" href="about.html">About Us</a>
                 <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="rooms.html">Accommodations</a>
                 <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="gallery.html">Gallery</a>
-                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="contact.html">Contact</a>
+                <a href="contact.html" class="px-4 py-2 rounded-xl bg-primary/10 text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300 hover:shadow-md hover:scale-105 border border-primary/20 flex items-center gap-1.5 text-xs uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-sm">calendar_month</span>
+                    <span>Book Now</span>
+                </a>
             </div>
 
-            <!-- Right: Book Stay Button (Desktop) / Hamburger Trigger (Mobile) -->
+            <!-- Right: Mobile Trigger -->
             <div class="flex items-center gap-4">
-                <a href="contact.html" class="hidden md:inline-block neomorph-raised click-shrink bg-background text-primary font-bold px-6 py-2.5 rounded-xl border border-primary/20 text-xs uppercase tracking-wider">
-                    Book Stay
-                </a>
-                
                 <!-- Mobile Hamburger Menu Button -->
                 <button id="menu-trigger-btn" class="md:hidden neomorph-raised p-2.5 rounded-xl text-primary click-shrink focus:outline-none" aria-label="Open Navigation Menu">
                     <span class="material-symbols-outlined text-2xl">menu</span>
@@ -147,7 +146,7 @@
                     <a class="hover:text-secondary transition-colors" href="about.html">About Us</a>
                     <a class="hover:text-secondary transition-colors" href="rooms.html">Accommodations</a>
                     <a class="hover:text-secondary transition-colors" href="gallery.html">Gallery</a>
-                    <a class="hover:text-secondary transition-colors" href="contact.html">Contact</a>
+                    <a class="hover:text-secondary transition-colors" href="contact.html">Book Now</a>
                 </nav>
             </div>
             <!-- Drawer Footer details -->
@@ -297,50 +296,96 @@
 
     </main>
 
-    <!-- Global Footer -->
-    <footer class="w-full mt-auto bg-surface-container border-t border-primary/5">
-        <div class="flex flex-col md:flex-row justify-between items-start px-6 py-12 gap-8 max-w-7xl mx-auto w-full">
-            
-            <!-- Brand & Address Column -->
-            <div class="space-y-4 text-center md:text-left">
-                <a href="index.html" class="inline-flex items-center gap-2 text-lg font-bold text-primary click-shrink">
-                    <span class="material-symbols-outlined filled text-secondary">house</span>
-                    <span>Reeme Guest House</span>
-                </a>
-                <p class="font-body text-xs text-on-surface-variant max-w-xs leading-normal">
-                    © 2026 Reeme Guest House. 7511 Dibange Makape Street, Airfield, Postmasburg, 8420. Protected by 24/7 Monitored Security.
-                </p>
-                <div class="text-xs text-on-surface-variant space-y-1.5 pt-1">
-                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
-                        <span class="material-symbols-outlined text-sm text-primary">person</span>
-                        <span>Manager: Didintle Thupae</span>
-                    </p>
-                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
-                        <span class="material-symbols-outlined text-sm text-primary">call</span>
-                        <a href="tel:0744826660" class="hover:text-primary transition-colors">074 482 6660</a>
-                    </p>
-                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
-                        <span class="material-symbols-outlined text-sm text-primary">mail</span>
-                        <a href="mailto:reemeguesthouse@gmail.com" class="hover:text-primary transition-colors">reemeguesthouse@gmail.com</a>
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Quick Links -->
-            <div class="flex flex-wrap justify-center gap-6 md:gap-8 self-center">
-                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
-                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
-                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="about.html">Directions &amp; Map</a>
-            </div>
+    <!-- Global Footer — Shadcn Footer-01 Design -->
+    <footer class="py-12 bg-background border-t border-primary/10">
+        <div class="max-w-7xl xl:px-16 lg:px-8 px-6 mx-auto">
+            <div class="flex flex-col gap-8 sm:gap-12">
+                <div class="py-6 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-12 gap-x-8 gap-y-10">
+                    
+                    <!-- Col 1: Brand & Bio -->
+                    <div class="col-span-full lg:col-span-4 space-y-6">
+                        <a href="index.html" class="inline-flex items-center gap-2.5 text-xl font-bold text-on-surface tracking-tight click-shrink">
+                            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white shadow-md">
+                                <span class="material-symbols-outlined filled text-secondary text-2xl">house</span>
+                            </span>
+                            <span class="font-extrabold text-on-surface">Reeme Guest House</span>
+                        </a>
 
-            <!-- Social Action Buttons (Soft UI) -->
-            <div class="flex gap-4 self-center md:self-auto">
-                <button class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink" aria-label="Share Information">
-                    <span class="material-symbols-outlined text-lg">share</span>
-                </button>
-                <a href="mailto:reemeguesthouse@gmail.com" class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink flex items-center justify-center" aria-label="Mail Reservations">
-                    <span class="material-symbols-outlined text-lg">mail</span>
-                </a>
+                        <p class="text-sm font-normal text-on-surface-variant max-w-sm leading-relaxed">
+                            Empowering mining corporate teams, engineers, and visiting guests with hotel-tier executive accommodations in Postmasburg.
+                        </p>
+
+                        <!-- Social Icons -->
+                        <div class="flex items-center gap-4 text-on-surface-variant">
+                            <a href="mailto:reemeguesthouse@gmail.com" class="p-2.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary hover:text-white transition-all text-primary" aria-label="Email Us">
+                                <span class="material-symbols-outlined text-lg">mail</span>
+                            </a>
+                            <a href="tel:0744826660" class="p-2.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary hover:text-white transition-all text-primary" aria-label="Call Us">
+                                <span class="material-symbols-outlined text-lg">call</span>
+                            </a>
+                            <a href="https://wa.me/27744826660" target="_blank" class="p-2.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary hover:text-white transition-all text-primary" aria-label="WhatsApp">
+                                <span class="material-symbols-outlined text-lg">chat</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-span-1 lg:block hidden"></div>
+
+                    <!-- Col 2: Navigation Sitemap -->
+                    <div class="col-span-2 space-y-4">
+                        <p class="text-base font-semibold text-on-surface">Sitemap</p>
+                        <ul class="flex flex-col gap-3 text-sm">
+                            <li><a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors">Home</a></li>
+                            <li><a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors">About Us</a></li>
+                            <li><a href="rooms.html" class="text-on-surface-variant hover:text-primary transition-colors">Accommodations</a></li>
+                            <li><a href="contact.html" class="text-on-surface-variant hover:text-primary transition-colors">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 3: Legal & Information -->
+                    <div class="col-span-2 space-y-4">
+                        <p class="text-base font-semibold text-on-surface">Information</p>
+                        <ul class="flex flex-col gap-3 text-sm">
+                            <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors">Terms &amp; Conditions</a></li>
+                            <li><a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors">Directions &amp; Map</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 4: Contact Details -->
+                    <div class="col-span-3 space-y-4">
+                        <p class="text-base font-semibold text-on-surface">Contact Details</p>
+                        <ul class="flex flex-col gap-3 text-sm text-on-surface-variant">
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-base text-primary flex-shrink-0 mt-0.5">location_on</span>
+                                <span>7511 Dibange Makape Street, Airfield, Postmasburg, 8420</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-base text-primary flex-shrink-0">person</span>
+                                <span>Manager: Didintle Thupae</span>
+                            </li>
+                            <li>
+                                <a href="mailto:reemeguesthouse@gmail.com" class="hover:text-primary transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-base text-primary flex-shrink-0">mail</span>
+                                    reemeguesthouse@gmail.com
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:0744826660" class="hover:text-primary transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-base text-primary flex-shrink-0">call</span>
+                                    074 482 6660
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="h-px w-full bg-primary/10"></div>
+
+                <p class="text-xs font-normal text-on-surface-variant text-center">
+                    © 2026 Reeme Guest House. All Rights Reserved. Protected by 24/7 Monitored CCTV Security.
+                </p>
             </div>
         </div>
     </footer>
@@ -380,5 +425,6 @@
             link.addEventListener('click', closeSidebar);
         });
     </script>
+    <script src="js/multi-state-button.js"></script>
 </body>
 </html>

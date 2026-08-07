@@ -4,13 +4,17 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Accommodations | Reeme Guest House Postmasburg</title>
-    <meta name="description" content="Explore our en-suite executive lodging packages. Offering comfortable corporate long-term stays and short-term room bookings in Postmasburg.">
+    <meta name="description" content="Explore our en-suite executive lodging packages. Offering comfortable corporate long-term stays and short-term room bookings in Postmasburg with expanding visual showcase.">
     
     <!-- Scripts & Fonts -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     
+    <!-- IonIcons CDN for Slider Controls -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
     <!-- Custom Tailwind Configuration -->
     <script id="tailwind-config">
       tailwind.config = {
@@ -53,7 +57,7 @@
       }
     </script>
     
-    <!-- Custom Neomorphic / Soft UI CSS -->
+    <!-- Custom Neomorphic & Expanding Depth Slider CSS -->
     <style>
         body {
             background-color: #F5F2EB;
@@ -65,7 +69,7 @@
         .neomorph-raised {
             background-color: #F5F2EB;
             box-shadow: 6px 6px 12px rgba(140, 110, 80, 0.08), -6px -6px 12px rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(167, 107, 70, 0.08);
+            border: 1px solid rgba(167, 107, 70, 0.12);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .neomorph-raised:hover {
@@ -76,7 +80,7 @@
         .neomorph-inset {
             background-color: #F5F2EB;
             box-shadow: inset 4px 4px 8px rgba(140, 110, 80, 0.06), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(167, 107, 70, 0.04);
+            border: 1px solid rgba(167, 107, 70, 0.08);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -88,7 +92,7 @@
             transform: scale(0.96);
         }
 
-        /* Marquee Gallery Styles */
+        /* Continuous Marquee Gallery Styles */
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -108,6 +112,234 @@
             background: linear-gradient(to left, #F5F2EB 0%, rgba(245, 242, 235, 0) 100%);
         }
 
+        /* Expanding Card Depth Slider Section */
+        .slider-section {
+            position: relative;
+            width: 100%;
+            height: 640px;
+            background-color: #2D2722;
+            border-top: 3px solid rgba(197, 160, 89, 0.5);
+            border-bottom: 3px solid rgba(197, 160, 89, 0.5);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .slider-item {
+            width: 220px;
+            height: 320px;
+            list-style-type: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            background-position: center;
+            background-size: cover;
+            border-radius: 20px;
+            border: 2px solid rgba(197, 160, 89, 0.6);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+            transition: left 0.75s cubic-bezier(0.25, 1, 0.5, 1), top 0.75s cubic-bezier(0.25, 1, 0.5, 1), width 0.75s cubic-bezier(0.25, 1, 0.5, 1), height 0.75s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.75s ease-in-out, border-radius 0.75s ease-in-out;
+        }
+        .slider-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(45, 39, 34, 0.95) 0%, rgba(45, 39, 34, 0.4) 50%, rgba(0,0,0,0.2) 100%);
+            border-radius: inherit;
+        }
+
+        /* nth-child(1): Active Full Screen Background (No floating card on the left) */
+        .slider-item:nth-child(1) {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform: none;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        /* Upcoming Preview Cards - All lined up on the RIGHT side transitioning in from the right */
+        .slider-item:nth-child(2) {
+            left: 55%;
+            z-index: 6;
+            opacity: 1;
+        }
+        .slider-item:nth-child(3) {
+            left: calc(55% + 245px);
+            z-index: 5;
+            opacity: 1;
+        }
+        .slider-item:nth-child(4) {
+            left: calc(55% + 490px);
+            z-index: 4;
+            opacity: 1;
+        }
+        .slider-item:nth-child(5) {
+            left: calc(55% + 735px);
+            z-index: 3;
+            opacity: 0.6;
+        }
+        .slider-item:nth-child(n+6) {
+            left: calc(55% + 980px);
+            z-index: 2;
+            opacity: 0;
+        }
+
+        .slider-content {
+            width: min(44vw, 540px);
+            position: absolute;
+            top: 50%;
+            left: 4rem;
+            transform: translateY(-50%);
+            color: white;
+            text-shadow: 0 3px 12px rgba(0,0,0,0.8);
+            opacity: 0;
+            display: none;
+            z-index: 10;
+        }
+        .slider-content .tag {
+            display: inline-block;
+            background: rgba(167, 107, 70, 0.9);
+            color: #FAF8F5;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.9rem;
+            border-radius: 9999px;
+            margin-bottom: 0.75rem;
+            border: 1px solid rgba(197, 160, 89, 0.5);
+        }
+        .slider-content .title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 2.2rem;
+            color: #F5F2EB;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        .slider-content .description {
+            line-height: 1.7;
+            margin: 1rem 0 1.75rem;
+            font-size: 0.95rem;
+            color: #EFECE2;
+            font-weight: 400;
+        }
+        .slider-content button {
+            width: fit-content;
+            background-color: #A76B46;
+            color: white;
+            border: 1px solid #C5A059;
+            border-radius: 0.75rem;
+            padding: 0.85rem 2rem;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px rgba(167, 107, 70, 0.4);
+        }
+        .slider-content button:hover {
+            background-color: #C5A059;
+            color: #2D2722;
+            transform: scale(1.05);
+        }
+
+        /* Active Item (nth-child(1)) Displays Content cleanly on the left */
+        .slider-item:nth-child(1) .slider-content {
+            display: block;
+            animation: sliderShow 0.75s ease-in-out 0.2s forwards;
+        }
+
+        @keyframes sliderShow {
+            0% {
+                filter: blur(5px);
+                transform: translateY(calc(-50% + 75px));
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+                filter: blur(0);
+                transform: translateY(-50%);
+            }
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            user-select: none;
+            display: flex;
+            gap: 1.25rem;
+        }
+        .slider-nav .btn {
+            background-color: rgba(245, 242, 235, 0.9);
+            color: #2D2722;
+            border: 2px solid #C5A059;
+            padding: 0.85rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+        .slider-nav .btn:hover {
+            background-color: #A76B46;
+            color: white;
+            border-color: #A76B46;
+            transform: scale(1.12);
+        }
+
+        @media (max-width: 900px) {
+            .slider-content {
+                left: 2rem;
+                width: min(70vw, 420px);
+            }
+            .slider-content .title { font-size: 1.6rem; }
+            .slider-content .description { font-size: 0.85rem; }
+            .slider-item {
+                width: 160px;
+                height: 250px;
+            }
+            .slider-item:nth-child(2) { left: 60%; }
+            .slider-item:nth-child(3) { left: calc(60% + 180px); }
+            .slider-item:nth-child(4) { left: calc(60% + 360px); }
+            .slider-item:nth-child(n+5) { left: calc(60% + 540px); opacity: 0; }
+        }
+
+        @media (max-width: 650px) {
+            .slider-content {
+                left: 1.5rem;
+                width: calc(100% - 3rem);
+                top: 40%;
+            }
+            .slider-content .title { font-size: 1.3rem; }
+            .slider-content .description { font-size: 0.75rem; margin: 0.5rem 0 1rem; }
+            .slider-item {
+                width: 130px;
+                height: 190px;
+                top: 75%;
+            }
+            .slider-item:nth-child(2) { left: 1.5rem; }
+            .slider-item:nth-child(3) { left: calc(1.5rem + 140px); }
+            .slider-item:nth-child(4) { left: calc(1.5rem + 280px); }
+            .slider-item:nth-child(n+5) { left: calc(1.5rem + 420px); opacity: 0; }
+        }
+
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             vertical-align: middle;
@@ -119,7 +351,7 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Top Navigation Bar (Sticky constantly visible) -->
+    <!-- Top Navigation Bar -->
     <header class="w-full sticky top-0 z-50 bg-[#F5F2EB]/95 backdrop-blur-md border-b border-primary/10 text-on-surface shadow-sm">
         <nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto w-full">
             
@@ -129,21 +361,20 @@
                 <span class="font-display uppercase tracking-widest text-[#2D2722]">Reeme</span>
             </a>
             
-            <!-- Center: Desktop Links (Display Menu Options directly in Navbar) -->
+            <!-- Center: Desktop Links -->
             <div class="hidden md:flex items-center gap-6 text-sm font-semibold tracking-wider uppercase">
                 <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="index.html">Home</a>
                 <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="about.html">About Us</a>
-                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="rooms.html">Accommodations</a>
+                <a class="text-primary font-bold border-b-2 border-primary pb-0.5" href="rooms.html">Accommodations</a>
                 <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="gallery.html">Gallery</a>
-                <a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="contact.html">Contact</a>
+                <a href="contact.html" class="px-4 py-2 rounded-xl bg-primary/10 text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300 hover:shadow-md hover:scale-105 border border-primary/20 flex items-center gap-1.5 text-xs uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-sm">calendar_month</span>
+                    <span>Book Now</span>
+                </a>
             </div>
 
-            <!-- Right: Book Stay Button (Desktop) / Hamburger Trigger (Mobile) -->
+            <!-- Right: Mobile Trigger -->
             <div class="flex items-center gap-4">
-                <a href="contact.html" class="hidden md:inline-block neomorph-raised click-shrink bg-background text-primary font-bold px-6 py-2.5 rounded-xl border border-primary/20 text-xs uppercase tracking-wider">
-                    Book Stay
-                </a>
-                
                 <!-- Mobile Hamburger Menu Button -->
                 <button id="menu-trigger-btn" class="md:hidden neomorph-raised p-2.5 rounded-xl text-primary click-shrink focus:outline-none" aria-label="Open Navigation Menu">
                     <span class="material-symbols-outlined text-2xl">menu</span>
@@ -165,12 +396,11 @@
                 <nav class="flex flex-col gap-6 text-xl font-medium tracking-wide">
                     <a class="hover:text-secondary transition-colors" href="index.html">Home</a>
                     <a class="hover:text-secondary transition-colors" href="about.html">About Us</a>
-                    <a class="hover:text-secondary transition-colors" href="rooms.html">Accommodations</a>
-                    <a class="hover:text-secondary transition-colors" href="gallery.html">Gallery</a>
-                    <a class="hover:text-secondary transition-colors" href="contact.html">Contact</a>
+                    <a class="text-secondary font-bold" href="rooms.html">Accommodations</a>
+                    <a class="hover:text-secondary transition-colors" href="contact.html">Book Now</a>
                 </nav>
             </div>
-            <!-- Drawer Footer details -->
+            <!-- Drawer Footer -->
             <div class="space-y-4 pt-6 border-t border-white/10 text-stone-300 text-xs leading-relaxed">
                 <div>
                     <span class="block font-bold text-white uppercase text-[10px] tracking-wider mb-1">Establishment</span>
@@ -181,194 +411,491 @@
             </div>
         </div>
         
-        <!-- Sidebar Backdrop Overlay (Clearer opacity / blur) -->
+        <!-- Sidebar Backdrop Overlay -->
         <div id="sidebar-backdrop" class="fixed inset-0 bg-neutral-950/60 backdrop-blur-sm z-40 hidden transition-opacity duration-300 opacity-0"></div>
     </header>
 
     <main class="flex-grow">
         
-        <!-- Accommodations Grid Section -->
-        <section class="py-16 md:py-24 px-6 bg-background">
-            <div class="max-w-7xl mx-auto">
-                
-                <!-- Section Header -->
-                <div class="text-center mb-16 space-y-4">
-                    <div class="inline-block px-4 py-1.5 rounded-full neomorph-inset text-primary text-sm font-semibold tracking-wide border border-primary/10">
-                        Tailored Guest Packages
-                    </div>
-                    <h1 class="text-3xl md:text-5xl font-extrabold text-on-surface tracking-tight">Accommodations Directory</h1>
-                    <p class="text-on-surface-variant max-w-xl mx-auto text-base">
-                        Experience hotel-tier luxury blended with home comforts. Standardized en-suites built to host mining corporate stays and short-term visits.
-                    </p>
+        <!-- Accommodations Directory Hero Section — Catalist Design Language -->
+        <section class="w-full sm:px-6 lg:px-8 bg-background py-16 md:py-24 px-4">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                    Tailored Guest Packages
                 </div>
-
-                <!-- Accommodations Grid -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-on-surface tracking-tight font-sans">Accommodations Directory</h2>
+                <p class="text-on-surface-variant max-w-xl mx-auto text-base font-sans">
+                    Experience hotel-tier luxury blended with home comforts. Standardized en-suites built to host mining corporate stays and short-term visits in Postmasburg.
+                </p>
+            </div>
+            
+            <!-- Cards Grid -->
+            <div class="grid gap-10 lg:grid-cols-2 max-w-7xl mx-auto mb-16">
+                
+                <!-- Card 1: Long-Term Corporate Stay (Dark Ambient Catalist Card Design) -->
+                <div class="group rounded-[2.5rem] bg-[#0E0C0B] border border-white/10 relative overflow-hidden shadow-2xl p-7 md:p-9 transition-all duration-500 hover:scale-[1.01] flex flex-col justify-between">
                     
-                    <!-- Accommodation Card 1: Long-Term Corporate Stays -->
-                    <div class="neomorph-raised bg-background rounded-3xl p-8 flex flex-col justify-between group h-full">
-                        <div class="space-y-6">
-                            <div class="aspect-video w-full rounded-2xl overflow-hidden neomorph-inset border border-primary/5 relative">
-                                <img alt="Luxury contemporary guest house exterior with manicured gardens under warm sunset glow" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMrhQr49OBUFrhNfWh73vHIrmiSC_yWK6Mm8f870YWYy1zOom4PV9_F30l11-34HnIko7Ik9iQ6I-ZcdlXcOpPSgEHzEhRG7BhZsPQMB_M02xIWo1Mr0VNpHDb54_Y-nCzbGwwqUpA3xXfNf3S4aTAq4bkCBBOhkTL28htxPRcgHHOz6Aia9sYF6sBsP_kHvIrYR4LiPZ4w12wg3JYHQkGm55k5FTuin83HU2YNwriWXs63EsdYkCIX5lJfSdCChkSh0ov2_DT4BIHI_A">
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex items-center gap-3">
-                                    <span class="material-symbols-outlined text-3xl text-primary">corporate_fare</span>
-                                    <h3 class="text-2xl font-bold text-on-surface">Long-Term Corporate Stays</h3>
-                                </div>
-                                <p class="text-on-surface-variant text-sm leading-relaxed">
-                                    Our executive house setup is optimized for mining professionals, engineers, and company managers requiring long-term comfort while working in the Postmasburg sector.
-                                </p>
-                            </div>
-                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
-                                    <span class="material-symbols-outlined text-primary text-lg">house</span>
-                                    4-bedroom en-suite layouts
-                                </li>
-                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
-                                    <span class="material-symbols-outlined text-primary text-lg">cooking</span>
-                                    Full kitchen (Gas & Electric)
-                                </li>
-                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
-                                    <span class="material-symbols-outlined text-primary text-lg">flatware</span>
-                                    Full self-catering capabilities
-                                </li>
-                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
-                                    <span class="material-symbols-outlined text-primary text-lg">cleaning_services</span>
-                                    Daily daily maid & laundry service
-                                </li>
-                            </ul>
-                        </div>
+                    <!-- Background Ambient Organic Glows -->
+                    <div class="absolute -top-20 -right-20 w-80 h-80 bg-[#A76B46]/25 rounded-full blur-[120px] pointer-events-none"></div>
+                    <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#C5A059]/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+                    <!-- Inner Content -->
+                    <div class="relative z-10 space-y-6">
                         
-                        <!-- Standard Excellence stats footer -->
-                        <div class="mt-8 pt-6 border-t border-primary/10 flex items-center justify-between">
-                            <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Fully Serviced</span>
-                            <a href="contact.html?type=corporate" class="click-shrink bg-primary text-white text-sm font-bold px-6 py-3 rounded-xl shadow-md hover:bg-primary/95 transition-all">
+                        <!-- Top Bar inside Card -->
+                        <div class="flex items-center justify-between text-xs text-neutral-400 font-sans border-b border-white/10 pb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="flex items-center justify-center h-6 w-6 rounded-full bg-[#A76B46]/30 text-[#C5A059]">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 9.41L12 0Z"/></svg>
+                                </span>
+                                <span class="font-semibold text-white tracking-wide">Corporate Package</span>
+                            </div>
+                            <span class="text-neutral-400 text-[11px] tracking-wider uppercase font-medium">reemeguesthouse.co.za</span>
+                        </div>
+
+                        <!-- Card Image Container -->
+                        <div class="aspect-[16/9] w-full rounded-2xl overflow-hidden border border-white/15 relative shadow-xl">
+                            <img alt="Long-Term Corporate Suite Bed with Red African Portrait Pillows" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="images/long_term_red_pillows.jpg">
+                            <div class="absolute top-3 right-3 bg-[#A76B46] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-white/20 shadow-md font-sans">
+                                Contractor Choice
+                            </div>
+                        </div>
+
+                        <!-- Floating Glass Stadium / Pill Container -->
+                        <div class="rounded-full bg-white/10 backdrop-blur-xl border border-white/20 py-3.5 px-6 flex items-center justify-between shadow-2xl">
+                            <div class="flex items-center gap-2">
+                                <span class="h-2 w-2 rounded-full bg-[#C5A059] animate-pulse"></span>
+                                <span class="text-xs font-bold text-white tracking-wide font-sans">Monthly Rate</span>
+                            </div>
+                            <div class="flex items-baseline gap-1.5">
+                                <span class="text-2xl font-extrabold text-white tracking-tight font-sans">R650</span>
+                                <span class="text-xs text-neutral-300 font-sans">/night</span>
+                            </div>
+                        </div>
+
+                        <!-- Title & Subtitle -->
+                        <div>
+                            <h3 class="text-2xl font-bold tracking-tight text-white font-sans">Long-Term Corporate Stay</h3>
+                            <p class="mt-1 text-xs text-neutral-400 font-sans">Mining Engineers, Contractors &amp; Company Managers</p>
+                        </div>
+
+                        <!-- Features List -->
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-neutral-300 pt-2 border-t border-white/10">
+                            <li class="flex items-center gap-2.5">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-[#C5A059] flex-shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                                <span>4-Bedroom En-Suite House</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-[#C5A059] flex-shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                                <span>Full Kitchen (Gas &amp; Electric)</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-[#C5A059] flex-shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                                <span>Full Self-Catering Setup</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-[#C5A059] flex-shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                                <span>Daily Maid &amp; Laundry Service</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-[#C5A059] flex-shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 9.41L12 0Z"/></svg>
+                                <span>Food Vouchers Accepted</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-[#C5A059] flex-shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                                <span>24/7 CCTV Monitored Security</span>
+                            </li>
+                        </ul>
+
+                        <!-- CTA Button -->
+                        <div class="pt-4">
+                            <a href="contact.html?type=corporate" class="click-shrink block text-center w-full py-4 px-6 rounded-full bg-gradient-to-r from-[#A76B46] to-[#C5A059] text-white text-xs font-bold uppercase tracking-wider shadow-xl hover:brightness-110 transition-all font-sans">
                                 Request Long Rates
                             </a>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Accommodation Card 2: Short-Term Lodging -->
-                    <div class="neomorph-raised bg-background rounded-3xl p-8 flex flex-col justify-between group h-full">
-                        <div class="space-y-6">
-                            <div class="aspect-video w-full rounded-2xl overflow-hidden neomorph-inset border border-primary/5 relative">
-                                <img alt="Luxury cozy suite guest bedroom with high-end linens, fresh towels and breakfast tray" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbWdu1ws2pc6lNTZ3E9HyC8XsxNB1arn6-4Pdwyb8Up1XjYuDJo7FMr6qvWXyr6KbkX6L-nHDHfLKkYKZLTy0hWKEZHFfBw16XtvU_ETFX1b7eVk2EzEHJA0R_IORygHZgrSRgJ4FZGhFsTee59uhlTx9jrKcjRnKFHiMynQG75OZ13wtn9lb3G-azdUEygTjgG4RNTJevVNIqIqazUwp6cCOkq9BgmrWOU7cOlEzaubfzvtPcbCAs_EmeQ0ZB1UKQwCp73UIl7aNGBLo">
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex items-center gap-3">
-                                    <span class="material-symbols-outlined text-3xl text-secondary">bed</span>
-                                    <h3 class="text-2xl font-bold text-on-surface">Short-Term Lodging Stays</h3>
-                                </div>
-                                <p class="text-on-surface-variant text-sm leading-relaxed">
-                                    Perfect for business trips, visiting consultants, or weekend couples seeking quiet hospitality. Each room provides elegant privacy with hotel-grade comforts.
-                                </p>
-                            </div>
-                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
-                                    <span class="material-symbols-outlined text-secondary text-lg">breakfast_dining</span>
-                                    Breakfast included daily
-                                </li>
-                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
-                                    <span class="material-symbols-outlined text-secondary text-lg">confirmation_number</span>
-                                    Contractor food vouchers accepted
-                                </li>
-                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
-                                    <span class="material-symbols-outlined text-secondary text-lg">tv</span>
-                                    Netflix, Waka TV & Fiber Wi-Fi
-                                </li>
-                                <li class="flex items-center gap-2.5 text-sm text-on-surface font-medium">
-                                    <span class="material-symbols-outlined text-secondary text-lg">soap</span>
-                                    Premium towels & toiletries
-                                </li>
-                            </ul>
-                        </div>
+                <!-- Card 2: Short-Term Executive Suite (Light Vibrant Mesh Catalist Card Design) -->
+                <div class="group rounded-[2.5rem] bg-gradient-to-b from-[#FAF8F5] via-[#F6F2EA] to-[#EFEAE1] border border-[#2D2722]/10 relative overflow-hidden shadow-2xl p-7 md:p-9 transition-all duration-500 hover:scale-[1.01] flex flex-col justify-between">
+                    
+                    <!-- Background Soft Gradient Mesh Aura -->
+                    <div class="absolute -top-10 -right-10 w-72 h-72 bg-[#C5A059]/20 rounded-full blur-[100px] pointer-events-none"></div>
+                    <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-[#A76B46]/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+                    <!-- Inner Content -->
+                    <div class="relative z-10 space-y-6">
                         
-                        <!-- Standard Excellence stats footer -->
-                        <div class="mt-8 pt-6 border-t border-primary/10 flex items-center justify-between">
-                            <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Breakfast Included</span>
-                            <a href="contact.html?type=short" class="click-shrink bg-background border border-primary/30 text-primary text-sm font-bold px-6 py-3 rounded-xl neomorph-raised hover:bg-surface-container-low transition-all">
+                        <!-- Top Bar inside Card -->
+                        <div class="flex items-center justify-between text-xs text-neutral-600 font-sans border-b border-[#2D2722]/10 pb-4">
+                            <div class="flex items-center gap-2">
+                                <span class="flex items-center justify-center h-6 w-6 rounded-full bg-[#A76B46] text-white">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                                </span>
+                                <span class="font-semibold text-[#2D2722] tracking-wide">Executive Suite</span>
+                            </div>
+                            <span class="text-neutral-500 text-[11px] tracking-wider uppercase font-medium">reemeguesthouse.co.za</span>
+                        </div>
+
+                        <!-- Card Image Container -->
+                        <div class="aspect-[16/9] w-full rounded-2xl overflow-hidden border border-[#2D2722]/10 relative shadow-xl">
+                            <img alt="Short-Term Executive Suite Bed with Floral Pillow & Orange Flowers" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="images/short_term_floral_suite.jpg">
+                            <div class="absolute top-3 right-3 bg-[#C5A059] text-[#2D2722] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-white/40 shadow-md font-sans">
+                                Breakfast Included
+                            </div>
+                        </div>
+
+                        <!-- Floating Solid Dark Pill Container -->
+                        <div class="rounded-full bg-[#1A1613] text-white py-3.5 px-6 flex items-center justify-between shadow-2xl border border-white/10">
+                            <div class="flex items-center gap-2">
+                                <span class="h-2 w-2 rounded-full bg-[#A76B46] animate-pulse"></span>
+                                <span class="text-xs font-bold text-white tracking-wide font-sans">Standard Rate</span>
+                            </div>
+                            <div class="flex items-baseline gap-1.5">
+                                <span class="text-2xl font-extrabold text-white tracking-tight font-sans">R850</span>
+                                <span class="text-xs text-neutral-400 font-sans">/night</span>
+                            </div>
+                        </div>
+
+                        <!-- Title & Subtitle -->
+                        <div>
+                            <h3 class="text-2xl font-bold tracking-tight text-[#2D2722] font-sans">Short-Term Executive Suite</h3>
+                            <p class="mt-1 text-xs text-[#6E6259] font-sans">Visiting Consultants, Business Trips &amp; Couples</p>
+                        </div>
+
+                        <!-- Features List -->
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[#2D2722] pt-2 border-t border-[#2D2722]/10">
+                            <li class="flex items-center gap-2.5">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-[#A76B46] flex-shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                                <span>Breakfast Included Daily</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-[#A76B46] flex-shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                                <span>Queen Bed &amp; En-Suite Bathroom</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-[#A76B46] flex-shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                                <span>Netflix, Waka TV &amp; Fiber Wi-Fi</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-[#A76B46] flex-shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                                <span>Mini-Fridge &amp; Tea Tray Station</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-[#A76B46] flex-shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                                <span>Wall-Mounted Climate AC Control</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-[#A76B46] flex-shrink-0"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                                <span>Premium White Towels &amp; Toiletries</span>
+                            </li>
+                        </ul>
+
+                        <!-- CTA Button -->
+                        <div class="pt-4">
+                            <a href="contact.html?type=short" class="click-shrink block text-center w-full py-4 px-6 rounded-full bg-[#2D2722] text-white text-xs font-bold uppercase tracking-wider shadow-xl hover:bg-[#A76B46] transition-all font-sans">
                                 Book Short Stay
                             </a>
                         </div>
                     </div>
-
                 </div>
 
-                <!-- Continuous Highlight Gallery Marquee -->
-                <section class="overflow-hidden relative carousel-container py-6 rounded-3xl border border-primary/5 bg-background">
-                    <!-- Ambient fading shadows -->
-                    <div class="absolute left-0 top-0 bottom-0 w-24 glass-fade-left z-10 pointer-events-none"></div>
-                    <div class="absolute right-0 top-0 bottom-0 w-24 glass-fade-right z-10 pointer-events-none"></div>
-                    
-                    <div class="animate-marquee flex gap-6 px-4">
-                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Lounge Area" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEL477ryB05Lx0_dMsHwQG1NflEpJmvdjYQ3G-U1_Rk4eVWUb6I5mu0yLoeikNcbz-aEnFyAkdw6t1nSKE_nOj53N5tdyzip3NivLtA06ttet7AGOygm5iWcgcVApOIsxOS8l-eQiLeMlwKiF5QRUnPxcspq5bEAYY9w1YLzxjRsqFAFaLYHLL_rEmufb7477UPttj5wu8pWqvjqQd5M-emqHiRq1GN2DTyNSGN4oICKhrZUHOR73C-FQB0sUsDTq2fk8"></div></div>
-                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Dining Setup" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuaQ8lxKDFe8EyT-NONOGbHr35Keak9rKMyrtl8wUZvM-4PKhORVBFq8DvmMt-ra1HpQ5-PYbUxPZkMKBSY7Oh8Rd4u2uBEjbEQ8Gm0V5xW-wGF7b1qy2HMHNouz1jxUYTfVvVq17AYLxYP6GpGsg2qJoxmrsq8N_CSDszzvJOAlw28-5gXuvUQqUGAX0HanQBq6Zfcv2bs57HBBNNON7QHoZ5uBQv6pSO4enAb-5zg5DP5LEhnGNcXQ9EbTkIoBcIxQw"></div></div>
-                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Executive Bedroom" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0LV39Mq5DL9tDcpnHWagz3nNrcsHEoWPuHy3dJp1Cojbq---WIRwFNywV6Xh7Knx8hqTIZvP7iriqIj9JZtlN0ttPWg8o46kB7WQ0VL1zZuGIwc4l3ERvgL3QlcHbwfx6eb4gD6bO7iCy4u8FQBOA7shrDMWyxgrgf60WdJ4r1Wf8uHu0VmnL2hLwwWWcMGmrdHGmfG1d7NY-1ucUuzlkrzgO_3V9cAVmdxiE7QEd1pQi5fQ-gLC8gTzjuQZkPkQoea0"></div></div>
-                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Exterior View" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNwLH5y_V5OB3jSR9SIxEXFatI3HTboaRfAt1XQro9zv9SUaD02bmfR9mCEhgUP0YZVoM8l_WzX27akTja07Nz76epKfUB8jDiCCQpextjArNmfsSw7Cw0zA6V41_1WNpFNR2ZGzwfiZhAeAKUkMJs51D433b8rEmVLIs7mRkzx4h0eJYN9hxV4HITczCHGpcrO1oBBOUKaYkItTJ1Nit99FAZDo99WRia40i1WW7EJShdPzZLiucybEuqKElRMIkg6Y0"></div></div>
-                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Bathroom Layout" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLBkmBjxwXJZBr0Tyg5OJcs1gzW4UsXmFNMFZfzLwhHhxyexHJljWPjeuzU6Q9hMUbrF2Uviz1Qfe04uN2Fd5qrlFEF_wSRLXlRaBFtpovrYqTZuwwddXmfqx1OdPesAGUvl0ph59SqqiHRPEBaFkxySew_2jCUX66Uiqc9OvAA8dGXS2XHJ9lpML5OF1gekhrSSHYKuwCTxfiTHkhO4h1zo-_WL6XOKhmJ-Si-vLNYmO7P-Na4LbNfVviA0bFnxTis_c"></div></div>
-                        <!-- Repeats loop -->
-                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Lounge Area" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEL477ryB05Lx0_dMsHwQG1NflEpJmvdjYQ3G-U1_Rk4eVWUb6I5mu0yLoeikNcbz-aEnFyAkdw6t1nSKE_nOj53N5tdyzip3NivLtA06ttet7AGOygm5iWcgcVApOIsxOS8l-eQiLeMlwKiF5QRUnPxcspq5bEAYY9w1YLzxjRsqFAFaLYHLL_rEmufb7477UPttj5wu8pWqvjqQd5M-emqHiRq1GN2DTyNSGN4oICKhrZUHOR73C-FQB0sUsDTq2fk8"></div></div>
-                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Dining Setup" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuaQ8lxKDFe8EyT-NONOGbHr35Keak9rKMyrtl8wUZvM-4PKhORVBFq8DvmMt-ra1HpQ5-PYbUxPZkMKBSY7Oh8Rd4u2uBEjbEQ8Gm0V5xW-wGF7b1qy2HMHNouz1jxUYTfVvVq17AYLxYP6GpGsg2qJoxmrsq8N_CSDszzvJOAlw28-5gXuvUQqUGAX0HanQBq6Zfcv2bs57HBBNNON7QHoZ5uBQv6pSO4enAb-5zg5DP5LEhnGNcXQ9EbTkIoBcIxQw"></div></div>
-                        <div class="w-72 flex-shrink-0"><div class="neomorph-raised bg-background rounded-2xl p-2.5 transition-transform duration-500 hover:scale-105"><img alt="Executive Bedroom" class="w-full h-44 object-cover rounded-xl shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0LV39Mq5DL9tDcpnHWagz3nNrcsHEoWPuHy3dJp1Cojbq---WIRwFNywV6Xh7Knx8hqTIZvP7iriqIj9JZtlN0ttPWg8o46kB7WQ0VL1zZuGIwc4l3ERvgL3QlcHbwfx6eb4gD6bO7iCy4u8FQBOA7shrDMWyxgrgf60WdJ4r1Wf8uHu0VmnL2hLwwWWcMGmrdHGmfG1d7NY-1ucUuzlkrzgO_3V9cAVmdxiE7QEd1pQi5fQ-gLC8gTzjuQZkPkQoea0"></div></div>
-                    </div>
-                </section>
-
             </div>
+
+            <!-- Bottom Add-ons Banner (Catalist Dark Pill Banner Design) -->
+            <div class="rounded-[2.5rem] bg-[#14100E] border border-white/10 relative overflow-hidden shadow-2xl p-8 max-w-7xl mx-auto">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-[#A76B46]/20 rounded-full blur-[90px] pointer-events-none"></div>
+                
+                <div class="relative z-10 text-center max-w-3xl mx-auto space-y-4">
+                    <h3 class="text-xl font-bold tracking-tight text-white font-sans">Need custom corporate arrangements or special rates?</h3>
+                    <p class="text-sm text-neutral-300 font-sans">Full self-catering executive house available • Daily maid &amp; laundry service included • Contractor food vouchers accepted</p>
+                    
+                    <div class="pt-2 flex flex-wrap justify-center gap-6 text-xs text-neutral-400 font-sans">
+                        <span class="flex items-center gap-2">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="text-[#C5A059]"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                            No hidden fees
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="text-[#C5A059]"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                            Instant WhatsApp Confirmation
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="text-[#C5A059]"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                            Corporate Tax Invoice Provided
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Grand Bottom Feature Section: Expanding Card Depth Gallery Showcase -->
+        <section class="slider-section">
+            
+            <div class="slider-container">
+                <ul class="slider">
+                    
+                    <!-- Item 1: Executive Bed & Towels Setup -->
+                    <li class="slider-item" style="background-image: url('images/suite_bed_towels.jpg')">
+                        <div class="slider-content">
+                            <span class="tag">Executive Comfort</span>
+                            <h2 class="title">Luxury Linen &amp; Towels</h2>
+                            <p class="description">
+                                Plush queen bed with floral accent pillows, pristine folded white bath towels, and individual climate control.
+                            </p>
+                            <a href="contact.html"><button>Book This Suite</button></a>
+                        </div>
+                    </li>
+
+                    <!-- Item 2: Mini-Fridge & Tea Refreshments -->
+                    <li class="slider-item" style="background-image: url('images/fridge_tea_station.jpg')">
+                        <div class="slider-content">
+                            <span class="tag">In-Room Amenities</span>
+                            <h2 class="title">Mini-Fridge &amp; Tea Station</h2>
+                            <p class="description">
+                                In-room beverage mini-fridge, electric glass kettle, complimentary tea/coffee tray, and botanical artwork.
+                            </p>
+                            <a href="contact.html"><button>Reserve Room</button></a>
+                        </div>
+                    </li>
+
+                    <!-- Item 3: 24/7 CCTV Camera Security Pole -->
+                    <li class="slider-item" style="background-image: url('images/cctv_security_pole.jpg')">
+                        <div class="slider-content">
+                            <span class="tag">Guest Safety</span>
+                            <h2 class="title">24/7 CCTV Surveillance</h2>
+                            <p class="description">
+                                High-tech 360-degree pole-mounted security camera system ensuring peace of mind for guests and vehicles.
+                            </p>
+                            <a href="contact.html"><button>View Security</button></a>
+                        </div>
+                    </li>
+
+                    <!-- Item 4: Sunset Lodge Exterior -->
+                    <li class="slider-item" style="background-image: url('images/lodge_exterior_sunset.jpg')">
+                        <div class="slider-content">
+                            <span class="tag">Lodge Grounds</span>
+                            <h2 class="title">Golden Hour Exterior</h2>
+                            <p class="description">
+                                Authentic face-brick guest house architecture under Postmasburg sunset sky with solar geysers and paved patio.
+                            </p>
+                            <a href="contact.html"><button>Explore Lodge</button></a>
+                        </div>
+                    </li>
+
+                    <!-- Item 5: Automated Perimeter Security Gate -->
+                    <li class="slider-item" style="background-image: url('images/perimeter_gate_security.jpg')">
+                        <div class="slider-content">
+                            <span class="tag">Perimeter Protection</span>
+                            <h2 class="title">Automated Security Gate</h2>
+                            <p class="description">
+                                Heavy-duty woven steel security fencing with electric automated gate motor access for vehicle safety.
+                            </p>
+                            <a href="contact.html"><button>Inquire Stays</button></a>
+                        </div>
+                    </li>
+
+                    <!-- Item 6: Integrated En-Suite & Climate AC -->
+                    <li class="slider-item" style="background-image: url('images/room_bedroom_ensuite_sink.jpg')">
+                        <div class="slider-content">
+                            <span class="tag">In-Room Comforts</span>
+                            <h2 class="title">Integrated En-Suite &amp; Climate AC</h2>
+                            <p class="description">
+                                Executive suite queen bed, in-room vanity washbasin with mirror, folded towels &amp; wall-mounted climate AC control.
+                            </p>
+                            <a href="contact.html"><button>Reserve Suite</button></a>
+                        </div>
+                    </li>
+
+                    <!-- Item 7: Exposed Brick Bathroom Divider -->
+                    <li class="slider-item" style="background-image: url('images/room_bathroom_brick.jpg')">
+                        <div class="slider-content">
+                            <span class="tag">Architectural Design</span>
+                            <h2 class="title">Exposed Brick En-Suite</h2>
+                            <p class="description">
+                                Authentic face-brick accent wall divider, glass enclosed shower, continuous hot water geyser &amp; tiled bathroom floor.
+                            </p>
+                            <a href="contact.html"><button>View En-Suite</button></a>
+                        </div>
+                    </li>
+
+                    <!-- Item 8: Glass Shower & Floating Vanity -->
+                    <li class="slider-item" style="background-image: url('images/room_bathroom_glass.jpg')">
+                        <div class="slider-content">
+                            <span class="tag">Bathroom Sanctuary</span>
+                            <h2 class="title">Glass Shower &amp; Floating Vanity</h2>
+                            <p class="description">
+                                Modern glass shower enclosure with ceramic tiled floors, floating wooden vanity basin, mirror &amp; plush towels.
+                            </p>
+                            <a href="contact.html"><button>Book Stay</button></a>
+                        </div>
+                    </li>
+
+                    <!-- Item 9: Pedestal Washbasin & Storage Shelving -->
+                    <li class="slider-item" style="background-image: url('images/room_bathroom_shelving.jpg')">
+                        <div class="slider-content">
+                            <span class="tag">Spotless Amenities</span>
+                            <h2 class="title">Pedestal Sink &amp; Storage</h2>
+                            <p class="description">
+                                White ceramic pedestal washbasin, multi-tier storage shelving unit, plush yellow bath mats &amp; vanity mirror.
+                            </p>
+                            <a href="contact.html"><button>Inquire Now</button></a>
+                        </div>
+                    </li>
+
+                    <!-- Item 11: Workstation Desk & TV -->
+                    <li class="slider-item" style="background-image: url('images/room_bedroom_workstation.jpg')">
+                        <div class="slider-content">
+                            <span class="tag">Corporate Productivity</span>
+                            <h2 class="title">Suite Desk &amp; Media Station</h2>
+                            <p class="description">
+                                Executive desk workstation, flat screen TV, high-speed fiber Wi-Fi, mini-fridge &amp; kettle tea tray setup.
+                            </p>
+                            <a href="contact.html"><button>Reserve Suite</button></a>
+                        </div>
+                    </li>
+
+                    <!-- Item 12: Lodge Dining Hall -->
+                    <li class="slider-item" style="background-image: url('images/dining_hall.jpg')">
+                        <div class="slider-content">
+                            <span class="tag">Guest Dining</span>
+                            <h2 class="title">Lodge Dining Hall</h2>
+                            <p class="description">
+                                Cozy guest house dining room with pendant lighting, hearth fireplace, daily hot breakfast &amp; contractor meal vouchers.
+                            </p>
+                            <a href="contact.html"><button>Meal Options</button></a>
+                        </div>
+                    </li>
+
+                    <!-- Item 13: Garden Courtyard -->
+                    <li class="slider-item" style="background-image: url('images/garden_courtyard.jpg')">
+                        <div class="slider-content">
+                            <span class="tag">Outdoors</span>
+                            <h2 class="title">Garden Courtyard Walkway</h2>
+                            <p class="description">
+                                Paved outdoor garden sanctuary surrounded by indigenous flora, quiet sitting spots &amp; secure parking carports.
+                            </p>
+                            <a href="contact.html"><button>Contact Lodge</button></a>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <!-- Slider Navigation Arrow Buttons -->
+                <nav class="slider-nav">
+                    <button class="btn prev" aria-label="Previous Slide">
+                        <ion-icon name="arrow-back-outline"></ion-icon>
+                    </button>
+                    <button class="btn next" aria-label="Next Slide">
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </button>
+                </nav>
+            </div>
+
         </section>
 
     </main>
 
-    <!-- Global Footer -->
-    <footer class="w-full mt-auto bg-surface-container border-t border-primary/5">
-        <div class="flex flex-col md:flex-row justify-between items-start px-6 py-12 gap-8 max-w-7xl mx-auto w-full">
-            
-            <!-- Brand & Address Column -->
-            <div class="space-y-4 text-center md:text-left">
-                <a href="index.html" class="inline-flex items-center gap-2 text-lg font-bold text-primary click-shrink">
-                    <span class="material-symbols-outlined filled text-secondary">house</span>
-                    <span>Reeme Guest House</span>
-                </a>
-                <p class="font-body text-xs text-on-surface-variant max-w-xs leading-normal">
-                    © 2026 Reeme Guest House. 7511 Dibange Makape Street, Airfield, Postmasburg, 8420. Protected by 24/7 Monitored Security.
-                </p>
-                <div class="text-xs text-on-surface-variant space-y-1.5 pt-1">
-                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
-                        <span class="material-symbols-outlined text-sm text-primary">person</span>
-                        <span>Manager: Didintle Thupae</span>
-                    </p>
-                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
-                        <span class="material-symbols-outlined text-sm text-primary">call</span>
-                        <a href="tel:0744826660" class="hover:text-primary transition-colors">074 482 6660</a>
-                    </p>
-                    <p class="flex items-center gap-1.5 justify-center md:justify-start">
-                        <span class="material-symbols-outlined text-sm text-primary">mail</span>
-                        <a href="mailto:reemeguesthouse@gmail.com" class="hover:text-primary transition-colors">reemeguesthouse@gmail.com</a>
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Quick Links -->
-            <div class="flex flex-wrap justify-center gap-6 md:gap-8 self-center">
-                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
-                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
-                <a class="font-body text-xs text-on-surface-variant hover:text-primary transition-colors" href="about.html">Directions &amp; Map</a>
-            </div>
+    <!-- Global Footer — Shadcn Footer-01 Design -->
+    <footer class="py-12 bg-background border-t border-primary/10">
+        <div class="max-w-7xl xl:px-16 lg:px-8 px-6 mx-auto">
+            <div class="flex flex-col gap-8 sm:gap-12">
+                <div class="py-6 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-12 gap-x-8 gap-y-10">
+                    
+                    <!-- Col 1: Brand & Bio -->
+                    <div class="col-span-full lg:col-span-4 space-y-6">
+                        <a href="index.html" class="inline-flex items-center gap-2.5 text-xl font-bold text-on-surface tracking-tight click-shrink">
+                            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white shadow-md">
+                                <span class="material-symbols-outlined filled text-secondary text-2xl">house</span>
+                            </span>
+                            <span class="font-extrabold text-on-surface">Reeme Guest House</span>
+                        </a>
 
-            <!-- Social Action Buttons (Soft UI) -->
-            <div class="flex gap-4 self-center md:self-auto">
-                <button class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink" aria-label="Share Information">
-                    <span class="material-symbols-outlined text-lg">share</span>
-                </button>
-                <a href="mailto:reemeguesthouse@gmail.com" class="neomorph-raised p-2.5 rounded-xl text-primary hover:text-secondary click-shrink flex items-center justify-center" aria-label="Mail Reservations">
-                    <span class="material-symbols-outlined text-lg">mail</span>
-                </a>
+                        <p class="text-sm font-normal text-on-surface-variant max-w-sm leading-relaxed">
+                            Empowering mining corporate teams, engineers, and visiting guests with hotel-tier executive accommodations in Postmasburg.
+                        </p>
+
+                        <!-- Social Icons -->
+                        <div class="flex items-center gap-4 text-on-surface-variant">
+                            <a href="mailto:reemeguesthouse@gmail.com" class="p-2.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary hover:text-white transition-all text-primary" aria-label="Email Us">
+                                <span class="material-symbols-outlined text-lg">mail</span>
+                            </a>
+                            <a href="tel:0744826660" class="p-2.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary hover:text-white transition-all text-primary" aria-label="Call Us">
+                                <span class="material-symbols-outlined text-lg">call</span>
+                            </a>
+                            <a href="https://wa.me/27744826660" target="_blank" class="p-2.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary hover:text-white transition-all text-primary" aria-label="WhatsApp">
+                                <span class="material-symbols-outlined text-lg">chat</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-span-1 lg:block hidden"></div>
+
+                    <!-- Col 2: Navigation Sitemap -->
+                    <div class="col-span-2 space-y-4">
+                        <p class="text-base font-semibold text-on-surface">Sitemap</p>
+                        <ul class="flex flex-col gap-3 text-sm">
+                            <li><a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors">Home</a></li>
+                            <li><a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors">About Us</a></li>
+                            <li><a href="rooms.html" class="text-on-surface-variant hover:text-primary transition-colors">Accommodations</a></li>
+                            <li><a href="contact.html" class="text-on-surface-variant hover:text-primary transition-colors">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 3: Legal & Information -->
+                    <div class="col-span-2 space-y-4">
+                        <p class="text-base font-semibold text-on-surface">Information</p>
+                        <ul class="flex flex-col gap-3 text-sm">
+                            <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors">Terms &amp; Conditions</a></li>
+                            <li><a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors">Directions &amp; Map</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 4: Contact Details -->
+                    <div class="col-span-3 space-y-4">
+                        <p class="text-base font-semibold text-on-surface">Contact Details</p>
+                        <ul class="flex flex-col gap-3 text-sm text-on-surface-variant">
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-base text-primary flex-shrink-0 mt-0.5">location_on</span>
+                                <span>7511 Dibange Makape Street, Airfield, Postmasburg, 8420</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-base text-primary flex-shrink-0">person</span>
+                                <span>Manager: Didintle Thupae</span>
+                            </li>
+                            <li>
+                                <a href="mailto:reemeguesthouse@gmail.com" class="hover:text-primary transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-base text-primary flex-shrink-0">mail</span>
+                                    reemeguesthouse@gmail.com
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:0744826660" class="hover:text-primary transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-base text-primary flex-shrink-0">call</span>
+                                    074 482 6660
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="h-px w-full bg-primary/10"></div>
+
+                <p class="text-xs font-normal text-on-surface-variant text-center">
+                    © 2026 Reeme Guest House. All Rights Reserved. Protected by 24/7 Monitored CCTV Security.
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- Drawer Scripting -->
+    <!-- Interactive Scripting -->
     <script>
+        // Drawer Logic
         const sidebarMenu = document.getElementById('sidebar-menu');
         const sidebarBackdrop = document.getElementById('sidebar-backdrop');
         const menuTrigger = document.getElementById('menu-trigger-btn');
@@ -401,6 +928,22 @@
         sidebarMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', closeSidebar);
         });
+
+        // Expanding Depth Card Slider Activation Logic
+        const slider = document.querySelector('.slider');
+
+        function activateSlider(e) {
+            const items = document.querySelectorAll('.slider-item');
+            if (e.target.closest('.next')) {
+                slider.append(items[0]);
+            }
+            if (e.target.closest('.prev')) {
+                slider.prepend(items[items.length - 1]);
+            }
+        }
+
+        document.addEventListener('click', activateSlider, false);
     </script>
+    <script src="js/multi-state-button.js"></script>
 </body>
 </html>
