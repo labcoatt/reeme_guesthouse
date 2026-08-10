@@ -11,6 +11,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
     
+    <!-- GSAP & Lenis Smooth Scroll Engine (No Art Music Tech Stack) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Observer.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.21/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.21/dist/lenis.css">
+    
     <!-- Custom Tailwind Configuration -->
     <script id="tailwind-config">
       tailwind.config = {
@@ -94,6 +101,79 @@
         }
         .material-symbols-outlined.filled {
             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Corner Technical Bracket Markers (No Art Music Signature) */
+        .thumbnail-marker_wrapper {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 20;
+            opacity: 0.15;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .thumbnail-marker {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            color: #C5A059;
+        }
+        .thumbnail-marker.is-top-left { top: 8px; left: 8px; }
+        .thumbnail-marker.is-top-right { top: 8px; right: 8px; }
+        .thumbnail-marker.is-bottom-left { bottom: 8px; left: 8px; }
+        .thumbnail-marker.is-bottom-right { bottom: 8px; right: 8px; }
+
+        .artist-card_grow_wrapper {
+            width: 100%;
+            height: 100%;
+            transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .noart-card:hover .artist-card_grow_wrapper {
+            width: calc(100% - 1.2rem);
+            height: calc(100% - 1.2rem);
+        }
+        .noart-card:hover .thumbnail-marker_wrapper {
+            opacity: 1;
+        }
+
+        /* Infinite Draggable Marquee Ribbon */
+        .draggable-marquee {
+            overflow: hidden;
+            width: 100%;
+            cursor: grab;
+            user-select: none;
+        }
+        .draggable-marquee:active {
+            cursor: grabbing;
+        }
+        .draggable-marquee__collection {
+            display: flex;
+            white-space: nowrap;
+            will-change: transform;
+        }
+        .draggable-marquee__list {
+            display: flex;
+            gap: 1.5rem;
+            flex-shrink: 0;
+        }
+        .draggable-marquee__item {
+            width: 320px;
+            height: 220px;
+            flex-shrink: 0;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid rgba(167, 107, 70, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        .draggable-marquee__item-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .draggable-marquee__item:hover .draggable-marquee__item-img {
+            transform: scale(1.08);
         }
     </style>
 </head>
@@ -183,128 +263,220 @@
 
     <main class="flex-grow">
         
-        <!-- About Header & Detailed Bento Grid -->
-        <section class="py-16 md:py-24 px-6 bg-background">
-            <div class="max-w-7xl mx-auto">
-                
-                <!-- Page Title -->
-                <div class="text-center mb-16 space-y-4">
-                    <div class="inline-block px-4 py-1.5 rounded-full neomorph-inset text-primary text-sm font-semibold tracking-wide border border-primary/10">
-                        About Reeme Guest House
+        <!-- No Art Music Hero Section with Scramble Text Reveal -->
+        <section class="py-20 md:py-28 px-6 bg-background border-b border-primary/10">
+            <div class="max-w-7xl mx-auto space-y-6">
+                <!-- Tag Indicator -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full neomorph-inset text-primary text-xs font-bold uppercase tracking-widest border border-primary/10">
+                    <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                    <span>[ ABOUT REEME GUEST HOUSE ]</span>
+                </div>
+
+                <!-- Text Scramble Headline -->
+                <h1 data-scramble-reveal class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-on-surface tracking-tight leading-tight font-display max-w-5xl">
+                    HOME OF UNINTERRUPTED HOSPITALITY &amp; SERENITY
+                </h1>
+
+                <!-- Lead Subtitle -->
+                <p class="text-on-surface-variant max-w-2xl text-base sm:text-lg leading-relaxed font-sans pt-2">
+                    Dedicated to providing corporate mining partners, engineering consultants, and visiting families with a comfortable, secure home away from home in Postmasburg.
+                </p>
+            </div>
+        </section>
+
+        <!-- No Art Music Infinite Draggable Image Marquee Ribbon -->
+        <section class="py-12 bg-[#2D2722] text-white overflow-hidden border-y border-white/10">
+            <div class="mb-6 px-6 max-w-7xl mx-auto flex items-center justify-between text-xs uppercase tracking-widest text-secondary font-bold">
+                <span>[ VISUAL GALLERY RIBBON ]</span>
+                <span class="text-stone-400 font-normal hidden sm:inline">Drag or Swipe to Explore &rarr;</span>
+            </div>
+
+            <div data-draggable-marquee-init data-duration="28" data-multiplier="35" data-sensitivity="0.01" class="draggable-marquee">
+                <div data-draggable-marquee-collection class="draggable-marquee__collection">
+                    <div data-draggable-marquee-list class="draggable-marquee__list">
+                        <div class="draggable-marquee__item">
+                            <img draggable="false" loading="eager" alt="Executive Suite Bed with Linens" src="images/suite_bed_towels.jpg" class="draggable-marquee__item-img"/>
+                        </div>
+                        <div class="draggable-marquee__item">
+                            <img draggable="false" loading="eager" alt="Mini-Fridge and Tea Station" src="images/fridge_tea_station.jpg" class="draggable-marquee__item-img"/>
+                        </div>
+                        <div class="draggable-marquee__item">
+                            <img draggable="false" loading="eager" alt="24/7 Monitored CCTV Security" src="images/cctv_security_pole.jpg" class="draggable-marquee__item-img"/>
+                        </div>
+                        <div class="draggable-marquee__item">
+                            <img draggable="false" loading="eager" alt="Guest House Sunset Exterior" src="images/lodge_exterior_sunset.jpg" class="draggable-marquee__item-img"/>
+                        </div>
+                        <div class="draggable-marquee__item">
+                            <img draggable="false" loading="eager" alt="Automated Perimeter Gate Access" src="images/perimeter_gate_security.jpg" class="draggable-marquee__item-img"/>
+                        </div>
+                        <div class="draggable-marquee__item">
+                            <img draggable="false" loading="eager" alt="En-Suite Vanity and Bedside" src="images/room_bedroom_ensuite_sink.jpg" class="draggable-marquee__item-img"/>
+                        </div>
+                        <div class="draggable-marquee__item">
+                            <img draggable="false" loading="eager" alt="Lodge Dining Room" src="images/dining_hall.jpg" class="draggable-marquee__item-img"/>
+                        </div>
                     </div>
-                    <h1 class="text-3xl md:text-5xl font-extrabold text-on-surface tracking-tight">Our Story &amp; Pillars</h1>
-                    <p class="text-on-surface-variant max-w-xl mx-auto text-base">
-                        Dedicated to providing a high-end contractor-friendly and family-friendly home away from home in Postmasburg.
-                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- No Art Music Story Narrative & Bento Grid -->
+        <section class="py-20 px-6 bg-background">
+            <div class="max-w-7xl mx-auto space-y-16">
+
+                <!-- Narrative Overview -->
+                <div class="neomorph-raised p-8 md:p-12 rounded-3xl space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full neomorph-inset text-secondary text-xs font-bold uppercase tracking-widest border border-primary/10">
+                        <span>[ HOSPITALITY PHILOSOPHY &amp; LEADERSHIP ]</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-bold text-on-surface font-sans">
+                        Who We Are — Tailored Lodging in Northern Cape
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-on-surface-variant leading-relaxed text-base">
+                        <p>
+                            Welcome to Reeme Guest House. We are an established guesthouse dedicated to providing a true home-away-from-home experience. Whether you are a corporate contractor working in the area, a visiting engineer, or a family on holiday, our establishment offers a safe, peaceful, and personal stay.
+                        </p>
+                        <p>
+                            Managed by <strong class="text-on-surface">Didintle Thupae</strong>, our management team coordinates directly with procurement partners and mining houses across Postmasburg to simplify short-term and long-term stays with complete meal voucher support, daily maid service, and 24/7 security.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Deep Narrative Card -->
-                <div class="neomorph-raised p-8 md:p-12 rounded-3xl mb-16 space-y-6">
-                    <h3 class="text-2xl font-bold text-on-surface flex items-center gap-2">
-                        <span class="material-symbols-outlined text-primary text-2xl">history_edu</span>
-                        Who We Are
-                    </h3>
-                    <p class="text-on-surface-variant leading-relaxed text-base">
-                        Welcome to Reeme Guest House. We are a young established guesthouse dedicated to providing a home-away-from-home experience. Whether you are a corporate contractor working in the area, a family on holiday, or a couple on a weekend retreat, we exist to offer a safe, comfortable, and personal stay tailored to your needs.
-                    </p>
-                    <p class="text-on-surface-variant leading-relaxed text-base">
-                        Our management team, led by Didintle Thupae, works closely with mining houses and engineering houses in the Northern Cape to accommodate teams for short or long projects. We coordinate directly with procurement partners to simplify contractor stays, offering tailored packages and complete comfort tools.
-                    </p>
-                </div>
+                <!-- Bento Grid Layout with Technical SVG Corner Framing -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Bento Item 1: Security with Technical Framing -->
+                    <div id="security" class="noart-card relative neomorph-raised p-8 rounded-3xl space-y-6 md:col-span-2 flex flex-col justify-between overflow-hidden">
+                        <!-- SVG Technical Corner Markers -->
+                        <div class="thumbnail-marker_wrapper">
+                            <svg class="thumbnail-marker is-top-left" viewBox="0 0 10 10" fill="none"><path d="M10 0V1H1V10H0V0H10Z" fill="currentColor"></path></svg>
+                            <svg class="thumbnail-marker is-top-right" viewBox="0 0 10 10" fill="none"><path d="M10 0V10H9V1H0V0H10Z" fill="currentColor"></path></svg>
+                            <svg class="thumbnail-marker is-bottom-left" viewBox="0 0 10 10" fill="none"><path d="M0 0L1 0L1 9L10 9L10 10L0 10L0 0Z" fill="currentColor"></path></svg>
+                            <svg class="thumbnail-marker is-bottom-right" viewBox="0 0 10 10" fill="none"><path d="M10 10L0 10L0 9L9 9L9 0L10 0L10 10Z" fill="currentColor"></path></svg>
+                        </div>
 
-                <!-- Bento Grid Layout -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                    <!-- Bento Item 1: Security -->
-                    <div id="security" class="neomorph-raised p-8 rounded-3xl space-y-6 md:col-span-2 flex flex-col justify-between">
-                        <div class="flex justify-between items-start">
-                            <div class="neomorph-inset p-4 rounded-2xl text-primary">
-                                <span class="material-symbols-outlined text-3xl text-primary">verified_user</span>
+                        <div class="artist-card_grow_wrapper flex flex-col justify-between space-y-6 mx-auto">
+                            <div class="flex justify-between items-start">
+                                <div class="neomorph-inset p-4 rounded-2xl text-primary">
+                                    <span class="material-symbols-outlined text-3xl text-primary">verified_user</span>
+                                </div>
+                                <span class="px-4 py-1.5 neomorph-inset rounded-full text-xs font-bold text-on-surface-variant uppercase tracking-wider border border-primary/5">[ 24/7 MONITORED PROTECTION ]</span>
                             </div>
-                            <span class="px-4 py-1.5 neomorph-inset rounded-full text-xs font-bold text-on-surface-variant uppercase tracking-wider border border-primary/5">24/7 Monitored Protection</span>
-                        </div>
-                        <div class="space-y-3">
-                            <h3 class="text-2xl font-bold text-on-surface">Advanced Secure Premises</h3>
-                            <p class="text-on-surface-variant leading-relaxed text-sm">
-                                Your peace of mind is our absolute priority. Our lodge features 24-hour high-definition security camera monitoring, electric boundary fencing, security motion sensors, panic buttons, and walled parking. Rest easy knowing your vehicles and equipment are fully secured.
-                            </p>
-                        </div>
-                        <div class="relative h-56 rounded-2xl overflow-hidden mt-4 border border-primary/5 shadow-inner">
-                            <img class="w-full h-full object-cover" alt="Sleek, high-security gate entrance with surveillance cameras, beautifully lit in warm colors at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaNFR3XPKvFwqLuZDlzdbL3SVKcKgLEQWLzmtkcgY6EVD-OWET3Fnqh04Rcl-oWOZE4FPH1Su29ZmQTcEd5YIgK1cJI8M979lPA2tT_kNUr8YDBDC9BVqPaNA2zJq9PrS_kBscn3jMePbSvgvsCsotLYEmnLoOr5ly7YnC-uTxdLeKVjJEd_EREZuHNpkkf_pokslMeBgZFmdZESzNAWPXoGQQfCzuFWgRyZX4ILBRUCWoyW48y-A0Kz4eQ9dewUqNPzXt52Zp80BtViQ">
+                            <div class="space-y-3">
+                                <h3 class="text-2xl font-bold text-on-surface">Advanced Secure Premises</h3>
+                                <p class="text-on-surface-variant leading-relaxed text-sm">
+                                    Your peace of mind is our absolute priority. Our lodge features 24-hour high-definition security camera monitoring, electric boundary fencing, security motion sensors, panic buttons, and walled parking.
+                                </p>
+                            </div>
+                            <div class="relative h-60 rounded-2xl overflow-hidden mt-4 border border-primary/10 shadow-inner">
+                                <img class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" alt="Sleek, high-security gate entrance with surveillance cameras" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaNFR3XPKvFwqLuZDlzdbL3SVKcKgLEQWLzmtkcgY6EVD-OWET3Fnqh04Rcl-oWOZE4FPH1Su29ZmQTcEd5YIgK1cJI8M979lPA2tT_kNUr8YDBDC9BVqPaNA2zJq9PrS_kBscn3jMePbSvgvsCsotLYEmnLoOr5ly7YnC-uTxdLeKVjJEd_EREZuHNpkkf_pokslMeBgZFmdZESzNAWPXoGQQfCzuFWgRyZX4ILBRUCWoyW48y-A0Kz4eQ9dewUqNPzXt52Zp80BtViQ">
+                            </div>
                         </div>
                     </div>
 
                     <!-- Bento Item 2: Hybrid Power System -->
-                    <div id="utilities" class="neomorph-raised p-8 rounded-3xl space-y-6 flex flex-col justify-between">
-                        <div>
-                            <div class="neomorph-inset p-4 rounded-2xl text-secondary w-fit mb-6">
-                                <span class="material-symbols-outlined text-3xl">solar_power</span>
-                            </div>
-                            <h3 class="text-2xl font-bold text-on-surface mb-3">Uninterrupted Power</h3>
-                            <p class="text-on-surface-variant leading-relaxed text-sm">
-                                Load shedding won't affect your stay. Our solar array combined with backup generator storage keeps the lights on, rooms heated, and high-speed fiber Wi-Fi operational at all times.
-                            </p>
+                    <div id="utilities" class="noart-card relative neomorph-raised p-8 rounded-3xl space-y-6 flex flex-col justify-between overflow-hidden">
+                        <!-- SVG Technical Corner Markers -->
+                        <div class="thumbnail-marker_wrapper">
+                            <svg class="thumbnail-marker is-top-left" viewBox="0 0 10 10" fill="none"><path d="M10 0V1H1V10H0V0H10Z" fill="currentColor"></path></svg>
+                            <svg class="thumbnail-marker is-top-right" viewBox="0 0 10 10" fill="none"><path d="M10 0V10H9V1H0V0H10Z" fill="currentColor"></path></svg>
+                            <svg class="thumbnail-marker is-bottom-left" viewBox="0 0 10 10" fill="none"><path d="M0 0L1 0L1 9L10 9L10 10L0 10L0 0Z" fill="currentColor"></path></svg>
+                            <svg class="thumbnail-marker is-bottom-right" viewBox="0 0 10 10" fill="none"><path d="M10 10L0 10L0 9L9 9L9 0L10 0L10 10Z" fill="currentColor"></path></svg>
                         </div>
-                        <div class="neomorph-inset p-5 rounded-2xl border border-primary/5">
-                            <div class="flex items-center justify-between text-xs font-bold mb-3 uppercase tracking-wider">
-                                <span class="text-on-surface">Utility Status</span>
-                                <span class="text-emerald-600 flex items-center gap-1">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                                    Active / Backed-up
-                                </span>
+
+                        <div class="artist-card_grow_wrapper flex flex-col justify-between space-y-6 mx-auto">
+                            <div>
+                                <div class="neomorph-inset p-4 rounded-2xl text-secondary w-fit mb-6">
+                                    <span class="material-symbols-outlined text-3xl">solar_power</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-on-surface mb-3">Uninterrupted Power</h3>
+                                <p class="text-on-surface-variant leading-relaxed text-sm">
+                                    Load shedding won't affect your stay. Our solar array combined with backup generator storage keeps the lights on, rooms climate-controlled, and high-speed fiber Wi-Fi operational at all times.
+                                </p>
                             </div>
-                            <div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
-                                <div class="h-full bg-primary w-[98%]"></div>
+                            <div class="neomorph-inset p-5 rounded-2xl border border-primary/5">
+                                <div class="flex items-center justify-between text-xs font-bold mb-3 uppercase tracking-wider">
+                                    <span class="text-on-surface">Utility Status</span>
+                                    <span class="text-emerald-600 flex items-center gap-1">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                        Active / Backed-up
+                                    </span>
+                                </div>
+                                <div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary w-[98%]"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Bento Item 3: Freshly Launched -->
-                    <div class="neomorph-raised p-8 rounded-3xl space-y-4 flex flex-col items-center text-center">
-                        <div class="neomorph-inset p-4 rounded-full text-primary">
-                            <span class="material-symbols-outlined text-3xl">new_releases</span>
+                    <div class="noart-card relative neomorph-raised p-8 rounded-3xl space-y-4 flex flex-col items-center text-center justify-center overflow-hidden">
+                        <!-- SVG Technical Corner Markers -->
+                        <div class="thumbnail-marker_wrapper">
+                            <svg class="thumbnail-marker is-top-left" viewBox="0 0 10 10" fill="none"><path d="M10 0V1H1V10H0V0H10Z" fill="currentColor"></path></svg>
+                            <svg class="thumbnail-marker is-top-right" viewBox="0 0 10 10" fill="none"><path d="M10 0V10H9V1H0V0H10Z" fill="currentColor"></path></svg>
+                            <svg class="thumbnail-marker is-bottom-left" viewBox="0 0 10 10" fill="none"><path d="M0 0L1 0L1 9L10 9L10 10L0 10L0 0Z" fill="currentColor"></path></svg>
+                            <svg class="thumbnail-marker is-bottom-right" viewBox="0 0 10 10" fill="none"><path d="M10 10L0 10L0 9L9 9L9 0L10 0L10 10Z" fill="currentColor"></path></svg>
                         </div>
-                        <h3 class="text-xl font-bold text-on-surface">Freshly Opened</h3>
-                        <p class="text-on-surface-variant text-sm leading-relaxed">
-                            With only 6 months since our doors opened, we offer brand new beds, contemporary furniture, clean kitchenware, and modern linens for a pristine lodging experience.
-                        </p>
+
+                        <div class="artist-card_grow_wrapper flex flex-col items-center justify-center space-y-4 mx-auto">
+                            <div class="neomorph-inset p-5 rounded-full text-primary mb-2">
+                                <span class="material-symbols-outlined text-3xl">new_releases</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-on-surface">Fresh &amp; Modern Linens</h3>
+                            <p class="text-on-surface-variant text-sm leading-relaxed max-w-xs">
+                                With brand new beds, contemporary furniture, clean kitchenware, and crisp white towels for a pristine lodging experience.
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Bento Item 4: Location Map details -->
-                    <div class="neomorph-raised p-8 rounded-3xl space-y-6 md:col-span-2 flex flex-col md:flex-row gap-6 items-center">
-                        <div class="flex-1 space-y-4 text-left">
-                            <h3 class="text-2xl font-bold text-on-surface">Quiet, Suburban Lodge</h3>
-                            <p class="text-on-surface-variant text-sm leading-relaxed">
-                                Located on Dibange Makape Street in Postmasburg, Reeme Guest House offers quick access to local mines, shopping centers, and main travel routes while ensuring peace and privacy.
-                            </p>
+                    <div class="noart-card relative neomorph-raised p-8 rounded-3xl space-y-6 md:col-span-2 flex flex-col md:flex-row gap-6 items-center overflow-hidden">
+                        <!-- SVG Technical Corner Markers -->
+                        <div class="thumbnail-marker_wrapper">
+                            <svg class="thumbnail-marker is-top-left" viewBox="0 0 10 10" fill="none"><path d="M10 0V1H1V10H0V0H10Z" fill="currentColor"></path></svg>
+                            <svg class="thumbnail-marker is-top-right" viewBox="0 0 10 10" fill="none"><path d="M10 0V10H9V1H0V0H10Z" fill="currentColor"></path></svg>
+                            <svg class="thumbnail-marker is-bottom-left" viewBox="0 0 10 10" fill="none"><path d="M0 0L1 0L1 9L10 9L10 10L0 10L0 0Z" fill="currentColor"></path></svg>
+                            <svg class="thumbnail-marker is-bottom-right" viewBox="0 0 10 10" fill="none"><path d="M10 10L0 10L0 9L9 9L9 0L10 0L10 10Z" fill="currentColor"></path></svg>
                         </div>
-                        <div class="w-full md:w-60 h-44 neomorph-inset rounded-2xl overflow-hidden relative border border-primary/5">
-                            <img class="w-full h-full object-cover grayscale opacity-90 contrast-125" alt="Clean satellite view of Postmasburg, South Africa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQbUiF5eHlc-Gtmupp0SAtiWlO4wxyrrOH9GsvTsx-B9evSz4L9Jr_z08tiaEsgNMOAS3VtMuyUEHR7SlRNITdx447MR9qjqlFPC10zADgd1l1nRJTHkatsVCeuWpYrCBYdKGFrs1p7oLW-5nEZjc3PDQcz-bafDsEJzkTnptnFNzsVIjz8zWsjAsWdiamx5HdRAh1GXZLYbGhig84ITofhQMRpPDac1jsytOu7J-sBMOwL41cVtM3TA">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="bg-background/90 px-3 py-1.5 rounded-lg shadow-sm border border-primary/20 backdrop-blur-sm text-center">
-                                    <span class="text-[10px] font-bold text-primary tracking-widest uppercase">Postmasburg</span>
+
+                        <div class="artist-card_grow_wrapper flex flex-col md:flex-row items-center justify-between gap-6 mx-auto">
+                            <div class="flex-1 space-y-4 text-left">
+                                <h3 class="text-2xl font-bold text-on-surface">Quiet Suburban Location</h3>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">
+                                    Located on Dibange Makape Street in Postmasburg, Reeme Guest House offers quick access to local mines, commercial centers, and main travel routes while ensuring peace and privacy.
+                                </p>
+                            </div>
+                            <div class="w-full md:w-64 h-48 neomorph-inset rounded-2xl overflow-hidden relative border border-primary/10">
+                                <img class="w-full h-full object-cover grayscale opacity-90 contrast-125" alt="Satellite view of Postmasburg, South Africa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQbUiF5eHlc-Gtmupp0SAtiWlO4wxyrrOH9GsvTsx-B9evSz4L9Jr_z08tiaEsgNMOAS3VtMuyUEHR7SlRNITdx447MR9qjqlFPC10zADgd1l1nRJTHkatsVCeuWpYrCBYdKGFrs1p7oLW-5nEZjc3PDQcz-bafDsEJzkTnptnFNzsVIjz8zWsjAsWdiamx5HdRAh1GXZLYbGhig84ITofhQMRpPDac1jsytOu7J-sBMOwL41cVtM3TA">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="bg-background/90 px-3.5 py-1.5 rounded-lg shadow-sm border border-primary/20 backdrop-blur-sm text-center">
+                                        <span class="text-[10px] font-bold text-primary tracking-widest uppercase">Postmasburg</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
-                <!-- Stats Metric Panels -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="p-6 rounded-2xl neomorph-inset text-center border border-primary/5">
-                        <div class="text-3xl font-extrabold text-primary mb-1">6+</div>
-                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Months Since Launch</div>
+                <!-- Stats Animated Metric Panels -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-4">
+                    <div class="p-8 rounded-3xl neomorph-inset text-center border border-primary/5 space-y-1">
+                        <div data-stat-counter="6" data-stat-suffix="+" class="text-4xl font-extrabold text-primary font-display">0</div>
+                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">[ Months Launched ]</div>
                     </div>
-                    <div class="p-6 rounded-2xl neomorph-inset text-center border border-primary/5">
-                        <div class="text-3xl font-extrabold text-secondary mb-1">24/7</div>
-                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Camera Monitored</div>
+                    <div class="p-8 rounded-3xl neomorph-inset text-center border border-primary/5 space-y-1">
+                        <div data-stat-counter="24" data-stat-suffix="/7" class="text-4xl font-extrabold text-secondary font-display">0</div>
+                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">[ CCTV Monitored ]</div>
                     </div>
-                    <div class="p-6 rounded-2xl neomorph-inset text-center border border-primary/5">
-                        <div class="text-3xl font-extrabold text-primary mb-1">100%</div>
-                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Power Backup Status</div>
+                    <div class="p-8 rounded-3xl neomorph-inset text-center border border-primary/5 space-y-1">
+                        <div data-stat-counter="100" data-stat-suffix="%" class="text-4xl font-extrabold text-primary font-display">0</div>
+                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">[ Power Backup ]</div>
                     </div>
-                    <div class="p-6 rounded-2xl neomorph-inset text-center border border-primary/5">
-                        <div class="text-3xl font-extrabold text-secondary mb-1">Dual</div>
-                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Solar Heating Systems</div>
+                    <div class="p-8 rounded-3xl neomorph-inset text-center border border-primary/5 space-y-1">
+                        <div data-stat-counter="2" data-stat-prefix="Dual " class="text-4xl font-extrabold text-secondary font-display">0</div>
+                        <div class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">[ Solar Systems ]</div>
                     </div>
                 </div>
 
@@ -443,5 +615,6 @@
         });
     </script>
     <script src="js/multi-state-button.js"></script>
+    <script src="js/noart-animations.js"></script>
 </body>
 </html>
