@@ -8,12 +8,16 @@
     'use strict';
 
     function initMultiStateButtons() {
-        const selector = 'button, a.click-shrink, [data-multi-state="true"]';
+        const selector = '[data-multi-state="true"]';
         
         document.querySelectorAll(selector).forEach(btn => {
-            // Exclude drawer/slider control buttons that don't represent form/CTA actions
+            // Exclude drawer/slider/carousel control buttons that don't represent form/CTA actions
             if (
                 btn.classList.contains('slider-btn') || 
+                btn.classList.contains('btn') ||
+                btn.closest('.slider-nav') ||
+                btn.closest('.slider') ||
+                btn.closest('.slider-content') ||
                 btn.id === 'menu-trigger-btn' || 
                 btn.id === 'sidebar-close-btn' ||
                 btn.getAttribute('data-no-multi-state') === 'true'
