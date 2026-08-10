@@ -8,19 +8,19 @@ on:
 
 jobs:
   web-deploy:
-    name: 🎉 Sync Files to Hostking
+    name: "🎉 Sync Files to Hostking"
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get latest code
+      - name: "🚚 Get latest code"
         uses: actions/checkout@v4
 
-      - name: 📂 Sync files via FTP to Hostking
+      - name: "📂 Sync files via FTP to Hostking"
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/
+          server_dir: /public_html/
           exclude: |
             **/.git*
             **/.git*/**
