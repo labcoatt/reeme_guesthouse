@@ -61,7 +61,7 @@
     
     <!-- Scripts & Fonts -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@1,400;1,600;1,700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@1,400;1,600;1,700&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
     
     <!-- Custom Tailwind Configuration -->
@@ -117,6 +117,10 @@
         .font-serif-italic {
             font-family: 'Playfair Display', Georgia, serif;
             font-style: italic;
+        }
+
+        .font-editorial {
+            font-family: 'Bodoni Moda', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
         }
 
         /* Neomorphic Raised Shadow (Option A - Warm Shadows) */
@@ -336,9 +340,9 @@
                         <div class="space-y-4">
                             <span class="text-[#C7965C] font-bold uppercase tracking-widest text-xs">Built for Your Peace of Mind</span>
                             
-                            <!-- Massive Display Headline matching Reference Layout -->
-                            <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.08] font-sans">
-                                Standard<br>
+                            <!-- Massive Display Headline matching Reference High-Contrast Editorial Typography -->
+                            <h2 class="text-4xl sm:text-6xl md:text-7xl font-normal text-white tracking-tight leading-[1.05] font-editorial">
+                                <span class="text-[#C7965C] font-sans mr-1">*</span>Standard<br>
                                 Hospitality<br>
                                 Excellence.
                             </h2>
