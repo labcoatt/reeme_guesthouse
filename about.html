@@ -8,7 +8,7 @@
     
     <!-- Scripts & Fonts -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@1,400;1,600;1,700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
     
     <!-- GSAP & Lenis Smooth Scroll Engine (No Art Music Tech Stack) -->
@@ -101,6 +101,11 @@
         }
         .material-symbols-outlined.filled {
             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .font-serif-italic {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
         }
 
         /* Corner Technical Bracket Markers (No Art Music Signature) */
@@ -263,24 +268,43 @@
 
     <main class="flex-grow">
         
-        <!-- No Art Music Hero Section with Scramble Text Reveal -->
-        <section class="py-20 md:py-28 px-6 bg-background border-b border-primary/10">
-            <div class="max-w-7xl mx-auto space-y-6">
-                <!-- Tag Indicator -->
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full neomorph-inset text-primary text-xs font-bold uppercase tracking-widest border border-primary/10">
-                    <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-                    <span>[ ABOUT REEME GUEST HOUSE ]</span>
+        <!-- Hero Section — Emulating Reference Design & Typography -->
+        <section class="py-24 md:py-32 px-6 bg-[#050505] text-white border-b border-white/10 relative overflow-hidden text-center">
+            <!-- Background Radial Lighting Glow -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+            <div class="max-w-4xl mx-auto space-y-8 relative z-10 flex flex-col items-center">
+                
+                <!-- Avatar Stack Pill (Emulating "140+ Happy partners") -->
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#18181B] border border-white/10 shadow-inner">
+                    <div class="flex -space-x-2 overflow-hidden">
+                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-[#18181B] object-cover" src="images/suite_bed_towels.jpg" alt="Partner 1">
+                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-[#18181B] object-cover" src="images/fridge_tea_station.jpg" alt="Partner 2">
+                        <img class="inline-block h-6 w-6 rounded-full ring-2 ring-[#18181B] object-cover" src="images/dining_hall.jpg" alt="Partner 3">
+                    </div>
+                    <span class="text-xs font-semibold text-stone-300">140+ Happy partners &amp; guests</span>
                 </div>
 
-                <!-- Text Scramble Headline -->
-                <h1 data-scramble-reveal class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-on-surface tracking-tight leading-tight font-display max-w-5xl">
-                    HOME OF UNINTERRUPTED HOSPITALITY &amp; SERENITY
+                <!-- Main Display Headline with Serif Italic Keyword (Emulating "Ready to boost...") -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.12] font-sans max-w-4xl">
+                    Ready to <span class="font-serif-italic font-normal italic text-stone-100">boost</span> your stay with performance comfort?
                 </h1>
 
-                <!-- Lead Subtitle -->
-                <p class="text-on-surface-variant max-w-2xl text-base sm:text-lg leading-relaxed font-sans pt-2">
-                    Dedicated to providing corporate mining partners, engineering consultants, and visiting families with a comfortable, secure home away from home in Postmasburg.
+                <!-- Subtitle (Emulating center-aligned paragraph) -->
+                <p class="text-stone-300 max-w-2xl text-base sm:text-lg leading-relaxed font-sans font-normal">
+                    We engineer seamless lodging &amp; corporate acquisition systems for digital brands and visiting teams. If efficient, scalable comfort is your goal, you're in the right place.
                 </p>
+
+                <!-- Action Buttons (Emulating Green "Get Started" and Dark "Learn more" Pills) -->
+                <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+                    <a href="contact.html" class="px-8 py-3.5 rounded-2xl bg-[#059669] hover:bg-[#047857] text-[#000000] font-bold text-sm transition-all shadow-lg hover:shadow-emerald-500/20 active:scale-95 click-shrink">
+                        Get Started
+                    </a>
+                    <a href="rooms.html" class="px-8 py-3.5 rounded-2xl bg-[#18181B] hover:bg-[#27272A] border border-white/15 text-white font-bold text-sm transition-all active:scale-95 click-shrink">
+                        Learn more
+                    </a>
+                </div>
+
             </div>
         </section>
 
