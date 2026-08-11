@@ -203,7 +203,7 @@
             <!-- Center: Desktop Links -->
             <div class="hidden md:flex space-x-8 text-xs font-sans tracking-widest uppercase items-center">
                 <a href="index.html" class="hover:text-brand-gold transition-colors font-medium text-brand-dark">Home</a>
-                <a href="about.html" class="hover:text-brand-gold transition-colors font-medium text-brand-dark">Philosophy</a>
+                <a href="about.html" class="hover:text-brand-gold transition-colors font-medium text-brand-dark">About Us</a>
                 <a href="rooms.html" class="hover:text-brand-gold transition-colors font-medium text-brand-dark">Accommodations</a>
                 <a href="gallery.html" class="text-brand-gold font-bold transition-colors">Gallery</a>
                 <a href="contact.html" class="hover:text-brand-gold transition-colors font-medium text-brand-dark">Contact</a>
@@ -245,7 +245,7 @@
             <div class="max-w-7xl mx-auto px-6 pb-6">
                 <div class="grid gap-4 font-sans tracking-widest uppercase text-sm" role="menu">
                     <a class="hover:text-brand-gold transition-colors" href="index.html" data-menu-link>Home</a>
-                    <a class="hover:text-brand-gold transition-colors" href="about.html" data-menu-link>Philosophy</a>
+                    <a class="hover:text-brand-gold transition-colors" href="about.html" data-menu-link>About Us</a>
                     <a class="hover:text-brand-gold transition-colors" href="rooms.html" data-menu-link>Accommodations</a>
                     <a class="text-brand-gold font-bold transition-colors" href="gallery.html" data-menu-link>Gallery</a>
                     <a class="hover:text-brand-gold transition-colors" href="contact.html" data-menu-link>Contact</a>
@@ -308,60 +308,89 @@
 
     <main>
         
-        <!-- Showcase Section (Philosophy) -->
-        <section id="about" class="py-24 bg-brand-light relative">
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div data-reveal="left">
-                    <h2 class="text-3xl md:text-5xl font-serif mb-6 leading-none text-brand-dark">
-                        A refuge of <br />
-                        <span class="text-stroke text-5xl md:text-7xl font-bold">refinement</span>
+        <!-- Editorial Magazine Spread Section — Emulating Reference Editorial Layout -->
+        <section id="about" class="py-20 md:py-28 bg-[#0F0F10] text-[#2D2722] relative border-t border-b border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+                
+                <!-- Section Header Badge -->
+                <div class="text-center space-y-3">
+                    <span class="text-xs uppercase tracking-widest text-[#C5A059] font-bold block font-sans">Hospitality Philosophy &amp; Grounds</span>
+                    <h2 class="text-3xl sm:text-5xl md:text-6xl font-serif text-white tracking-tight font-light">
+                        A Refuge Of <span class="italic text-[#C5A059]">Refinement</span> &amp; Comfort
                     </h2>
-                    <div class="w-20 h-1 bg-brand-gold mb-8"></div>
-
-                    <p class="text-brand-gray font-sans font-light leading-relaxed mb-6 text-sm">
-                        Reeme Guest House blends quiet suburban luxury with reliable contractor-friendly infrastructure. We specialize in providing corporate contractor stays, offering complete self-catering options alongside comprehensive backup power systems and monitored security.
-                    </p>
-
-                    <ul class="space-y-4 font-sans text-xs sm:text-sm tracking-wide text-brand-dark font-medium">
-                        <li class="flex items-center">
-                            <i class="fa-solid fa-check text-brand-gold mr-4" aria-hidden="true"></i>
-                            24/7 boundaries surveillance camera monitoring
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fa-solid fa-check text-brand-gold mr-4" aria-hidden="true"></i>
-                            Hybrid solar &amp; backup generator storage systems
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fa-solid fa-check text-brand-gold mr-4" aria-hidden="true"></i>
-                            Backup water filtration and softening tanks
-                        </li>
-                    </ul>
                 </div>
 
-                <div class="relative" data-reveal="right">
-                    <div class="absolute -top-4 -left-4 w-full h-full border border-brand-gold/30 z-0 rounded-2xl"></div>
-
-                    <div class="img-container showcase-frame relative z-10 h-[450px] rounded-2xl">
-                        <img src="images/parking.jpg" alt="Establishment parking area" class="w-full h-full object-cover" />
-                        <div class="showcase-overlay bg-black/25">
-                            <div class="flex items-center justify-between">
-                                <span class="font-sans text-xs tracking-widest uppercase text-white/90 font-semibold">Premises grounds</span>
-                                <span class="text-brand-gold text-xs font-sans tracking-widest uppercase font-bold">Secure Carport</span>
-                            </div>
-
-                            <div class="glass-panel p-6 rounded-xl">
-                                <h3 class="font-serif text-xl text-white mb-2 italic">Secure Walled Boundary</h3>
-                                <p class="font-sans text-xs text-stone-100 font-light leading-relaxed">
-                                    Our brick-paved parking grounds are fully walled with automated gate triggers, electric fencing, and camera networks, offering complete safety for vehicle fleets.
-                                </p>
-                            </div>
-
-                            <div class="text-[10px] font-sans tracking-[0.25em] uppercase text-white/70">
-                                Protected • Paved • Monitored
-                            </div>
+                <!-- Editorial Outer Canvas Spread Container (Matching Reference Image 1 Layout) -->
+                <div class="bg-[#FAF8F5] rounded-3xl overflow-hidden shadow-2xl border border-white/20 grid grid-cols-1 lg:grid-cols-12 min-h-[640px]">
+                    
+                    <!-- Left Side Page: Vertical Photo Frame (Carport Entrance Image from Image 2) -->
+                    <div class="lg:col-span-5 relative min-h-[420px] lg:min-h-full overflow-hidden group">
+                        <img src="images/carport_entrance.jpg" alt="Reeme Guest House Carport Entrance &amp; Premises Grounds" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white text-xs font-mono tracking-widest uppercase flex items-center justify-between">
+                            <span>Premises Grounds</span>
+                            <span class="text-[#C5A059] font-bold">Postmasburg</span>
                         </div>
                     </div>
+
+                    <!-- Right Side Page: Editorial Magazine Article (Exact Layout of Reference Image 1) -->
+                    <div class="lg:col-span-7 p-8 sm:p-12 md:p-16 flex flex-col justify-between space-y-8 bg-white">
+                        
+                        <!-- Top Sub-Header Tag Bar -->
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#2D2722]/10 pb-4 text-[11px] font-sans font-semibold text-[#6E6259] tracking-wider uppercase">
+                            <span>New opportunities for refinement &amp; comfort</span>
+                            <span class="text-[#A76B46] font-bold">REEME — AIRFIELD</span>
+                        </div>
+
+                        <!-- Main Editorial Title -->
+                        <div class="space-y-2">
+                            <h2 class="text-4xl sm:text-6xl md:text-7xl font-normal text-[#2D2722] tracking-tight leading-[1.04] font-serif">
+                                The Future<br>
+                                Of Tourism<br>
+                                &amp; Hospitality
+                            </h2>
+                        </div>
+
+                        <!-- Mid Content: 2-Column Metadata & Small Photo Inset -->
+                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 pt-2 items-center">
+                            
+                            <!-- Left Metadata Column -->
+                            <div class="sm:col-span-6 space-y-4 text-xs font-sans text-[#6E6259]">
+                                <div>
+                                    <span class="block text-[10px] uppercase tracking-widest font-bold text-[#A76B46]">First Author / Leadership</span>
+                                    <p class="font-bold text-[#2D2722] mt-0.5">Didintle Thupae</p>
+                                    <p class="text-[11px]">Lodging &amp; Hospitality Expert</p>
+                                </div>
+                                <div>
+                                    <span class="block text-[10px] uppercase tracking-widest font-bold text-[#A76B46]">Establishment Headquarters</span>
+                                    <p class="font-bold text-[#2D2722] mt-0.5">Reeme Guest House</p>
+                                    <p class="text-[11px]">7511 Dibange Makape St, Airfield</p>
+                                </div>
+                            </div>
+
+                            <!-- Right Small Photo Inset (Matching Image 1 Inset Photo) -->
+                            <div class="sm:col-span-6 rounded-2xl overflow-hidden shadow-md border border-[#2D2722]/10 aspect-[16/10]">
+                                <img src="images/lodge_exterior_sunset.jpg" alt="Lodge Exterior Grounds" class="w-full h-full object-cover">
+                            </div>
+
+                        </div>
+
+                        <!-- Bottom Abstract Block (Matching Image 1 Abstract Layout) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 border-t border-[#2D2722]/10 pt-6 items-start">
+                            <div class="sm:col-span-3">
+                                <span class="text-xs font-bold font-mono tracking-widest uppercase text-[#2D2722]">ABSTRACT</span>
+                            </div>
+                            <div class="sm:col-span-9">
+                                <p class="text-xs text-[#6E6259] leading-relaxed font-sans font-normal">
+                                    At Reeme Guest House, we believe in merging corporate-tier operational backup with the warmth of a local South African lodge stay. We serve mining teams, contracting engineers, and leisure guests with equal dedication, delivering comfort without compromise. Explore our grounds, secure vehicle bays, and heavy-duty infrastructure backup utilities.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
         </section>
 
