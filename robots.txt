@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://reemeguesthouse.co.za/sitemap.xml
+Sitemap: https://reemeguest.co.za/sitemap.xml
