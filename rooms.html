@@ -866,13 +866,13 @@
 
                 </ul>
 
-                <!-- Slider Navigation Arrow Buttons -->
-                <nav class="slider-nav">
-                    <button class="btn prev" aria-label="Previous Slide">
-                        <ion-icon name="arrow-back-outline"></ion-icon>
+                <!-- Slider Navigation Arrow Buttons (Executive Comfort Depth Gallery Controls) -->
+                <nav class="slider-nav" aria-label="Executive Comfort Gallery Controls">
+                    <button type="button" class="btn prev" aria-label="Previous Executive Comfort Slide">
+                        <span class="material-symbols-outlined text-2xl font-bold">arrow_back</span>
                     </button>
-                    <button class="btn next" aria-label="Next Slide">
-                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    <button type="button" class="btn next" aria-label="Next Executive Comfort Slide">
+                        <span class="material-symbols-outlined text-2xl font-bold">arrow_forward</span>
                     </button>
                 </nav>
             </div>
@@ -1011,18 +1011,38 @@
             link.addEventListener('click', closeSidebar);
         });
 
-        // Expanding Depth Card Slider Activation Logic
+        // Expanding Depth Card Slider Navigation Logic
+        const sliderContainer = document.querySelector('.slider-container');
         const slider = document.querySelector('.slider');
+        const prevBtn = document.querySelector('.slider-nav .btn.prev');
+        const nextBtn = document.querySelector('.slider-nav .btn.next');
 
-        function activateSlider(e) {
-            const items = document.querySelectorAll('.slider-item');
-            if (e.target.closest('.next')) {
+        function slideNext() {
+            if (!slider) return;
+            const items = slider.querySelectorAll('.slider-item');
+            if (items.length > 0) {
                 slider.append(items[0]);
             }
-            if (e.target.closest('.prev')) {
+        }
+
+        function slidePrev() {
+            if (!slider) return;
+            const items = slider.querySelectorAll('.slider-item');
+            if (items.length > 0) {
                 slider.prepend(items[items.length - 1]);
             }
         }
+
+        if (nextBtn) nextBtn.addEventListener('click', (e) => { e.preventDefault(); slideNext(); });
+        if (prevBtn) prevBtn.addEventListener('click', (e) => { e.preventDefault(); slidePrev(); });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.slider-nav .next')) {
+                slideNext();
+            } else if (e.target.closest('.slider-nav .prev')) {
+                slidePrev();
+            }
+        });
 
         // Lenis Smooth Scroll Engine for Accommodations Page
         if (typeof Lenis !== 'undefined') {
