@@ -175,55 +175,11 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- GSAP Calligraphic Monogram Loading Screen Overlay (Country Air #CBD9E7 Background) -->
-    <div id="homepage-loader" class="fixed inset-0 z-[9999] bg-[#CBD9E7] text-[#2D2722] flex flex-col justify-between p-6 sm:p-12 overflow-hidden select-none">
-        
-        <!-- Background Grain Texture Overlay -->
-        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#2D2722_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
-
-        <!-- Top Header Info Bar -->
-        <div class="relative z-10 flex justify-between items-center text-xs font-mono tracking-widest text-[#2D2722]/80 uppercase border-b border-[#2D2722]/15 pb-4">
-            <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#A76B46] animate-pulse"></span>
-                <span id="loader-status">REEME GUEST HOUSE • POSTMASBURG</span>
-            </div>
-            <div class="hidden sm:block">
-                <span>EST. 2026</span>
-            </div>
+    <!-- Gallery-Style Loader Overlay (Background #CBD9E7, Text #C3E956, No Loading Bar) -->
+    <div id="homepage-loader" class="loader fixed inset-0 z-[9999] bg-[#CBD9E7] flex items-center justify-center select-none overflow-hidden" aria-hidden="true">
+        <div class="loader-text text-[#C3E956] font-serif font-bold text-3xl sm:text-5xl md:text-6xl tracking-[0.25em] uppercase opacity-0 translate-y-3 drop-shadow-sm">
+            REEME GUEST HOUSE
         </div>
-
-        <!-- Center Main Content: Centered Calligraphic Monogram Emblem (Reference Image 1) -->
-        <div class="relative z-10 flex items-center justify-center my-auto py-6">
-            
-            <!-- Oval Calligraphic Monogram Emblem (Reference Image 1 Calligraphy) -->
-            <div id="loader-monogram-container" class="relative group">
-                <div id="loader-monogram" class="w-36 h-48 sm:w-44 sm:h-60 rounded-[50%] border-2 border-[#2D2722] bg-[#FAF8F5]/95 backdrop-blur-md shadow-2xl flex items-center justify-center relative overflow-hidden">
-                    
-                    <!-- Calligraphic Script 'R' Monogram -->
-                    <svg class="w-24 h-32 sm:w-28 sm:h-36 text-[#2D2722]" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M25 95 C20 70, 30 45, 55 35 C70 30, 85 40, 80 55 C75 70, 55 70, 45 68 C35 66, 30 75, 38 85 C46 95, 65 100, 75 95" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M42 30 C45 18, 55 12, 65 16 C75 20, 72 32, 60 38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                        <circle cx="50" cy="65" r="42" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 4" opacity="0.4"/>
-                    </svg>
-                    
-                    <span class="absolute bottom-3 text-[9px] font-mono tracking-widest uppercase text-[#A76B46] font-bold">REEME</span>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Bottom Footer: Counter & Animated Progress Bar -->
-        <div class="relative z-10 space-y-4 max-w-xl mx-auto w-full pt-4 border-t border-[#2D2722]/10">
-            <div class="flex justify-between items-center text-xs font-mono">
-                <span class="text-[#6E6259] tracking-wider uppercase text-[11px]">Crafting Suburban Luxury</span>
-                <span id="loader-progress" class="font-bold text-[#2D2722] text-sm">0%</span>
-            </div>
-            
-            <div class="w-full h-1.5 bg-[#2D2722]/10 rounded-full overflow-hidden">
-                <div id="loader-bar" class="h-full bg-gradient-to-r from-[#A76B46] via-[#C5A059] to-[#CBD9E7] w-0 transition-all duration-75"></div>
-            </div>
-        </div>
-
     </div>
 
     <!-- Top Navigation Bar (Sticky constantly visible) -->
@@ -942,52 +898,17 @@
             setInterval(rotateHeroSlide, 6000); // Change image every 6 seconds
         }
 
-        // GSAP Preloader Animation Engine
+        // Gallery-Style Loader GSAP Animation Engine
         window.addEventListener('DOMContentLoaded', () => {
             const loader = document.getElementById('homepage-loader');
-            const progressText = document.getElementById('loader-progress');
-            const progressBar = document.getElementById('loader-bar');
+            const loaderText = document.querySelector('#homepage-loader .loader-text');
             
-            if (loader && typeof gsap !== 'undefined') {
-                // Initial GSAP hidden states
-                gsap.set('#loader-monogram', { scale: 0.65, opacity: 0, rotation: -12 });
-                gsap.set('#loader-bar', { width: '0%' });
-
-                // GSAP Master Timeline
-                const tl = gsap.timeline({
-                    onComplete: () => {
-                        // Smooth curtain slide-up reveal
-                        gsap.to(loader, {
-                            yPercent: -100,
-                            duration: 1.0,
-                            ease: 'expo.inOut',
-                            onComplete: () => {
-                                loader.style.display = 'none';
-                            }
-                        });
-                    }
-                });
-
-                // 1. Monogram emblem scale and rotation reveal
-                tl.to('#loader-monogram', {
-                    scale: 1,
-                    opacity: 1,
-                    rotation: 0,
-                    duration: 0.9,
-                    ease: 'back.out(1.7)'
-                })
-                // 2. Animated Progress Counter 0% -> 100%
-                .to({ val: 0 }, {
-                    val: 100,
-                    duration: 1.5,
-                    ease: 'power2.inOut',
-                    onUpdate: function() {
-                        const current = Math.round(this.targets()[0].val);
-                        if (progressText) progressText.textContent = `${current}%`;
-                        if (progressBar) progressBar.style.width = `${current}%`;
-                    }
-                }, '-=0.3');
+            if (loader && loaderText && typeof gsap !== 'undefined') {
+                const tl = gsap.timeline();
+                tl.to(loaderText, { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' })
+                  .to(loader, { y: '-100%', duration: 0.9, delay: 0.35, ease: 'power4.inOut', onComplete: () => { loader.style.display = 'none'; } });
             }
+        });
 
             // Initialize Lenis Smooth Scroll Engine
             if (typeof Lenis !== 'undefined') {
