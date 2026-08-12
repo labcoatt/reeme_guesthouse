@@ -164,22 +164,46 @@
             transform: scale(0.96);
         }
 
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            vertical-align: middle;
+        /* Gallery-Style Loader Styling */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background-color: #CBD9E7;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
         }
-        .material-symbols-outlined.filled {
-            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        .loader-text {
+            font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #C3E956;
+            opacity: 0;
+            transform: translateY(14px);
+            letter-spacing: 0.2em;
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Gallery-Style Loader Overlay (Background #CBD9E7, Text #C3E956, No Loading Bar) -->
-    <div id="homepage-loader" class="loader fixed inset-0 z-[9999] bg-[#CBD9E7] flex items-center justify-center select-none overflow-hidden" aria-hidden="true">
-        <div class="loader-text text-[#C3E956] font-serif font-bold text-3xl sm:text-5xl md:text-6xl tracking-[0.25em] uppercase opacity-0 translate-y-3 drop-shadow-sm">
+    <!-- Gallery-Style Loader Overlay with RG Emblem Logo (Background #CBD9E7, Text #C3E956) -->
+    <div id="homepage-loader" class="loader fixed inset-0 z-[9999] bg-[#CBD9E7] flex flex-col items-center justify-center gap-6 select-none overflow-hidden" aria-hidden="true">
+        
+        <!-- RG Emblem Monogram Badge (20 [RG] 25) -->
+        <div class="loader-rg flex items-center justify-center gap-4 sm:gap-6 text-[#C3E956] font-mono tracking-widest text-lg sm:text-2xl opacity-0 translate-y-3">
+            <span class="font-extralight opacity-90">20</span>
+            <div class="w-14 h-20 sm:w-16 sm:h-24 rounded-full border-2 border-[#C3E956] flex items-center justify-center font-serif italic text-2xl sm:text-3xl font-bold shadow-md bg-white/10 backdrop-blur-sm">
+                RG
+            </div>
+            <span class="font-extralight opacity-90">25</span>
+        </div>
+
+        <!-- Brand Text Title -->
+        <div class="loader-text text-[#C3E956] font-serif font-bold text-3xl sm:text-5xl md:text-6xl tracking-[0.25em] uppercase opacity-0 translate-y-3 drop-shadow-sm text-center px-4">
             REEME GUEST HOUSE
         </div>
+
     </div>
 
     <!-- Top Navigation Bar (Sticky constantly visible) -->
@@ -898,17 +922,32 @@
             setInterval(rotateHeroSlide, 6000); // Change image every 6 seconds
         }
 
-        // Gallery-Style Loader GSAP Animation Engine
-        window.addEventListener('DOMContentLoaded', () => {
+        // Bulletproof Gallery-Style Loader Animation Engine with RG Emblem Logo
+        function runHomepageLoader() {
             const loader = document.getElementById('homepage-loader');
+            const loaderRg = document.querySelector('#homepage-loader .loader-rg');
             const loaderText = document.querySelector('#homepage-loader .loader-text');
             
-            if (loader && loaderText && typeof gsap !== 'undefined') {
+            if (loader && typeof gsap !== 'undefined') {
                 const tl = gsap.timeline();
-                tl.to(loaderText, { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' })
-                  .to(loader, { y: '-100%', duration: 0.9, delay: 0.35, ease: 'power4.inOut', onComplete: () => { loader.style.display = 'none'; } });
+                if (loaderRg) tl.to(loaderRg, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' });
+                if (loaderText) tl.to(loaderText, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.4');
+                tl.to(loader, { y: '-100%', duration: 0.9, delay: 0.35, ease: 'power4.inOut', onComplete: () => { if (loader) loader.style.display = 'none'; } });
+            } else if (loader) {
+                setTimeout(() => {
+                    if (loaderRg) loaderRg.style.opacity = '1';
+                    if (loaderText) loaderText.style.opacity = '1';
+                    loader.style.transform = 'translateY(-100%)';
+                    setTimeout(() => { loader.style.display = 'none'; }, 900);
+                }, 700);
             }
-        });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', runHomepageLoader);
+        } else {
+            runHomepageLoader();
+        }
 
             // Initialize Lenis Smooth Scroll Engine
             if (typeof Lenis !== 'undefined') {
