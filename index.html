@@ -64,6 +64,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/EasePack.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@1,400;1,600;1,700&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet">
@@ -906,43 +907,83 @@
         }
 
 
-            // Initialize Lenis Smooth Scroll Engine
-            if (typeof Lenis !== 'undefined') {
-                const lenis = new Lenis({
-                    duration: 1.2,
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                    smoothWheel: true,
-                    touchMultiplier: 1.8
-                });
+        // Lenis Smooth Scroll Engine
+        if (typeof Lenis !== 'undefined') {
+            const lenis = new Lenis({
+                duration: 1.4,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothWheel: true,
+                touchMultiplier: 2.0
+            });
 
-                lenis.on('scroll', ScrollTrigger.update);
+            lenis.on('scroll', ScrollTrigger.update);
 
-                gsap.ticker.add((time) => {
-                    lenis.raf(time * 1000);
-                });
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+            });
 
-                gsap.ticker.lagSmoothing(0);
+            gsap.ticker.lagSmoothing(0);
+        }
+
+        // GSAP Plugins, Custom Ease & Animations Engine
+        if (typeof gsap !== 'undefined') {
+            const pluginsToRegister = [];
+            if (typeof ScrollTrigger !== 'undefined') pluginsToRegister.push(ScrollTrigger);
+            if (typeof CustomEase !== 'undefined') pluginsToRegister.push(CustomEase);
+            if (typeof EasePack !== 'undefined') pluginsToRegister.push(EasePack);
+            
+            if (pluginsToRegister.length > 0) {
+                gsap.registerPlugin(...pluginsToRegister);
             }
 
-            // GSAP ScrollTrigger & CustomEase Animation Engine for Homepage Sections
-            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-                gsap.registerPlugin(ScrollTrigger);
-                
-                // Define Custom Luxury Ease Curve
-                let luxuryEase = "power3.out";
-                let editorialEase = "power3.out";
-                if (typeof CustomEase !== 'undefined') {
-                    CustomEase.create("luxuryEase", "M0,0 C0.25,1 0.3,1 1,1");
-                    CustomEase.create("editorialOut", "M0,0 C0.16,1 0.3,1 1,1");
-                    luxuryEase = "luxuryEase";
-                    editorialEase = "editorialOut";
-                }
+            // Create Custom Luxury Ease Curves
+            let luxuryExpo = "power3.out";
+            let editorialOut = "power3.out";
+            let softBounce = "back.out(1.7)";
+            
+            if (typeof CustomEase !== 'undefined') {
+                CustomEase.create("luxuryExpo", "M0,0 C0.16,1 0.3,1 1,1");
+                CustomEase.create("editorialOut", "M0,0 C0.25,1 0.3,1 1,1");
+                CustomEase.create("softBounce", "M0,0 C0.175,0.885 0.32,1.275 1,1");
+                luxuryExpo = "luxuryExpo";
+                editorialOut = "editorialOut";
+                softBounce = "softBounce";
+            }
 
-                // 1. Hero Parallax Scroll Effect
+            // 1. Initial Hero Fold Entrance Animation
+            const heroTl = gsap.timeline({ delay: 0.2 });
+            const heroHeading = document.querySelector('#home h1');
+            const heroSubtitle = document.querySelector('#home p');
+            const heroBookingBar = document.querySelector('#home .absolute.inset-x-6.bottom-8');
+
+            if (heroHeading) {
+                heroTl.fromTo(heroHeading, 
+                    { y: 40, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1.2, ease: luxuryExpo }
+                );
+            }
+            if (heroSubtitle) {
+                heroTl.fromTo(heroSubtitle, 
+                    { y: 30, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1.0, ease: luxuryExpo },
+                    '-=0.8'
+                );
+            }
+            if (heroBookingBar) {
+                heroTl.fromTo(heroBookingBar, 
+                    { y: 50, opacity: 0, scale: 0.96 },
+                    { y: 0, opacity: 1, scale: 1, duration: 1.1, ease: softBounce },
+                    '-=0.7'
+                );
+            }
+
+            if (typeof ScrollTrigger !== 'undefined') {
+                // 2. Hero Carousel Scroll Parallax Scrub
                 const heroSection = document.getElementById('home');
                 if (heroSection) {
-                    gsap.to('#hero-carousel', {
-                        yPercent: 18,
+                    gsap.to('#hero-carousel img', {
+                        scale: 1.15,
+                        yPercent: 15,
                         ease: 'none',
                         scrollTrigger: {
                             trigger: heroSection,
@@ -953,7 +994,7 @@
                     });
                 }
 
-                // 2. Section Headers Reveal on Scroll (Titles, Badges, Subtitles)
+                // 3. Section Headers Entrance Triggers (h2, h3, pill badges)
                 const sectionHeaders = document.querySelectorAll('section h2, section h3, section .inline-flex, section p.max-w-xl, section p.max-w-2xl');
                 sectionHeaders.forEach((el) => {
                     gsap.fromTo(el, 
@@ -961,8 +1002,8 @@
                         {
                             y: 0,
                             opacity: 1,
-                            duration: 1.0,
-                            ease: luxuryEase,
+                            duration: 1.1,
+                            ease: luxuryExpo,
                             scrollTrigger: {
                                 trigger: el,
                                 start: 'top 88%',
@@ -972,20 +1013,20 @@
                     );
                 });
 
-                // 3. Grid Cards Stagger Reveal on Scroll
+                // 4. Grid Cards Stagger Reveal Triggers
                 const cardGrids = document.querySelectorAll('.grid');
                 cardGrids.forEach((grid) => {
                     const cards = grid.querySelectorAll(':scope > div, :scope > article, :scope > a');
                     if (cards.length > 0) {
                         gsap.fromTo(cards,
-                            { y: 50, opacity: 0, scale: 0.97 },
+                            { y: 55, opacity: 0, scale: 0.96 },
                             {
                                 y: 0,
                                 opacity: 1,
                                 scale: 1,
-                                duration: 1.1,
-                                ease: luxuryEase,
-                                stagger: 0.14,
+                                duration: 1.15,
+                                ease: luxuryExpo,
+                                stagger: 0.15,
                                 scrollTrigger: {
                                     trigger: grid,
                                     start: 'top 85%',
@@ -996,18 +1037,18 @@
                     }
                 });
 
-                // 4. Split Editorial Sections (Left & Right Column Entrance)
+                // 5. Split Editorial Column Slide-In Triggers
                 const splitSections = document.querySelectorAll('.grid-cols-1.lg\\:grid-cols-2, .grid-cols-1.lg\\:grid-cols-3, .grid-cols-1.lg\\:grid-cols-12');
                 splitSections.forEach((sec) => {
                     const children = sec.children;
                     if (children.length >= 2) {
                         gsap.fromTo(children[0], 
-                            { x: -40, opacity: 0 },
+                            { x: -45, opacity: 0 },
                             {
                                 x: 0,
                                 opacity: 1,
-                                duration: 1.1,
-                                ease: editorialEase,
+                                duration: 1.2,
+                                ease: editorialOut,
                                 scrollTrigger: {
                                     trigger: sec,
                                     start: 'top 82%',
@@ -1016,12 +1057,12 @@
                             }
                         );
                         gsap.fromTo(children[1], 
-                            { x: 40, opacity: 0 },
+                            { x: 45, opacity: 0 },
                             {
                                 x: 0,
                                 opacity: 1,
-                                duration: 1.1,
-                                ease: editorialEase,
+                                duration: 1.2,
+                                ease: editorialOut,
                                 scrollTrigger: {
                                     trigger: sec,
                                     start: 'top 82%',
@@ -1032,6 +1073,7 @@
                     }
                 });
             }
+        }
         });
     </script>
     <script src="js/multi-state-button.js"></script>
