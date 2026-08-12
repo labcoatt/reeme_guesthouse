@@ -171,14 +171,14 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- GSAP Pantone & Calligraphic Monogram Loading Screen Overlay -->
-    <div id="homepage-loader" class="fixed inset-0 z-[9999] bg-[#EBE7DF] text-[#2D2722] flex flex-col justify-between p-6 sm:p-12 overflow-hidden select-none">
+    <!-- GSAP Calligraphic Monogram Loading Screen Overlay (Country Air #CBD9E7 Background) -->
+    <div id="homepage-loader" class="fixed inset-0 z-[9999] bg-[#CBD9E7] text-[#2D2722] flex flex-col justify-between p-6 sm:p-12 overflow-hidden select-none">
         
         <!-- Background Grain Texture Overlay -->
         <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#2D2722_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
 
         <!-- Top Header Info Bar -->
-        <div class="relative z-10 flex justify-between items-center text-xs font-mono tracking-widest text-[#6E6259] uppercase border-b border-[#2D2722]/10 pb-4">
+        <div class="relative z-10 flex justify-between items-center text-xs font-mono tracking-widest text-[#2D2722]/80 uppercase border-b border-[#2D2722]/15 pb-4">
             <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#A76B46] animate-pulse"></span>
                 <span id="loader-status">REEME GUEST HOUSE • POSTMASBURG</span>
@@ -188,40 +188,21 @@
             </div>
         </div>
 
-        <!-- Center Main Content: Calligraphic Monogram + Pantone Reference Card -->
-        <div class="relative z-10 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 my-auto py-6">
+        <!-- Center Main Content: Centered Calligraphic Monogram Emblem (Reference Image 1) -->
+        <div class="relative z-10 flex items-center justify-center my-auto py-6">
             
-            <!-- Left Element: Oval Calligraphic Monogram Emblem (Reference Image 1) -->
+            <!-- Oval Calligraphic Monogram Emblem (Reference Image 1 Calligraphy) -->
             <div id="loader-monogram-container" class="relative group">
-                <div id="loader-monogram" class="w-32 h-44 sm:w-40 sm:h-56 rounded-[50%] border-2 border-[#2D2722] bg-[#FAF8F5]/90 backdrop-blur-md shadow-2xl flex items-center justify-center relative overflow-hidden">
+                <div id="loader-monogram" class="w-36 h-48 sm:w-44 sm:h-60 rounded-[50%] border-2 border-[#2D2722] bg-[#FAF8F5]/95 backdrop-blur-md shadow-2xl flex items-center justify-center relative overflow-hidden">
                     
-                    <!-- Calligraphic Script 'R' Monogram (Reference Image 1 Calligraphy) -->
-                    <svg class="w-20 h-28 sm:w-24 sm:h-32 text-[#2D2722]" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Calligraphic Script 'R' Monogram -->
+                    <svg class="w-24 h-32 sm:w-28 sm:h-36 text-[#2D2722]" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M25 95 C20 70, 30 45, 55 35 C70 30, 85 40, 80 55 C75 70, 55 70, 45 68 C35 66, 30 75, 38 85 C46 95, 65 100, 75 95" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M42 30 C45 18, 55 12, 65 16 C75 20, 72 32, 60 38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
                         <circle cx="50" cy="65" r="42" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 4" opacity="0.4"/>
                     </svg>
                     
                     <span class="absolute bottom-3 text-[9px] font-mono tracking-widest uppercase text-[#A76B46] font-bold">REEME</span>
-                </div>
-            </div>
-
-            <!-- Right Element: Pantone Color Card Specification (Reference Image 2) -->
-            <div id="loader-pantone" class="w-64 sm:w-72 bg-[#CBD9E7] p-6 rounded-2xl shadow-2xl border border-white/40 text-[#1F2937] space-y-4">
-                <div class="h-32 sm:h-36 rounded-xl bg-white/40 border border-black/5 flex flex-col justify-end p-4 relative overflow-hidden">
-                    <span class="text-[10px] font-mono tracking-widest text-[#1F2937]/70 uppercase">Color Spec</span>
-                    <span class="text-xs font-mono font-bold text-[#1F2937]">PANTONE® 12-4303 TCX</span>
-                </div>
-                
-                <div class="space-y-1">
-                    <h3 class="text-xl font-serif font-bold text-[#1F2937] tracking-tight">Country Air</h3>
-                    <p class="text-[11px] font-mono text-[#1F2937]/70 uppercase">FHI Cotton TCX</p>
-                </div>
-
-                <div class="pt-2 border-t border-black/10 text-[10px] font-mono space-y-0.5 text-[#1F2937]/80">
-                    <div class="flex justify-between"><span>Lab</span> <span>85,92 -3,02 -8,46</span></div>
-                    <div class="flex justify-between"><span>sRGB</span> <span>203 217 231</span></div>
-                    <div class="flex justify-between font-bold text-[#1F2937]"><span>HEX</span> <span>#CBD9E7</span></div>
                 </div>
             </div>
 
@@ -966,7 +947,6 @@
             if (loader && typeof gsap !== 'undefined') {
                 // Initial GSAP hidden states
                 gsap.set('#loader-monogram', { scale: 0.65, opacity: 0, rotation: -12 });
-                gsap.set('#loader-pantone', { y: 40, opacity: 0 });
                 gsap.set('#loader-bar', { width: '0%' });
 
                 // GSAP Master Timeline
@@ -992,14 +972,7 @@
                     duration: 0.9,
                     ease: 'back.out(1.7)'
                 })
-                // 2. PANTONE Country Air Card slide-up reveal
-                .to('#loader-pantone', {
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.7,
-                    ease: 'power3.out'
-                }, '-=0.4')
-                // 3. Animated Progress Counter 0% -> 100%
+                // 2. Animated Progress Counter 0% -> 100%
                 .to({ val: 0 }, {
                     val: 100,
                     duration: 1.5,
@@ -1009,7 +982,7 @@
                         if (progressText) progressText.textContent = `${current}%`;
                         if (progressBar) progressBar.style.width = `${current}%`;
                     }
-                }, '-=0.5');
+                }, '-=0.3');
             }
         });
     </script>
