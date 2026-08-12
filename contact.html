@@ -10,7 +10,6 @@
     <meta name="geo.placename" content="Postmasburg">
     <meta name="geo.position" content="-28.3323;23.0714">
     
-    <!-- Scripts & Fonts -->
     <!-- GSAP, CustomEase, EasePack & Lenis Engine -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -18,9 +17,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/EasePack.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.css" rel="stylesheet">
-
+    
+    <!-- Scripts & Fonts -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
     
     <!-- Custom Tailwind Configuration -->
@@ -36,36 +36,18 @@
               "secondary": "#C5A059",
               "on-surface": "#2D2722",
               "on-surface-variant": "#6E6259",
-              "surface-container": "#EFECE2",
-              "surface-container-low": "#F2EFE6",
-              "surface-container-lowest": "#FAF8F5",
-              "surface-container-high": "#E7E3D8",
-              "surface-container-highest": "#DED9CC",
-              "outline": "#8C8276",
-              "outline-variant": "#D5CFC2",
-              "error": "#b91c1c",
-              "error-container": "#fef2f2"
-            },
-            "borderRadius": {
-              "DEFAULT": "0.5rem",
-              "lg": "1rem",
-              "xl": "1.5rem",
-              "2xl": "2rem",
-              "3xl": "2.5rem",
-              "full": "9999px"
+              "dark-card": "#2D2722"
             },
             "fontFamily": {
               "sans": ["Plus Jakarta Sans", "sans-serif"],
-              "headline": ["Plus Jakarta Sans", "sans-serif"],
-              "display": ["Plus Jakarta Sans", "sans-serif"],
-              "body": ["Plus Jakarta Sans", "sans-serif"]
+              "display": ["Plus Jakarta Sans", "sans-serif"]
             }
           },
         },
       }
     </script>
     
-    <!-- Custom Neomorphic / Soft UI CSS -->
+    <!-- Custom CSS Styles -->
     <style>
         body {
             background-color: #F5F2EB;
@@ -73,26 +55,23 @@
             color: #2D2722;
         }
 
-        /* Neomorphic Raised Shadow (Option A - Warm Shadows) */
+        /* Neomorphic Raised Shadow */
         .neomorph-raised {
             background-color: #F5F2EB;
             box-shadow: 6px 6px 12px rgba(140, 110, 80, 0.08), -6px -6px 12px rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(167, 107, 70, 0.08);
+            border: 1px solid rgba(167, 107, 70, 0.12);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .neomorph-raised:hover {
-            box-shadow: 8px 8px 16px rgba(140, 110, 80, 0.12), -8px -8px 16px rgba(255, 255, 255, 0.95);
-        }
 
-        /* Neomorphic Inset Shadow (Option A - Warm Shadows) */
+        /* Neomorphic Inset Shadow */
         .neomorph-inset {
             background-color: #F5F2EB;
             box-shadow: inset 4px 4px 8px rgba(140, 110, 80, 0.06), inset -4px -4px 8px rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(167, 107, 70, 0.04);
+            border: 1px solid rgba(167, 107, 70, 0.08);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Interactive Element Micro-actions */
+        /* Interactive Micro-actions */
         .click-shrink {
             transition: transform 0.15s ease-in-out;
         }
@@ -107,9 +86,26 @@
         .material-symbols-outlined.filled {
             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+
+        /* Custom Input Sizing for Dark Form Card */
+        .dark-input {
+            background-color: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            transition: all 0.25s ease;
+        }
+        .dark-input:focus {
+            background-color: rgba(255, 255, 255, 0.12);
+            border-color: #C5A059;
+            outline: none;
+        }
+        .dark-input option {
+            background-color: #2D2722;
+            color: #ffffff;
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-[#F5F2EB] text-[#2D2722]">
 
     <!-- Top Floating Toast Notification Container -->
     <div id="toast-notification-container" class="fixed top-20 right-6 z-[120] max-w-sm w-full space-y-3 pointer-events-none"></div>
@@ -193,143 +189,173 @@
 
     <main class="flex-grow">
         
-        <!-- Contact details and Inquiry Form -->
-        <section class="py-16 md:py-24 px-6 bg-background">
-            <div class="max-w-7xl mx-auto">
-                
-                <!-- Page Title -->
-                <div class="text-center mb-16 space-y-4">
-                    <div class="inline-block px-4 py-1.5 rounded-full neomorph-inset text-primary text-sm font-semibold tracking-wide border border-primary/10">
-                        Instant Online Booking &amp; Live Availability Engine
-                    </div>
-                    <h1 class="text-3xl md:text-5xl font-extrabold text-on-surface tracking-tight">Reserve Your Stay at Reeme</h1>
-                    <p class="text-on-surface-variant max-w-xl mx-auto text-base">
-                        Select your dates, accommodation package, and dining options. Receive real-time availability notifications, instant booking references, and direct manager dispatch.
-                    </p>
+        <!-- Hero Header (Emulating ORUZEN Dark Ambient Banner) -->
+        <section class="relative py-24 md:py-32 px-6 bg-[#2D2722] text-white overflow-hidden border-b border-white/10">
+            <div class="absolute inset-0 z-0">
+                <img src="images/aerial_twilight_patio.jpg" alt="Reeme Guest House Postmasburg" class="w-full h-full object-cover opacity-25 filter contrast-125">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#2D2722] via-[#2D2722]/80 to-transparent"></div>
+            </div>
+            
+            <div class="relative z-10 max-w-7xl mx-auto text-center space-y-4">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[#C5A059] text-xs font-mono font-bold tracking-widest uppercase">
+                    <span>HOME</span>
+                    <span>•</span>
+                    <span>CONTACT &amp; BOOKING</span>
                 </div>
+                <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight text-white uppercase">
+                    Our Contact &amp; Reservations
+                </h1>
+                <p class="text-stone-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+                    Reserve your stay at Reeme Guest House in Postmasburg. Select your dates, accommodation package, and dining preferences for instant manager dispatch.
+                </p>
+            </div>
+        </section>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <!-- Section 1: "CONTACT — Get in Touch" (Two-Column Asymmetric Spread matching ORUZEN layout) -->
+        <section class="py-20 md:py-28 px-6 bg-[#F5F2EB]">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                     
-                    <!-- Left Column: Contact Cards -->
-                    <div class="lg:col-span-5 space-y-6">
-                        <div class="space-y-6">
+                    <!-- Left Column: Contact Copy & Detail Rows -->
+                    <div class="lg:col-span-6 space-y-8">
+                        <div class="space-y-3">
+                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#6E6259] block">CONTACT</span>
+                            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#2D2722] tracking-tight leading-tight">
+                                Get in Touch
+                            </h2>
+                            <p class="text-[#6E6259] text-sm md:text-base leading-relaxed pt-2">
+                                Select your stay parameters, accommodation tier, and meal plan requirements. Our automated booking system calculates live costs and dispatches requests directly to management.
+                            </p>
+                        </div>
+
+                        <!-- Detail Rows with Minimal Icons -->
+                        <div class="space-y-6 pt-4 border-t border-[#2D2722]/10">
                             
-                            <!-- Location Address Card -->
-                            <div class="neomorph-raised p-6 rounded-2xl flex items-start gap-4">
-                                <div class="neomorph-inset p-3 rounded-xl text-primary">
-                                    <span class="material-symbols-outlined text-2xl">location_on</span>
+                            <!-- Address Row -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full neomorph-raised flex items-center justify-center text-[#A76B46] flex-shrink-0">
+                                    <span class="material-symbols-outlined text-xl">location_on</span>
                                 </div>
-                                <div>
-                                    <h4 class="font-bold text-on-surface mb-1">Establishment Address</h4>
-                                    <p class="text-on-surface-variant text-sm leading-relaxed">
-                                        7511 Dibange Makape Street,<br>
-                                        Airfield, Postmasburg,<br>
-                                        8420, South Africa
+                                <div class="space-y-1">
+                                    <span class="block text-xs font-bold uppercase tracking-wider text-[#6E6259]">Establishment Address</span>
+                                    <p class="text-sm font-semibold text-[#2D2722]">
+                                        7511 Dibange Makape Street, Airfield, Postmasburg, 8420, Northern Cape
                                     </p>
                                 </div>
                             </div>
 
-                            <!-- Direct Booking Contacts Card -->
-                            <div class="neomorph-raised p-6 rounded-2xl flex items-start gap-4">
-                                <div class="neomorph-inset p-3 rounded-xl text-secondary">
-                                    <span class="material-symbols-outlined text-2xl">contact_support</span>
+                            <!-- Phone Row -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full neomorph-raised flex items-center justify-center text-[#A76B46] flex-shrink-0">
+                                    <span class="material-symbols-outlined text-xl">call</span>
                                 </div>
-                                <div class="w-full">
-                                    <h4 class="font-bold text-on-surface mb-1">Direct Contacts</h4>
-                                    <div class="space-y-2 pt-2">
-                                        <p class="flex items-center gap-2 text-sm text-on-surface-variant">
-                                            <span class="material-symbols-outlined text-base text-primary">person</span>
-                                            <span>Manager: Didintle Thupae</span>
-                                        </p>
-                                        <a class="text-on-surface-variant text-sm hover:text-primary transition-colors flex items-center gap-2" href="tel:0744826660">
-                                            <span class="material-symbols-outlined text-base text-primary">call</span>
-                                            074 482 6660
-                                        </a>
-                                        <a class="text-on-surface-variant text-sm hover:text-primary transition-colors flex items-center gap-2" href="https://wa.me/27744826660" target="_blank">
-                                            <span class="material-symbols-outlined text-base text-green-600">chat</span>
-                                            Instant WhatsApp Chat
-                                        </a>
-                                        <a class="text-on-surface-variant text-sm hover:text-primary transition-colors flex items-center gap-2" href="mailto:reemeguesthouse@gmail.com">
-                                            <span class="material-symbols-outlined text-base text-primary">mail</span>
-                                            reemeguesthouse@gmail.com
-                                        </a>
-                                    </div>
+                                <div class="space-y-1">
+                                    <span class="block text-xs font-bold uppercase tracking-wider text-[#6E6259]">Manager Phone &amp; Direct Contact</span>
+                                    <a href="tel:0744826660" class="block text-sm font-bold text-[#2D2722] hover:text-[#A76B46] transition-colors">
+                                        +27 74 482 6660 <span class="font-normal text-xs text-[#6E6259]">(Manager: Didintle Thupae)</span>
+                                    </a>
                                 </div>
                             </div>
 
-                            <!-- Corporate contractor notice card -->
-                            <div class="neomorph-inset p-6 rounded-2xl border border-primary/10">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="material-symbols-outlined text-primary text-2xl">engineering</span>
-                                    <h4 class="font-bold text-on-surface">Mining Contractor packages</h4>
+                            <!-- Email Row -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full neomorph-raised flex items-center justify-center text-[#A76B46] flex-shrink-0">
+                                    <span class="material-symbols-outlined text-xl">mail</span>
                                 </div>
-                                <p class="text-on-surface-variant text-sm leading-relaxed">
-                                    We tailor stay contracts for mining consultants, engineering crews, and corporate contractors. Tell us your team numbers and meal plan criteria in the details.
-                                </p>
+                                <div class="space-y-1">
+                                    <span class="block text-xs font-bold uppercase tracking-wider text-[#6E6259]">Email Reservations</span>
+                                    <a href="mailto:reemeguesthouse@gmail.com" class="block text-sm font-bold text-[#2D2722] hover:text-[#A76B46] transition-colors">
+                                        reemeguesthouse@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Contractor Badge -->
+                            <div class="neomorph-inset p-5 rounded-2xl border border-[#A76B46]/15 flex items-center gap-4">
+                                <span class="material-symbols-outlined text-[#A76B46] text-3xl">engineering</span>
+                                <div>
+                                    <h4 class="font-bold text-xs uppercase tracking-wider text-[#2D2722]">Corporate &amp; Mining Contractor Stays</h4>
+                                    <p class="text-xs text-[#6E6259] leading-relaxed">
+                                        Customized monthly housing contracts, full board food vouchers, and gate access registration.
+                                    </p>
+                                </div>
                             </div>
 
                         </div>
-
-                        <!-- Satellite Map View -->
-                        <div class="neomorph-raised rounded-2xl overflow-hidden h-52 w-full relative border border-primary/5 shadow-inner">
-                            <img class="w-full h-full object-cover grayscale opacity-80 contrast-125" alt="Map View of Dibange Makape Street, Postmasburg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQbUiF5eHlc-Gtmupp0SAtiWlO4wxyrrOH9GsvTsx-B9evSz4L9Jr_z08tiaEsgNMOAS3VtMuyUEHR7SlRNITdx447MR9qjqlFPC10zADgd1l1nRJTHkatsVCeuWpYrCBYdKGFrs1p7oLW-5nEZjc3PDQcz-bafDsEJzkTnptnFNzsVIjz8zWsjAsWdiamx5HdRAh1GXZLYbGhig84ITofhQMRpPDac1jsytOu7J-sBMOwL41cVtM3TA">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="neomorph-raised bg-background/90 px-4 py-2 rounded-xl backdrop-blur-sm border border-primary/20">
-                                    <span class="text-xs font-bold text-primary tracking-wider">7511 DIBANGE MAKAPE ST</span>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
-                    <!-- Right Column: Interactive Booking Form -->
-                    <div class="lg:col-span-7">
-                        <div class="neomorph-raised p-8 md:p-10 rounded-3xl space-y-8">
+                    <!-- Right Column: Warm Interior Photo Card (Matching ORUZEN image layout) -->
+                    <div class="lg:col-span-6">
+                        <div class="w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-[#2D2722]/15 relative group">
+                            <img src="images/aerial_perimeter_grounds.jpg" alt="Reeme Guest House Property Grounds &amp; Carports" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#2D2722]/60 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-[#2D2722]/80 backdrop-blur-md text-white border border-white/10">
+                                <span class="block text-xs font-mono uppercase tracking-widest text-[#C5A059]">AIRFIELD • POSTMASBURG</span>
+                                <span class="text-sm font-bold">Secure Paved Driveways &amp; Walled Carports</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: "CONTACT — Send Us a Message & Reserve" (Two-Column Reverse Spread matching ORUZEN layout) -->
+        <section class="py-20 md:py-28 px-6 bg-[#EFECE2] border-t border-b border-[#2D2722]/10">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                    
+                    <!-- Left Column: Dark Card Container Form (Matching ORUZEN Dark Form Card) -->
+                    <div class="lg:col-span-7 order-2 lg:order-1">
+                        <div class="bg-[#2D2722] text-white p-8 md:p-12 rounded-3xl shadow-2xl space-y-8 border border-white/10 relative">
                             
-                            <div class="flex items-center justify-between border-b border-primary/10 pb-4">
-                                <h3 class="text-2xl font-bold text-on-surface flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-primary">edit_calendar</span>
-                                    Reservation &amp; Delivery Form
-                                </h3>
-                                <span class="text-xs uppercase tracking-widest font-semibold text-secondary">Live Inventory Check</span>
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                <div>
+                                    <h3 class="text-2xl font-extrabold text-white flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-[#C5A059]">edit_calendar</span>
+                                        Reservation &amp; Inquiry Form
+                                    </h3>
+                                    <p class="text-xs text-stone-400 mt-1">Fill in your stay criteria for instant pricing &amp; manager dispatch.</p>
+                                </div>
+                                <span class="hidden sm:inline-block text-[10px] font-mono uppercase tracking-widest font-bold text-[#C5A059] px-3 py-1 bg-white/5 rounded-full border border-white/10">Live Inventory</span>
                             </div>
 
-                            <!-- Live Availability / Fully Booked Dynamic Banner -->
-                            <div id="availability-status-banner" class="neomorph-inset p-4 rounded-2xl flex items-center justify-between border border-green-600/30 bg-green-600/5 transition-all duration-300">
+                            <!-- Live Availability Status Banner -->
+                            <div id="availability-status-banner" class="p-4 rounded-2xl flex items-center justify-between border border-green-500/30 bg-green-500/10 transition-all duration-300">
                                 <div class="flex items-center gap-3">
-                                    <span class="w-3 h-3 rounded-full bg-green-600 animate-pulse flex-shrink-0" id="status-dot"></span>
+                                    <span class="w-3 h-3 rounded-full bg-green-500 animate-pulse flex-shrink-0" id="status-dot"></span>
                                     <div>
-                                        <span class="block text-xs font-bold uppercase tracking-wider text-on-surface" id="status-title">Rooms Currently Available</span>
-                                        <span class="block text-[11px] text-on-surface-variant" id="status-desc">Select your dates below to verify live room inventory.</span>
+                                        <span class="block text-xs font-bold uppercase tracking-wider text-white" id="status-title">Rooms Currently Available</span>
+                                        <span class="block text-[11px] text-stone-300" id="status-desc">Select your dates below to verify live room inventory.</span>
                                     </div>
                                 </div>
-                                <span class="text-xs font-extrabold text-green-700 uppercase tracking-widest px-3 py-1 bg-green-700/10 rounded-lg border border-green-700/20" id="status-badge">Available</span>
+                                <span class="text-xs font-extrabold text-green-400 uppercase tracking-widest px-3 py-1 bg-green-500/20 rounded-lg border border-green-400/30" id="status-badge">Available</span>
                             </div>
 
                             <form id="contact-booking-form" class="space-y-6" onsubmit="handleContactSubmit(event)">
                                 
                                 <!-- Guest Full Name -->
                                 <div class="space-y-2">
-                                    <label for="guest-name" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">Full Name *</label>
-                                    <input type="text" id="guest-name" required placeholder="e.g. Johan van der Merwe" class="w-full neomorph-inset px-4 py-3.5 rounded-xl border border-primary/10 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/40">
+                                    <label for="guest-name" class="block text-xs font-bold uppercase tracking-wider text-stone-300 ml-1">Full Name *</label>
+                                    <input type="text" id="guest-name" required placeholder="e.g. Johan van der Merwe" class="w-full dark-input px-4 py-3.5 rounded-xl text-sm placeholder-stone-400">
                                 </div>
 
                                 <!-- Contact Phone & Email Grid -->
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div class="space-y-2">
-                                        <label for="guest-phone" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">WhatsApp / Phone *</label>
-                                        <input type="tel" id="guest-phone" required placeholder="e.g. 082 123 4567" class="w-full neomorph-inset px-4 py-3.5 rounded-xl border border-primary/10 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/40">
+                                        <label for="guest-phone" class="block text-xs font-bold uppercase tracking-wider text-stone-300 ml-1">WhatsApp / Phone *</label>
+                                        <input type="tel" id="guest-phone" required placeholder="e.g. 082 123 4567" class="w-full dark-input px-4 py-3.5 rounded-xl text-sm placeholder-stone-400">
                                     </div>
                                     <div class="space-y-2">
-                                        <label for="guest-email" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">Email Address *</label>
-                                        <input type="email" id="guest-email" required placeholder="e.g. johan@miningcorp.co.za" class="w-full neomorph-inset px-4 py-3.5 rounded-xl border border-primary/10 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/40">
+                                        <label for="guest-email" class="block text-xs font-bold uppercase tracking-wider text-stone-300 ml-1">Email Address *</label>
+                                        <input type="email" id="guest-email" required placeholder="e.g. johan@miningcorp.co.za" class="w-full dark-input px-4 py-3.5 rounded-xl text-sm placeholder-stone-400">
                                     </div>
                                 </div>
 
                                 <!-- Stay Configuration Dropdown -->
                                 <div class="space-y-2">
-                                    <label for="stay-type-select" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">Accommodation Package *</label>
-                                    <select id="stay-type-select" onchange="calculateTotal()" class="w-full neomorph-inset px-4 py-3.5 rounded-xl border border-primary/10 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/40">
+                                    <label for="stay-type-select" class="block text-xs font-bold uppercase tracking-wider text-stone-300 ml-1">Accommodation Package *</label>
+                                    <select id="stay-type-select" onchange="calculateTotal()" class="w-full dark-input px-4 py-3.5 rounded-xl text-sm">
                                         <option value="Short-Term Executive Suite">Short-Term Executive Suite (Breakfast Included)</option>
                                         <option value="Long-Term Corporate Stay (House Booking)">Long-Term Corporate Stay (House Booking)</option>
                                         <option value="Self-Catering Lodge Package">Self-Catering Lodge Package</option>
@@ -340,16 +366,16 @@
                                 <!-- Dates & Guests Grid -->
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     <div class="space-y-2">
-                                        <label for="check-in" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">Check-In Date *</label>
-                                        <input type="date" id="check-in" required onchange="calculateTotal()" class="w-full neomorph-inset px-4 py-3.5 rounded-xl border border-primary/10 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/40">
+                                        <label for="check-in" class="block text-xs font-bold uppercase tracking-wider text-stone-300 ml-1">Check-In Date *</label>
+                                        <input type="date" id="check-in" required onchange="calculateTotal()" class="w-full dark-input px-4 py-3.5 rounded-xl text-sm">
                                     </div>
                                     <div class="space-y-2">
-                                        <label for="check-out" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">Check-Out Date *</label>
-                                        <input type="date" id="check-out" required onchange="calculateTotal()" class="w-full neomorph-inset px-4 py-3.5 rounded-xl border border-primary/10 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/40">
+                                        <label for="check-out" class="block text-xs font-bold uppercase tracking-wider text-stone-300 ml-1">Check-Out Date *</label>
+                                        <input type="date" id="check-out" required onchange="calculateTotal()" class="w-full dark-input px-4 py-3.5 rounded-xl text-sm">
                                     </div>
                                     <div class="space-y-2">
-                                        <label for="guests-count" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">Guests / Crew Count *</label>
-                                        <select id="guests-count" onchange="calculateTotal()" class="w-full neomorph-inset px-4 py-3.5 rounded-xl border border-primary/10 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/40">
+                                        <label for="guests-count" class="block text-xs font-bold uppercase tracking-wider text-stone-300 ml-1">Guests / Crew *</label>
+                                        <select id="guests-count" onchange="calculateTotal()" class="w-full dark-input px-4 py-3.5 rounded-xl text-sm">
                                             <option value="1 Guest">1 Guest</option>
                                             <option value="2 Guests">2 Guests</option>
                                             <option value="3 Guests">3 Guests</option>
@@ -361,8 +387,8 @@
 
                                 <!-- Meal Plan Preference -->
                                 <div class="space-y-2">
-                                    <label for="meal-plan" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">Meal Plan Preference</label>
-                                    <select id="meal-plan" class="w-full neomorph-inset px-4 py-3.5 rounded-xl border border-primary/10 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/40">
+                                    <label for="meal-plan" class="block text-xs font-bold uppercase tracking-wider text-stone-300 ml-1">Meal Plan Preference</label>
+                                    <select id="meal-plan" class="w-full dark-input px-4 py-3.5 rounded-xl text-sm">
                                         <option value="Breakfast Included Daily">Breakfast Included Daily</option>
                                         <option value="Full Board (Breakfast, Packed Lunch & Dinner)">Full Board (Breakfast, Packed Lunch &amp; Dinner)</option>
                                         <option value="Self-Catering Kitchen Usage">Self-Catering Kitchen Usage</option>
@@ -372,33 +398,187 @@
 
                                 <!-- Inquiry Details & Delivery Notes -->
                                 <div class="space-y-2">
-                                    <label for="special-notes" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">Company / Vehicle Registration / Special Criteria</label>
-                                    <textarea id="special-notes" rows="3" placeholder="Specify company name, vehicle registration numbers for automated gate access, or meal delivery instructions..." class="w-full neomorph-inset px-4 py-3 rounded-xl border border-primary/10 text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"></textarea>
+                                    <label for="special-notes" class="block text-xs font-bold uppercase tracking-wider text-stone-300 ml-1">Company / Vehicle Reg / Special Notes</label>
+                                    <textarea id="special-notes" rows="3" placeholder="Specify company name, vehicle registration numbers for automated gate access..." class="w-full dark-input px-4 py-3 rounded-xl text-sm placeholder-stone-400"></textarea>
                                 </div>
 
-                                <!-- Live Estimate & Availability Summary Box -->
-                                <div class="neomorph-inset p-5 rounded-2xl border border-primary/15 flex items-center justify-between">
+                                <!-- Live Estimate Summary Box -->
+                                <div class="p-5 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between">
                                     <div>
-                                        <span class="block text-xs font-bold uppercase text-on-surface-variant tracking-wider">Estimated Stay Duration</span>
-                                        <span class="text-sm font-bold text-primary" id="calc-duration">Select check-in &amp; check-out dates</span>
+                                        <span class="block text-xs font-bold uppercase text-stone-400 tracking-wider">Stay Duration</span>
+                                        <span class="text-sm font-bold text-[#C5A059]" id="calc-duration">Select check-in &amp; check-out dates</span>
                                     </div>
                                     <div class="text-right">
-                                        <span class="block text-xs font-bold uppercase text-on-surface-variant tracking-wider">Inventory Status</span>
-                                        <span class="text-sm font-extrabold text-green-700" id="calc-inventory">Verified Available</span>
+                                        <span class="block text-xs font-bold uppercase text-stone-400 tracking-wider">Inventory Status</span>
+                                        <span class="text-sm font-extrabold text-green-400" id="calc-inventory">Verified Available</span>
                                     </div>
                                 </div>
 
-                                 <!-- Submit Button -->
-                                <button type="submit" id="submit-btn" data-multi-state="true" class="w-full click-shrink bg-primary text-white font-bold py-4 rounded-xl shadow-lg hover:bg-primary/95 transition-all text-sm uppercase tracking-widest flex items-center justify-center gap-2">
+                                <!-- White Pill Submit Button (Matching ORUZEN Send Message CTA) -->
+                                <button type="submit" id="submit-btn" data-multi-state="true" class="w-full click-shrink bg-white text-[#2D2722] hover:bg-[#C5A059] hover:text-white font-extrabold py-4 rounded-full shadow-xl transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-2">
                                     <span class="material-symbols-outlined text-xl" id="submit-icon">send</span>
-                                    <span id="submit-label">Submit &amp; Fulfill Booking Request</span>
+                                    <span id="submit-label">Submit Booking Request</span>
                                 </button>
                             </form>
                         </div>
                     </div>
 
-                </div>
+                    <!-- Right Column: "Send Us a Message" & Operating Hours (Matching ORUZEN Layout) -->
+                    <div class="lg:col-span-5 order-1 lg:order-2 space-y-8">
+                        <div class="space-y-3">
+                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#6E6259] block">CONTACT</span>
+                            <h2 class="text-3xl sm:text-5xl font-extrabold text-[#2D2722] tracking-tight leading-tight">
+                                Send Us a Message
+                            </h2>
+                            <p class="text-[#6E6259] text-sm md:text-base leading-relaxed pt-2">
+                                Have questions regarding our dual solar geysers, purified water filtration, or corporate housing vouchers? Contact management directly.
+                            </p>
+                        </div>
 
+                        <!-- Opening Hours Subsection -->
+                        <div class="space-y-4 pt-6 border-t border-[#2D2722]/10">
+                            <h3 class="text-lg font-bold text-[#2D2722] uppercase tracking-wider">Opening &amp; Operating Hours</h3>
+                            <div class="space-y-2 text-sm text-[#6E6259]">
+                                <div class="flex justify-between border-b border-[#2D2722]/10 pb-2">
+                                    <span class="font-semibold text-[#2D2722]">Check-In Time:</span>
+                                    <span>14:00 - 22:00 Daily</span>
+                                </div>
+                                <div class="flex justify-between border-b border-[#2D2722]/10 pb-2">
+                                    <span class="font-semibold text-[#2D2722]">Check-Out Time:</span>
+                                    <span>10:00 AM</span>
+                                </div>
+                                <div class="flex justify-between border-b border-[#2D2722]/10 pb-2">
+                                    <span class="font-semibold text-[#2D2722]">Office Support:</span>
+                                    <span>24/7 Corporate &amp; Emergency</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social & Direct Quick Buttons (Matching ORUZEN Circular Icon Buttons) -->
+                        <div class="pt-4 space-y-3">
+                            <span class="block text-xs font-bold uppercase tracking-widest text-[#6E6259]">Instant Manager Channels</span>
+                            <div class="flex items-center gap-4">
+                                <a href="https://wa.me/27744826660" target="_blank" class="w-12 h-12 rounded-full bg-[#2D2722] text-white flex items-center justify-center hover:bg-[#A76B46] transition-colors click-shrink shadow-md" aria-label="WhatsApp Manager">
+                                    <span class="material-symbols-outlined text-xl">chat</span>
+                                </a>
+                                <a href="tel:0744826660" class="w-12 h-12 rounded-full bg-[#2D2722] text-white flex items-center justify-center hover:bg-[#A76B46] transition-colors click-shrink shadow-md" aria-label="Call Manager">
+                                    <span class="material-symbols-outlined text-xl">call</span>
+                                </a>
+                                <a href="mailto:reemeguesthouse@gmail.com" class="w-12 h-12 rounded-full bg-[#2D2722] text-white flex items-center justify-center hover:bg-[#A76B46] transition-colors click-shrink shadow-md" aria-label="Email Manager">
+                                    <span class="material-symbols-outlined text-xl">mail</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Wide Location Map Container -->
+        <section class="py-16 px-6 bg-[#F5F2EB]">
+            <div class="max-w-7xl mx-auto space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#6E6259]">LOCATION MAP</span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-[#A76B46]">AIRFIELD • POSTMASBURG</span>
+                </div>
+                <div class="rounded-3xl overflow-hidden h-96 w-full relative border border-[#2D2722]/15 shadow-xl">
+                    <img class="w-full h-full object-cover filter contrast-125 brightness-95" alt="Satellite Map of Dibange Makape Street, Postmasburg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQbUiF5eHlc-Gtmupp0SAtiWlO4wxyrrOH9GsvTsx-B9evSz4L9Jr_z08tiaEsgNMOAS3VtMuyUEHR7SlRNITdx447MR9qjqlFPC10zADgd1l1nRJTHkatsVCeuWpYrCBYdKGFrs1p7oLW-5nEZjc3PDQcz-bafDsEJzkTnptnFNzsVIjz8zWsjAsWdiamx5HdRAh1GXZLYbGhig84ITofhQMRpPDac1jsytOu7J-sBMOwL41cVtM3TA">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="bg-[#2D2722]/90 text-white px-6 py-3 rounded-2xl backdrop-blur-md border border-white/20 shadow-2xl flex items-center gap-3">
+                            <span class="material-symbols-outlined text-[#C5A059] text-2xl">location_on</span>
+                            <div>
+                                <span class="block text-xs font-bold uppercase tracking-widest text-[#C5A059]">REEME GUEST HOUSE</span>
+                                <span class="text-xs text-stone-300">7511 Dibange Makape Street, Airfield, Postmasburg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: "FAQS — Frequently Asked Questions" (Matching ORUZEN FAQ Accordion) -->
+        <section class="py-20 md:py-28 px-6 bg-[#F5F2EB] border-t border-[#2D2722]/10">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                    
+                    <!-- Left Column: FAQ Header -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#6E6259] block">FAQS</span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-[#2D2722] tracking-tight leading-tight">
+                            Frequently Asked Questions
+                        </h2>
+                        <p class="text-[#6E6259] text-sm md:text-base leading-relaxed">
+                            Have questions regarding booking confirmation, power backups, water filtration, or contractor group rates? Find answers below.
+                        </p>
+                    </div>
+
+                    <!-- Right Column: Accordion Item List -->
+                    <div class="lg:col-span-7 space-y-4">
+                        
+                        <details class="group border-b border-[#2D2722]/15 pb-4 transition-all">
+                            <summary class="flex justify-between items-center font-bold text-lg text-[#2D2722] cursor-pointer list-none py-2 hover:text-[#A76B46] transition-colors">
+                                <span>How do I confirm my booking at Reeme Guest House?</span>
+                                <span class="material-symbols-outlined text-2xl text-[#A76B46] transition-transform duration-300 group-open:rotate-45">add</span>
+                            </summary>
+                            <p class="text-sm text-[#6E6259] leading-relaxed pt-2 pl-1">
+                                After submitting the reservation form above, you will receive an instant summary reference. You can dispatch it via WhatsApp directly to Manager Didintle Thupae for instant confirmation.
+                            </p>
+                        </details>
+
+                        <details class="group border-b border-[#2D2722]/15 pb-4 transition-all">
+                            <summary class="flex justify-between items-center font-bold text-lg text-[#2D2722] cursor-pointer list-none py-2 hover:text-[#A76B46] transition-colors">
+                                <span>Do you accommodate mining contractor teams &amp; long stays?</span>
+                                <span class="material-symbols-outlined text-2xl text-[#A76B46] transition-transform duration-300 group-open:rotate-45">add</span>
+                            </summary>
+                            <p class="text-sm text-[#6E6259] leading-relaxed pt-2 pl-1">
+                                Yes! We specialize in corporate housing contracts, monthly contractor rate vouchers, packed daily lunches, and vehicle registration for automated perimeter gates.
+                            </p>
+                        </details>
+
+                        <details class="group border-b border-[#2D2722]/15 pb-4 transition-all">
+                            <summary class="flex justify-between items-center font-bold text-lg text-[#2D2722] cursor-pointer list-none py-2 hover:text-[#A76B46] transition-colors">
+                                <span>Are hot water and electricity guaranteed during load shedding?</span>
+                                <span class="material-symbols-outlined text-2xl text-[#A76B46] transition-transform duration-300 group-open:rotate-45">add</span>
+                            </summary>
+                            <p class="text-sm text-[#6E6259] leading-relaxed pt-2 pl-1">
+                                Absolutely. The establishment is outfitted with dual high-capacity solar geysers and back-up systems ensuring uninterrupted hot water and lighting 24/7.
+                            </p>
+                        </details>
+
+                        <details class="group border-b border-[#2D2722]/15 pb-4 transition-all">
+                            <summary class="flex justify-between items-center font-bold text-lg text-[#2D2722] cursor-pointer list-none py-2 hover:text-[#A76B46] transition-colors">
+                                <span>Is tap water safe and filtered on site?</span>
+                                <span class="material-symbols-outlined text-2xl text-[#A76B46] transition-transform duration-300 group-open:rotate-45">add</span>
+                            </summary>
+                            <p class="text-sm text-[#6E6259] leading-relaxed pt-2 pl-1">
+                                Yes. All water supplied on the property passes through an industrial multi-stage water filtration and softening cylinder for pure, safe drinking water.
+                            </p>
+                        </details>
+
+                        <details class="group border-b border-[#2D2722]/15 pb-4 transition-all">
+                            <summary class="flex justify-between items-center font-bold text-lg text-[#2D2722] cursor-pointer list-none py-2 hover:text-[#A76B46] transition-colors">
+                                <span>What are the check-in and check-out times?</span>
+                                <span class="material-symbols-outlined text-2xl text-[#A76B46] transition-transform duration-300 group-open:rotate-45">add</span>
+                            </summary>
+                            <p class="text-sm text-[#6E6259] leading-relaxed pt-2 pl-1">
+                                Standard check-in is between 14:00 and 22:00 daily. Check-out is at 10:00 AM. Late check-ins can be arranged in advance with management.
+                            </p>
+                        </details>
+
+                        <details class="group border-b border-[#2D2722]/15 pb-4 transition-all">
+                            <summary class="flex justify-between items-center font-bold text-lg text-[#2D2722] cursor-pointer list-none py-2 hover:text-[#A76B46] transition-colors">
+                                <span>What meal plans are available?</span>
+                                <span class="material-symbols-outlined text-2xl text-[#A76B46] transition-transform duration-300 group-open:rotate-45">add</span>
+                            </summary>
+                            <p class="text-sm text-[#6E6259] leading-relaxed pt-2 pl-1">
+                                Options include Daily Warm Breakfast, Full Board (Breakfast, Packed Worksite Lunch, &amp; Dinner), Self-Catering Kitchen Access, or Corporate Food Vouchers.
+                            </p>
+                        </details>
+
+                    </div>
+
+                </div>
             </div>
         </section>
 
@@ -406,46 +586,46 @@
 
     <!-- Confirmation & Fulfillment Modal -->
     <div id="booking-modal" class="fixed inset-0 z-[100] bg-[#2D2722]/95 backdrop-blur-md flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-        <div class="neomorph-raised bg-[#F5F2EB] max-w-xl w-full p-8 rounded-3xl space-y-6 shadow-2xl border border-primary/20 scale-95 transition-transform duration-300" id="modal-card">
+        <div class="bg-[#F5F2EB] max-w-xl w-full p-8 rounded-3xl space-y-6 shadow-2xl border border-primary/20 scale-95 transition-transform duration-300" id="modal-card">
             
             <div class="flex items-center justify-between border-b border-primary/10 pb-4">
                 <div class="flex items-center gap-3">
                     <span class="material-symbols-outlined text-3xl text-green-600">check_circle</span>
                     <div>
-                        <h3 class="text-xl font-bold text-on-surface">Booking Request Generated!</h3>
-                        <p class="text-xs text-on-surface-variant" id="modal-ref">Reference: RGH-2026-8941</p>
+                        <h3 class="text-xl font-bold text-[#2D2722]">Booking Request Generated!</h3>
+                        <p class="text-xs text-[#6E6259]" id="modal-ref">Reference: RGH-2026-8941</p>
                     </div>
                 </div>
-                <button onclick="closeBookingModal()" class="p-2 rounded-full hover:bg-primary/10 text-on-surface text-xl">
+                <button onclick="closeBookingModal()" class="p-2 rounded-full hover:bg-primary/10 text-[#2D2722] text-xl">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
 
             <!-- Booking Summary Details -->
-            <div class="space-y-3 neomorph-inset p-5 rounded-2xl text-xs text-on-surface-variant leading-relaxed">
+            <div class="space-y-3 neomorph-inset p-5 rounded-2xl text-xs text-[#6E6259] leading-relaxed">
                 <div class="flex justify-between border-b border-primary/10 pb-2">
                     <span class="font-bold">Guest Name:</span>
-                    <span id="summary-name" class="font-semibold text-on-surface">-</span>
+                    <span id="summary-name" class="font-semibold text-[#2D2722]">-</span>
                 </div>
                 <div class="flex justify-between border-b border-primary/10 pb-2">
                     <span class="font-bold">Contact:</span>
-                    <span id="summary-contact" class="font-semibold text-on-surface">-</span>
+                    <span id="summary-contact" class="font-semibold text-[#2D2722]">-</span>
                 </div>
                 <div class="flex justify-between border-b border-primary/10 pb-2">
                     <span class="font-bold">Package:</span>
-                    <span id="summary-package" class="font-semibold text-primary">-</span>
+                    <span id="summary-package" class="font-semibold text-[#A76B46]">-</span>
                 </div>
                 <div class="flex justify-between border-b border-primary/10 pb-2">
                     <span class="font-bold">Dates:</span>
-                    <span id="summary-dates" class="font-semibold text-on-surface">-</span>
+                    <span id="summary-dates" class="font-semibold text-[#2D2722]">-</span>
                 </div>
                 <div class="flex justify-between border-b border-primary/10 pb-2">
                     <span class="font-bold">Guests / Crew:</span>
-                    <span id="summary-guests" class="font-semibold text-on-surface">-</span>
+                    <span id="summary-guests" class="font-semibold text-[#2D2722]">-</span>
                 </div>
                 <div class="flex justify-between">
                     <span class="font-bold">Meal Plan:</span>
-                    <span id="summary-meal" class="font-semibold text-secondary">-</span>
+                    <span id="summary-meal" class="font-semibold text-[#C5A059]">-</span>
                 </div>
             </div>
 
@@ -456,13 +636,13 @@
                     Dispatch via WhatsApp to Manager
                 </a>
 
-                <a id="email-btn" href="#" class="w-full click-shrink bg-primary text-white font-bold py-3.5 rounded-xl shadow-md hover:bg-primary/95 transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-2">
+                <a id="email-btn" href="#" class="w-full click-shrink bg-[#A76B46] text-white font-bold py-3.5 rounded-xl shadow-md hover:bg-[#A76B46]/95 transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-2">
                     <span class="material-symbols-outlined text-lg">mail</span>
                     Send Confirmation Email
                 </a>
             </div>
 
-            <p class="text-[10px] text-center text-on-surface-variant font-light">
+            <p class="text-[10px] text-center text-[#6E6259] font-light">
                 Manager Didintle Thupae will review your stay parameters and confirm vehicle gate codes and room keys.
             </p>
         </div>
@@ -470,23 +650,23 @@
 
     <!-- Fully Booked Notification Modal -->
     <div id="fully-booked-modal" class="fixed inset-0 z-[110] bg-[#2D2722]/95 backdrop-blur-md flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-        <div class="neomorph-raised bg-[#F5F2EB] max-w-lg w-full p-8 rounded-3xl space-y-6 shadow-2xl border border-red-500/30 scale-95 transition-transform duration-300" id="booked-modal-card">
+        <div class="bg-[#F5F2EB] max-w-lg w-full p-8 rounded-3xl space-y-6 shadow-2xl border border-red-500/30 scale-95 transition-transform duration-300" id="booked-modal-card">
             
             <div class="flex items-center justify-between border-b border-red-500/10 pb-4">
                 <div class="flex items-center gap-3">
                     <span class="material-symbols-outlined text-3xl text-red-600">block</span>
                     <div>
-                        <h3 class="text-xl font-bold text-on-surface">Fully Booked Notification</h3>
+                        <h3 class="text-xl font-bold text-[#2D2722]">Fully Booked Notification</h3>
                         <p class="text-xs text-red-700 font-semibold">High Demand Blackout Period</p>
                     </div>
                 </div>
-                <button onclick="closeFullyBookedModal()" class="p-2 rounded-full hover:bg-primary/10 text-on-surface text-xl">
+                <button onclick="closeFullyBookedModal()" class="p-2 rounded-full hover:bg-primary/10 text-[#2D2722] text-xl">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
 
-            <div class="space-y-3 neomorph-inset p-5 rounded-2xl text-xs text-on-surface-variant leading-relaxed border border-red-500/20 bg-red-500/5">
-                <p class="text-sm font-bold text-on-surface">
+            <div class="space-y-3 neomorph-inset p-5 rounded-2xl text-xs text-[#6E6259] leading-relaxed border border-red-500/20 bg-red-500/5">
+                <p class="text-sm font-bold text-[#2D2722]">
                     We're sorry! Reeme Guest House is completely occupied for your requested dates or crew count.
                 </p>
                 <p>
@@ -498,301 +678,152 @@
             <div class="space-y-3 pt-2">
                 <a id="waitlist-whatsapp-btn" href="https://wa.me/27744826660?text=Hello%20Manager%20Didintle%20Thupae%2C%20Reeme%20Guest%20House%20is%20fully%20booked%20for%20my%20dates.%20Please%20place%20my%20team%20on%20the%20Priority%20Waitlist." target="_blank" class="w-full click-shrink bg-green-700 text-white font-bold py-3.5 rounded-xl shadow-md hover:bg-green-800 transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-2">
                     <span class="material-symbols-outlined text-lg">chat</span>
-                    Join Priority Waitlist via WhatsApp
+                    Priority Waitlist via WhatsApp
                 </a>
-
-                <a href="tel:0744826660" class="w-full click-shrink bg-primary text-white font-bold py-3.5 rounded-xl shadow-md hover:bg-primary/95 transition-all text-xs uppercase tracking-widest flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined text-lg">call</span>
-                    Call Manager Direct: 074 482 6660
-                </a>
-
-                <button onclick="closeFullyBookedModal()" class="w-full click-shrink border border-primary/30 text-primary font-bold py-3 rounded-xl hover:bg-primary/10 transition-all text-xs uppercase tracking-wider">
-                    Select Alternative Dates
-                </button>
             </div>
         </div>
     </div>
 
-    <!-- Global Footer — Shadcn Footer-01 Design -->
-    <footer class="py-12 bg-background border-t border-primary/10">
-        <div class="max-w-7xl xl:px-16 lg:px-8 px-6 mx-auto">
-            <div class="flex flex-col gap-8 sm:gap-12">
-                <div class="py-6 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-12 gap-x-8 gap-y-10">
-                    
-                    <!-- Col 1: Brand & Bio -->
-                    <div class="col-span-full lg:col-span-4 space-y-6">
-                        <a href="index.html" class="inline-flex items-center gap-2.5 text-xl font-bold text-on-surface tracking-tight click-shrink">
-                            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white shadow-md">
-                                <span class="material-symbols-outlined filled text-secondary text-2xl">house</span>
-                            </span>
-                            <span class="font-extrabold text-on-surface">Reeme Guest House</span>
-                        </a>
-
-                        <p class="text-sm font-normal text-on-surface-variant max-w-sm leading-relaxed">
-                            Empowering mining corporate teams, engineers, and visiting guests with hotel-tier executive accommodations in Postmasburg.
-                        </p>
-
-                        <!-- Social Icons -->
-                        <div class="flex items-center gap-4 text-on-surface-variant">
-                            <a href="mailto:reemeguesthouse@gmail.com" class="p-2.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary hover:text-white transition-all text-primary" aria-label="Email Us">
-                                <span class="material-symbols-outlined text-lg">mail</span>
-                            </a>
-                            <a href="tel:0744826660" class="p-2.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary hover:text-white transition-all text-primary" aria-label="Call Us">
-                                <span class="material-symbols-outlined text-lg">call</span>
-                            </a>
-                            <a href="https://wa.me/27744826660" target="_blank" class="p-2.5 rounded-full border border-primary/15 bg-primary/5 hover:bg-primary hover:text-white transition-all text-primary" aria-label="WhatsApp">
-                                <span class="material-symbols-outlined text-lg">chat</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-span-1 lg:block hidden"></div>
-
-                    <!-- Col 2: Navigation Sitemap -->
-                    <div class="col-span-2 space-y-4">
-                        <p class="text-base font-semibold text-on-surface">Sitemap</p>
-                        <ul class="flex flex-col gap-3 text-sm">
-                            <li><a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors">Home</a></li>
-                            <li><a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors">About Us</a></li>
-                            <li><a href="rooms.html" class="text-on-surface-variant hover:text-primary transition-colors">Accommodations</a></li>
-                            <li><a href="contact.html" class="text-on-surface-variant hover:text-primary transition-colors">Contact Us</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Col 3: Legal & Information -->
-                    <div class="col-span-2 space-y-4">
-                        <p class="text-base font-semibold text-on-surface">Information</p>
-                        <ul class="flex flex-col gap-3 text-sm">
-                            <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</a></li>
-                            <li><a href="#" class="text-on-surface-variant hover:text-primary transition-colors">Terms &amp; Conditions</a></li>
-                            <li><a href="about.html" class="text-on-surface-variant hover:text-primary transition-colors">Directions &amp; Map</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Col 4: Contact Details -->
-                    <div class="col-span-3 space-y-4">
-                        <p class="text-base font-semibold text-on-surface">Contact Details</p>
-                        <ul class="flex flex-col gap-3 text-sm text-on-surface-variant">
-                            <li class="flex items-start gap-2">
-                                <span class="material-symbols-outlined text-base text-primary flex-shrink-0 mt-0.5">location_on</span>
-                                <span>7511 Dibange Makape Street, Airfield, Postmasburg, 8420</span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="material-symbols-outlined text-base text-primary flex-shrink-0">person</span>
-                                <span>Manager: Didintle Thupae</span>
-                            </li>
-                            <li>
-                                <a href="mailto:reemeguesthouse@gmail.com" class="hover:text-primary transition-colors flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-base text-primary flex-shrink-0">mail</span>
-                                    reemeguesthouse@gmail.com
-                                </a>
-                            </li>
-                            <li>
-                                <a href="tel:0744826660" class="hover:text-primary transition-colors flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-base text-primary flex-shrink-0">call</span>
-                                    074 482 6660
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-
-                <div class="h-px w-full bg-primary/10"></div>
-
-                <p class="text-xs font-normal text-on-surface-variant text-center">
-                    © 2026 Reeme Guest House. All Rights Reserved. Protected by 24/7 Monitored CCTV Security.
-                </p>
+    <!-- Footer -->
+    <footer class="bg-[#2D2722] text-white py-12 px-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-2xl text-[#C5A059] filled">house</span>
+                <span class="font-bold text-lg tracking-widest uppercase">Reeme Guest House</span>
             </div>
+            <p class="text-xs text-stone-400">
+                &copy; <span id="current-year">2026</span> Reeme Guest House. 7511 Dibange Makape St, Airfield, Postmasburg. All rights reserved.
+            </p>
         </div>
     </footer>
 
-    <!-- Interactive Scripting & Real-time Notification Engine -->
+    <!-- Interactive Logic Script -->
     <script>
-        // Sidebar Menu Control
-        const sidebarMenu = document.getElementById('sidebar-menu');
-        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
-        const menuTrigger = document.getElementById('menu-trigger-btn');
-        const sidebarClose = document.getElementById('sidebar-close-btn');
+        // Blackout & Fully Booked Date Ranges
+        const FULLY_BOOKED_DATES = [
+            { start: '2026-08-14', end: '2026-08-18' },
+            { start: '2026-09-01', end: '2026-09-05' }
+        ];
 
-        function openSidebar() {
-            sidebarMenu.classList.remove('-translate-x-full');
-            sidebarMenu.classList.add('translate-x-0');
-            sidebarBackdrop.classList.remove('hidden');
-            setTimeout(() => {
-                sidebarBackdrop.classList.add('opacity-100');
-                sidebarBackdrop.classList.remove('opacity-0');
-            }, 10);
+        // Rates
+        const RATES = {
+            "Short-Term Executive Suite": 950,
+            "Long-Term Corporate Stay (House Booking)": 2800,
+            "Self-Catering Lodge Package": 1800,
+            "Contractor Meal & Accommodation Voucher": 1200
+        };
+
+        function isDateRangeBooked(checkInStr, checkOutStr) {
+            if (!checkInStr || !checkOutStr) return false;
+            const inTime = new Date(checkInStr).getTime();
+            const outTime = new Date(checkOutStr).getTime();
+
+            for (const range of FULLY_BOOKED_DATES) {
+                const bStart = new Date(range.start).getTime();
+                const bEnd = new Date(range.end).getTime();
+
+                if (inTime < bEnd && outTime > bStart) {
+                    return true;
+                }
+            }
+            return false;
         }
-
-        function closeSidebar() {
-            sidebarMenu.classList.add('-translate-x-full');
-            sidebarMenu.classList.remove('translate-x-0');
-            sidebarBackdrop.classList.remove('opacity-100');
-            sidebarBackdrop.classList.add('opacity-0');
-            setTimeout(() => {
-                sidebarBackdrop.classList.add('hidden');
-            }, 300);
-        }
-
-        if (menuTrigger) menuTrigger.addEventListener('click', openSidebar);
-        if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
-        if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
-
-        // Toast Notification System
-        function showToastNotification(message, type = 'info') {
-            const container = document.getElementById('toast-notification-container');
-            const toast = document.createElement('div');
-            
-            const isError = type === 'error' || type === 'fully-booked';
-            const bgClass = isError ? 'bg-red-900/90 border-red-500/50 text-white' : 'bg-[#2D2722]/95 border-secondary/40 text-white';
-            const icon = isError ? 'block' : 'info';
-
-            toast.className = `neomorph-raised ${bgClass} p-4 rounded-2xl border shadow-2xl backdrop-blur-md flex items-center gap-3 transition-all duration-300 pointer-events-auto transform translate-y-[-20px] opacity-0`;
-            toast.innerHTML = `
-                <span class="material-symbols-outlined text-2xl ${isError ? 'text-red-400' : 'text-secondary'}">${icon}</span>
-                <div class="flex-grow text-xs leading-snug font-medium">${message}</div>
-                <button onclick="this.parentElement.remove()" class="p-1 text-stone-300 hover:text-white">
-                    <span class="material-symbols-outlined text-sm">close</span>
-                </button>
-            `;
-
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.classList.replace('translate-y-[-20px]', 'translate-y-0');
-                toast.classList.replace('opacity-0', 'opacity-100');
-            }, 10);
-
-            setTimeout(() => {
-                toast.classList.replace('opacity-100', 'opacity-0');
-                setTimeout(() => toast.remove(), 300);
-            }, 5000);
-        }
-
-        // Live Inventory & Fully Booked Check Logic
-        let isFullyBooked = false;
 
         function calculateTotal() {
-            const checkInVal = document.getElementById('check-in').value;
-            const checkOutVal = document.getElementById('check-out').value;
-            const guestsVal = document.getElementById('guests-count').value;
+            const inInput = document.getElementById('check-in');
+            const outInput = document.getElementById('check-out');
             const durationEl = document.getElementById('calc-duration');
             const inventoryEl = document.getElementById('calc-inventory');
-            
             const banner = document.getElementById('availability-status-banner');
             const statusDot = document.getElementById('status-dot');
             const statusTitle = document.getElementById('status-title');
             const statusDesc = document.getElementById('status-desc');
             const statusBadge = document.getElementById('status-badge');
-            
-            const submitBtn = document.getElementById('submit-btn');
-            const submitLabel = document.getElementById('submit-label');
-            const submitIcon = document.getElementById('submit-icon');
 
-            if (checkInVal && checkOutVal) {
-                const date1 = new Date(checkInVal);
-                const date2 = new Date(checkOutVal);
-                const diffTime = date2.getTime() - date1.getTime();
-                const diffDays = Math.ceil(diffTime / (1000 * 3600 * 24));
-
-                if (diffDays > 0) {
-                    durationEl.textContent = `${diffDays} Night${diffDays > 1 ? 's' : ''} Stay`;
-                    
-                    // Simulate Capacity / Blackout Notification for Specific Full Capacity scenarios or peak mining dates
-                    // For example: 5+ Crew members on short notice or specific date blackout windows
-                    const isPeakMiningBlackout = checkInVal.endsWith('-15') || checkInVal.endsWith('-30'); 
-                    const isCrewOverCapacity = guestsVal.includes('5+') && diffDays > 14;
-
-                    if (isPeakMiningBlackout || isCrewOverCapacity) {
-                        isFullyBooked = true;
-                        
-                        // Update Banner UI to Fully Booked Alert
-                        banner.className = "neomorph-inset p-4 rounded-2xl flex items-center justify-between border border-red-500/40 bg-red-500/10 transition-all duration-300";
-                        statusDot.className = "w-3 h-3 rounded-full bg-red-600 animate-ping flex-shrink-0";
-                        statusTitle.textContent = "Fully Booked for Selected Dates";
-                        statusDesc.textContent = "High demand blackout period. Priority waitlist is active for Manager Didintle Thupae.";
-                        statusBadge.textContent = "Fully Booked";
-                        statusBadge.className = "text-xs font-extrabold text-red-700 uppercase tracking-widest px-3 py-1 bg-red-700/15 rounded-lg border border-red-700/30";
-                        
-                        inventoryEl.textContent = "Fully Occupied";
-                        inventoryEl.className = "text-sm font-extrabold text-red-600";
-
-                        submitBtn.className = "w-full click-shrink bg-red-700 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-red-800 transition-all text-sm uppercase tracking-widest flex items-center justify-center gap-2";
-                        submitIcon.textContent = "block";
-                        submitLabel.textContent = "Fully Booked — Request Priority Waitlist";
-
-                        showToastNotification("⚠️ Fully Booked Alert: Selected dates are at full capacity. Request waitlist or call manager direct.", "error");
-
-                    } else {
-                        isFullyBooked = false;
-                        
-                        // Available State
-                        banner.className = "neomorph-inset p-4 rounded-2xl flex items-center justify-between border border-green-600/30 bg-green-600/5 transition-all duration-300";
-                        statusDot.className = "w-3 h-3 rounded-full bg-green-600 animate-pulse flex-shrink-0";
-                        statusTitle.textContent = "Rooms Currently Available";
-                        statusDesc.textContent = "Guaranteed lodging for your stay dates.";
-                        statusBadge.textContent = "Available";
-                        statusBadge.className = "text-xs font-extrabold text-green-700 uppercase tracking-widest px-3 py-1 bg-green-700/10 rounded-lg border border-green-700/20";
-                        
-                        inventoryEl.textContent = "Verified Available";
-                        inventoryEl.className = "text-sm font-extrabold text-green-700";
-
-                        submitBtn.className = "w-full click-shrink bg-primary text-white font-bold py-4 rounded-xl shadow-lg hover:bg-primary/95 transition-all text-sm uppercase tracking-widest flex items-center justify-center gap-2";
-                        submitIcon.textContent = "send";
-                        submitLabel.textContent = "Submit & Fulfill Booking Request";
-                    }
-
-                } else {
-                    durationEl.textContent = 'Check-out must be after Check-in';
-                }
-            } else {
+            if (!inInput.value || !outInput.value) {
                 durationEl.textContent = 'Select check-in & check-out dates';
+                return;
+            }
+
+            const inDate = new Date(inInput.value);
+            const outDate = new Date(outInput.value);
+            const diffTime = outDate - inDate;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays <= 0) {
+                durationEl.textContent = 'Invalid dates (Check-out must be after Check-in)';
+                return;
+            }
+
+            durationEl.textContent = `${diffDays} Night${diffDays > 1 ? 's' : ''}`;
+
+            const isBooked = isDateRangeBooked(inInput.value, outInput.value);
+
+            if (isBooked) {
+                inventoryEl.textContent = 'Blackout Period (Fully Booked)';
+                inventoryEl.className = 'text-sm font-extrabold text-red-400';
+
+                banner.className = 'p-4 rounded-2xl flex items-center justify-between border border-red-500/30 bg-red-500/10 transition-all duration-300';
+                statusDot.className = 'w-3 h-3 rounded-full bg-red-500 animate-pulse flex-shrink-0';
+                statusTitle.textContent = 'Blackout Dates Selected';
+                statusDesc.textContent = 'Requested dates overlap with a fully booked corporate period.';
+                statusBadge.textContent = 'Fully Booked';
+                statusBadge.className = 'text-xs font-extrabold text-red-400 uppercase tracking-widest px-3 py-1 bg-red-500/20 rounded-lg border border-red-400/30';
+            } else {
+                inventoryEl.textContent = 'Verified Available';
+                inventoryEl.className = 'text-sm font-extrabold text-green-400';
+
+                banner.className = 'p-4 rounded-2xl flex items-center justify-between border border-green-500/30 bg-green-500/10 transition-all duration-300';
+                statusDot.className = 'w-3 h-3 rounded-full bg-green-400 animate-pulse flex-shrink-0';
+                statusTitle.textContent = 'Rooms Currently Available';
+                statusDesc.textContent = 'Room inventory verified for your selected dates.';
+                statusBadge.textContent = 'Available';
+                statusBadge.className = 'text-xs font-extrabold text-green-400 uppercase tracking-widest px-3 py-1 bg-green-500/20 rounded-lg border border-green-400/30';
             }
         }
-
-        // Booking Submission & Fully Booked Interception
-        let currentRef = '';
 
         function handleContactSubmit(e) {
             e.preventDefault();
 
-            if (isFullyBooked) {
-                openFullyBookedModal();
-                return;
-            }
-
             const name = document.getElementById('guest-name').value;
             const phone = document.getElementById('guest-phone').value;
             const email = document.getElementById('guest-email').value;
-            const packageRadio = document.getElementById('stay-type-select').value;
+            const packageType = document.getElementById('stay-type-select').value;
             const checkIn = document.getElementById('check-in').value;
             const checkOut = document.getElementById('check-out').value;
             const guests = document.getElementById('guests-count').value;
             const meal = document.getElementById('meal-plan').value;
             const notes = document.getElementById('special-notes').value;
 
-            // Generate Booking Reference
-            currentRef = 'RGH-2026-' + Math.floor(1000 + Math.random() * 9000);
+            if (isDateRangeBooked(checkIn, checkOut)) {
+                openFullyBookedModal();
+                return;
+            }
 
-            // Populate Modal Summary
-            document.getElementById('modal-ref').textContent = `Reference: ${currentRef}`;
+            const randomRef = 'RGH-2026-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('modal-ref').textContent = `Reference: ${randomRef}`;
             document.getElementById('summary-name').textContent = name;
-            document.getElementById('summary-contact').textContent = `${phone} (${email})`;
-            document.getElementById('summary-package').textContent = packageRadio;
-            document.getElementById('summary-dates').textContent = checkIn && checkOut ? `${checkIn} to ${checkOut}` : 'Dates requested';
+            document.getElementById('summary-contact').textContent = `${phone} | ${email}`;
+            document.getElementById('summary-package').textContent = packageType;
+            document.getElementById('summary-dates').textContent = `${checkIn} to ${checkOut}`;
             document.getElementById('summary-guests').textContent = guests;
             document.getElementById('summary-meal').textContent = meal;
 
-            // WhatsApp Message Encoding
-            const waText = `Hello Manager Didintle Thupae,%0A%0AI would like to confirm my booking request for Reeme Guest House:%0A- *Ref:* ${currentRef}%0A- *Name:* ${name}%0A- *Phone:* ${phone}%0A- *Package:* ${packageRadio}%0A- *Dates:* ${checkIn} to ${checkOut}%0A- *Guests:* ${guests}%0A- *Meal Plan:* ${meal}${notes ? '%0A- *Notes:* ' + encodeURIComponent(notes) : ''}`;
+            const waText = encodeURIComponent(
+                `Hello Manager Didintle Thupae,\n\nI would like to confirm my booking at Reeme Guest House:\n- Ref: ${randomRef}\n- Guest: ${name}\n- Contact: ${phone} | ${email}\n- Package: ${packageType}\n- Dates: ${checkIn} to ${checkOut}\n- Guests/Crew: ${guests}\n- Meal Plan: ${meal}\n- Notes: ${notes || 'None'}\n\nPlease confirm availability and payment details.`
+            );
             document.getElementById('whatsapp-btn').href = `https://wa.me/27744826660?text=${waText}`;
 
-            // Email Link Encoding
-            const mailSubject = encodeURIComponent(`Booking Request ${currentRef} - ${name}`);
-            const mailBody = encodeURIComponent(`Hello Didintle Thupae,\n\nHere are my reservation details:\nRef: ${currentRef}\nName: ${name}\nPhone: ${phone}\nPackage: ${packageRadio}\nCheck-In: ${checkIn}\nCheck-Out: ${checkOut}\nGuests: ${guests}\nMeal Plan: ${meal}\nNotes: ${notes}\n\nPlease confirm availability.`);
+            const mailSubject = encodeURIComponent(`Reeme Booking Request - ${name} (${randomRef})`);
+            const mailBody = encodeURIComponent(
+                `Dear Manager Didintle Thupae,\n\nI have generated a booking request on the Reeme Guest House website:\n\nReference: ${randomRef}\nGuest Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nPackage: ${packageType}\nCheck-In: ${checkIn}\nCheck-Out: ${checkOut}\nGuests/Crew Count: ${guests}\nMeal Plan: ${meal}\nSpecial Notes: ${notes || 'None'}\n\nPlease reach out to confirm.`
+            );
             document.getElementById('email-btn').href = `mailto:reemeguesthouse@gmail.com?subject=${mailSubject}&body=${mailBody}`;
 
-            // Show Confirmation Modal
+            openBookingModal();
+        }
+
+        function openBookingModal() {
             const modal = document.getElementById('booking-modal');
             const card = document.getElementById('modal-card');
             modal.classList.remove('hidden');
@@ -834,8 +865,55 @@
             }, 300);
         }
 
-        // Auto-fill from URL params e.g. contact.html?type=corporate or contact.html?room=Executive+Suite
+        function showToastNotification(msg) {
+            const container = document.getElementById('toast-notification-container');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            toast.className = 'bg-[#2D2722] text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-white/10 text-xs font-semibold flex items-center justify-between transition-all duration-300 translate-y-4 opacity-0 pointer-events-auto';
+            toast.innerHTML = `<span>${msg}</span><button onclick="this.parentElement.remove()" class="ml-3 text-stone-400 hover:text-white">&times;</button>`;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.replace('translate-y-4', 'translate-y-0');
+                toast.classList.replace('opacity-0', 'opacity-100');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.replace('opacity-100', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        function initMobileMenu() {
+            const trigger = document.getElementById('menu-trigger-btn');
+            const menu = document.getElementById('sidebar-menu');
+            const closeBtn = document.getElementById('sidebar-close-btn');
+            const backdrop = document.getElementById('sidebar-backdrop');
+
+            if (!trigger || !menu || !closeBtn || !backdrop) return;
+
+            const openMenu = () => {
+                menu.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.replace('opacity-0', 'opacity-100'), 10);
+            };
+
+            const closeMenu = () => {
+                menu.classList.add('-translate-x-full');
+                backdrop.classList.replace('opacity-100', 'opacity-0');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+            };
+
+            trigger.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+            backdrop.addEventListener('click', closeMenu);
+        }
+
+        // Initialize defaults
         window.addEventListener('DOMContentLoaded', () => {
+            initMobileMenu();
+
             const params = new URLSearchParams(window.location.search);
             const type = params.get('type');
             const room = params.get('room');
@@ -849,7 +927,6 @@
                 document.getElementById('special-notes').value = `Interested in booking: ${room}`;
             }
 
-            // Default dates preset to today & tomorrow
             const today = new Date();
             const tomorrow = new Date(today);
             tomorrow.setDate(tomorrow.getDate() + 1);
@@ -857,127 +934,126 @@
             document.getElementById('check-in').valueAsDate = today;
             document.getElementById('check-out').valueAsDate = tomorrow;
             calculateTotal();
-        });
-    </script>
-    <script src="js/multi-state-button.js"></script>
-        // Lenis Smooth Scroll Engine for Book Now Page
-        if (typeof Lenis !== 'undefined') {
-            const lenis = new Lenis({
-                duration: 1.4,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                smoothWheel: true,
-                touchMultiplier: 2.0
-            });
 
-            if (typeof ScrollTrigger !== 'undefined') lenis.on('scroll', ScrollTrigger.update);
-
-            gsap.ticker.add((time) => {
-                lenis.raf(time * 1000);
-            });
-
-            gsap.ticker.lagSmoothing(0);
-        }
-
-        // GSAP ScrollTrigger & CustomEase Animation Engine for Contact / Book Now Page
-        if (typeof gsap !== 'undefined') {
-            const pluginsToRegister = [];
-            if (typeof ScrollTrigger !== 'undefined') pluginsToRegister.push(ScrollTrigger);
-            if (typeof CustomEase !== 'undefined') pluginsToRegister.push(CustomEase);
-            if (typeof EasePack !== 'undefined') pluginsToRegister.push(EasePack);
-            
-            if (pluginsToRegister.length > 0) {
-                gsap.registerPlugin(...pluginsToRegister);
-            }
-
-            // Custom Ease Curves
-            let luxuryExpo = "power3.out";
-            let editorialOut = "power3.out";
-            let softBounce = "back.out(1.7)";
-            
-            if (typeof CustomEase !== 'undefined') {
-                CustomEase.create("luxuryExpo", "M0,0 C0.16,1 0.3,1 1,1");
-                CustomEase.create("editorialOut", "M0,0 C0.25,1 0.3,1 1,1");
-                CustomEase.create("softBounce", "M0,0 C0.175,0.885 0.32,1.275 1,1");
-                luxuryExpo = "luxuryExpo";
-                editorialOut = "editorialOut";
-                softBounce = "softBounce";
-            }
-
-            // 1. Initial Page Entrance Timeline (Header Elements)
-            const headerTl = gsap.timeline({ delay: 0.15 });
-            const pageBadge = document.querySelector('main .inline-flex');
-            const pageTitle = document.querySelector('main h1');
-            const pageDesc = document.querySelector('main p.max-w-xl, main p.max-w-2xl');
-
-            if (pageBadge) headerTl.fromTo(pageBadge, { y: 25, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: softBounce });
-            if (pageTitle) headerTl.fromTo(pageTitle, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, ease: luxuryExpo }, '-=0.5');
-            if (pageDesc) headerTl.fromTo(pageDesc, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1.0, ease: luxuryExpo }, '-=0.7');
-
-            if (typeof ScrollTrigger !== 'undefined') {
-                // 2. Booking Calculator & Form Card Scroll Trigger
-                const formCards = document.querySelectorAll('main form, #booking-calculator, .neomorph-raised');
-                formCards.forEach((card) => {
-                    gsap.fromTo(card, 
-                        { y: 55, opacity: 0, scale: 0.95 },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            scale: 1,
-                            duration: 1.2,
-                            ease: luxuryExpo,
-                            scrollTrigger: {
-                                trigger: card,
-                                start: 'top 86%',
-                                toggleActions: 'play none none reverse'
-                            }
-                        }
-                    );
+            // Lenis Smooth Scroll Engine for Book Now Page
+            if (typeof Lenis !== 'undefined') {
+                const lenis = new Lenis({
+                    duration: 1.4,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    smoothWheel: true,
+                    touchMultiplier: 2.0
                 });
 
-                // 3. Section Titles & Headings Reveal
-                const sectionHeaders = document.querySelectorAll('section h2, section h3');
-                sectionHeaders.forEach((el) => {
-                    gsap.fromTo(el, 
-                        { y: 45, opacity: 0 },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            duration: 1.1,
-                            ease: luxuryExpo,
-                            scrollTrigger: {
-                                trigger: el,
-                                start: 'top 88%',
-                                toggleActions: 'play none none reverse'
-                            }
-                        }
-                    );
+                if (typeof ScrollTrigger !== 'undefined') lenis.on('scroll', ScrollTrigger.update);
+
+                gsap.ticker.add((time) => {
+                    lenis.raf(time * 1000);
                 });
 
-                // 4. Contact Cards & Details Grid Stagger Reveal
-                const detailGrids = document.querySelectorAll('.grid');
-                detailGrids.forEach((grid) => {
-                    const items = grid.querySelectorAll(':scope > div, :scope > article, :scope > a');
-                    if (items.length > 0) {
-                        gsap.fromTo(items,
-                            { y: 50, opacity: 0, scale: 0.96 },
+                gsap.ticker.lagSmoothing(0);
+            }
+
+            // GSAP ScrollTrigger & CustomEase Animation Engine for Contact / Book Now Page
+            if (typeof gsap !== 'undefined') {
+                const pluginsToRegister = [];
+                if (typeof ScrollTrigger !== 'undefined') pluginsToRegister.push(ScrollTrigger);
+                if (typeof CustomEase !== 'undefined') pluginsToRegister.push(CustomEase);
+                if (typeof EasePack !== 'undefined') pluginsToRegister.push(EasePack);
+                
+                if (pluginsToRegister.length > 0) {
+                    gsap.registerPlugin(...pluginsToRegister);
+                }
+
+                // Custom Ease Curves
+                let luxuryExpo = "power3.out";
+                let editorialOut = "power3.out";
+                let softBounce = "back.out(1.7)";
+                
+                if (typeof CustomEase !== 'undefined') {
+                    CustomEase.create("luxuryExpo", "M0,0 C0.16,1 0.3,1 1,1");
+                    CustomEase.create("editorialOut", "M0,0 C0.25,1 0.3,1 1,1");
+                    CustomEase.create("softBounce", "M0,0 C0.175,0.885 0.32,1.275 1,1");
+                    luxuryExpo = "luxuryExpo";
+                    editorialOut = "editorialOut";
+                    softBounce = "softBounce";
+                }
+
+                // 1. Initial Page Entrance Timeline
+                const headerTl = gsap.timeline({ delay: 0.15 });
+                const pageBadge = document.querySelector('main .inline-flex');
+                const pageTitle = document.querySelector('main h1');
+                const pageDesc = document.querySelector('main p');
+
+                if (pageBadge) headerTl.fromTo(pageBadge, { y: 25, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: softBounce });
+                if (pageTitle) headerTl.fromTo(pageTitle, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, ease: luxuryExpo }, '-=0.5');
+                if (pageDesc) headerTl.fromTo(pageDesc, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1.0, ease: luxuryExpo }, '-=0.7');
+
+                if (typeof ScrollTrigger !== 'undefined') {
+                    // 2. Form Card & Section Reveals
+                    const formCard = document.querySelector('#contact-booking-form')?.closest('.bg-\\[\\#2D2722\\]');
+                    if (formCard) {
+                        gsap.fromTo(formCard, 
+                            { y: 60, opacity: 0, scale: 0.95 },
                             {
                                 y: 0,
                                 opacity: 1,
                                 scale: 1,
-                                duration: 1.15,
+                                duration: 1.2,
                                 ease: luxuryExpo,
-                                stagger: 0.14,
                                 scrollTrigger: {
-                                    trigger: grid,
-                                    start: 'top 85%',
+                                    trigger: formCard,
+                                    start: 'top 86%',
                                     toggleActions: 'play none none reverse'
                                 }
                             }
                         );
                     }
-                });
-            }
-        }
 
+                    // 3. Section Titles & Headings Reveal
+                    const sectionHeaders = document.querySelectorAll('section h2, section h3');
+                    sectionHeaders.forEach((el) => {
+                        gsap.fromTo(el, 
+                            { y: 45, opacity: 0 },
+                            {
+                                y: 0,
+                                opacity: 1,
+                                duration: 1.1,
+                                ease: luxuryExpo,
+                                scrollTrigger: {
+                                    trigger: el,
+                                    start: 'top 88%',
+                                    toggleActions: 'play none none reverse'
+                                }
+                            }
+                        );
+                    });
+
+                    // 4. Details Grids Stagger Reveal
+                    const detailGrids = document.querySelectorAll('.grid');
+                    detailGrids.forEach((grid) => {
+                        const items = grid.querySelectorAll(':scope > div, :scope > article, :scope > details');
+                        if (items.length > 0) {
+                            gsap.fromTo(items,
+                                { y: 50, opacity: 0 },
+                                {
+                                    y: 0,
+                                    opacity: 1,
+                                    duration: 1.15,
+                                    ease: luxuryExpo,
+                                    stagger: 0.12,
+                                    scrollTrigger: {
+                                        trigger: grid,
+                                        start: 'top 85%',
+                                        toggleActions: 'play none none reverse'
+                                    }
+                                }
+                            );
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+    <script src="js/multi-state-button.js"></script>
 </body>
 </html>
