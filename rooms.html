@@ -35,10 +35,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     
-    <!-- IonIcons CDN for Slider Controls -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+    <!-- GSAP, CustomEase, EasePack & Lenis Smooth Scroll Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/EasePack.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.css" rel="stylesheet">
+    
     <!-- Custom Tailwind Configuration -->
     <script id="tailwind-config">
       tailwind.config = {
@@ -1020,7 +1024,109 @@
             }
         }
 
-        document.addEventListener('click', activateSlider, false);
+        // Lenis Smooth Scroll Engine for Accommodations Page
+        if (typeof Lenis !== 'undefined') {
+            const lenis = new Lenis({
+                duration: 1.4,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothWheel: true,
+                touchMultiplier: 2.0
+            });
+
+            lenis.on('scroll', ScrollTrigger.update);
+
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+            });
+
+            gsap.ticker.lagSmoothing(0);
+        }
+
+        // GSAP Plugins, Custom Ease & ScrollTrigger Engine for Accommodations Page
+        if (typeof gsap !== 'undefined') {
+            const pluginsToRegister = [];
+            if (typeof ScrollTrigger !== 'undefined') pluginsToRegister.push(ScrollTrigger);
+            if (typeof CustomEase !== 'undefined') pluginsToRegister.push(CustomEase);
+            if (typeof EasePack !== 'undefined') pluginsToRegister.push(EasePack);
+            
+            if (pluginsToRegister.length > 0) {
+                gsap.registerPlugin(...pluginsToRegister);
+            }
+
+            // Create Custom Ease Curves for Accommodations Page
+            let luxuryExpo = "power3.out";
+            let editorialOut = "power3.out";
+            let softBounce = "back.out(1.7)";
+            
+            if (typeof CustomEase !== 'undefined') {
+                CustomEase.create("luxuryExpo", "M0,0 C0.16,1 0.3,1 1,1");
+                CustomEase.create("editorialOut", "M0,0 C0.25,1 0.3,1 1,1");
+                CustomEase.create("softBounce", "M0,0 C0.175,0.885 0.32,1.275 1,1");
+                luxuryExpo = "luxuryExpo";
+                editorialOut = "editorialOut";
+                softBounce = "softBounce";
+            }
+
+            // 1. Initial Page Load Reveal for Olive Green Accommodations Directory Header
+            const headerSection = document.querySelector('#accommodations-header');
+            if (headerSection) {
+                const headerTl = gsap.timeline({ delay: 0.15 });
+                const metaText = headerSection.querySelector('span');
+                const title = headerSection.querySelector('h1');
+                const badge = headerSection.querySelector('.inline-flex');
+                const desc = headerSection.querySelector('p');
+
+                if (metaText) headerTl.fromTo(metaText, { y: 25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: luxuryExpo });
+                if (title) headerTl.fromTo(title, { y: 35, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, ease: luxuryExpo }, '-=0.5');
+                if (badge) headerTl.fromTo(badge, { y: 30, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.9, ease: softBounce }, '-=0.6');
+                if (desc) headerTl.fromTo(desc, { y: 25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: luxuryExpo }, '-=0.6');
+            }
+
+            if (typeof ScrollTrigger !== 'undefined') {
+                // 2. Section Headers Entrance Triggers
+                const sectionHeaders = document.querySelectorAll('section h2, section h3, section .inline-flex');
+                sectionHeaders.forEach((el) => {
+                    gsap.fromTo(el, 
+                        { y: 45, opacity: 0 },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 1.1,
+                            ease: luxuryExpo,
+                            scrollTrigger: {
+                                trigger: el,
+                                start: 'top 88%',
+                                toggleActions: 'play none none reverse'
+                            }
+                        }
+                    );
+                });
+
+                // 3. Accommodation Cards Stagger Reveal (Long Term & Short Term Stay Cards)
+                const roomGrids = document.querySelectorAll('.grid');
+                roomGrids.forEach((grid) => {
+                    const cards = grid.querySelectorAll(':scope > div, :scope > article');
+                    if (cards.length > 0) {
+                        gsap.fromTo(cards,
+                            { y: 55, opacity: 0, scale: 0.96 },
+                            {
+                                y: 0,
+                                opacity: 1,
+                                scale: 1,
+                                duration: 1.15,
+                                ease: luxuryExpo,
+                                stagger: 0.15,
+                                scrollTrigger: {
+                                    trigger: grid,
+                                    start: 'top 85%',
+                                    toggleActions: 'play none none reverse'
+                                }
+                            }
+                        );
+                    }
+                });
+            }
+        }
     </script>
     <script src="js/multi-state-button.js"></script>
 </body>
