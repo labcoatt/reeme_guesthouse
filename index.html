@@ -62,6 +62,8 @@
     <!-- Scripts & Fonts -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@1,400;1,600;1,700&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
     
@@ -983,6 +985,115 @@
                         if (progressBar) progressBar.style.width = `${current}%`;
                     }
                 }, '-=0.3');
+            }
+
+            // GSAP ScrollTrigger & CustomEase Animation Engine for Homepage Sections
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+                
+                // Define Custom Luxury Ease Curve
+                let luxuryEase = "power3.out";
+                let editorialEase = "power3.out";
+                if (typeof CustomEase !== 'undefined') {
+                    CustomEase.create("luxuryEase", "M0,0 C0.25,1 0.3,1 1,1");
+                    CustomEase.create("editorialOut", "M0,0 C0.16,1 0.3,1 1,1");
+                    luxuryEase = "luxuryEase";
+                    editorialEase = "editorialOut";
+                }
+
+                // 1. Hero Parallax Scroll Effect
+                const heroSection = document.getElementById('home');
+                if (heroSection) {
+                    gsap.to('#hero-carousel', {
+                        yPercent: 18,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: heroSection,
+                            start: 'top top',
+                            end: 'bottom top',
+                            scrub: true
+                        }
+                    });
+                }
+
+                // 2. Section Headers Reveal on Scroll (Titles, Badges, Subtitles)
+                const sectionHeaders = document.querySelectorAll('section h2, section h3, section .inline-flex, section p.max-w-xl, section p.max-w-2xl');
+                sectionHeaders.forEach((el) => {
+                    gsap.fromTo(el, 
+                        { y: 45, opacity: 0 },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 1.0,
+                            ease: luxuryEase,
+                            scrollTrigger: {
+                                trigger: el,
+                                start: 'top 88%',
+                                toggleActions: 'play none none reverse'
+                            }
+                        }
+                    );
+                });
+
+                // 3. Grid Cards Stagger Reveal on Scroll
+                const cardGrids = document.querySelectorAll('.grid');
+                cardGrids.forEach((grid) => {
+                    const cards = grid.querySelectorAll(':scope > div, :scope > article, :scope > a');
+                    if (cards.length > 0) {
+                        gsap.fromTo(cards,
+                            { y: 50, opacity: 0, scale: 0.97 },
+                            {
+                                y: 0,
+                                opacity: 1,
+                                scale: 1,
+                                duration: 1.1,
+                                ease: luxuryEase,
+                                stagger: 0.14,
+                                scrollTrigger: {
+                                    trigger: grid,
+                                    start: 'top 85%',
+                                    toggleActions: 'play none none reverse'
+                                }
+                            }
+                        );
+                    }
+                });
+
+                // 4. Split Editorial Sections (Left & Right Column Entrance)
+                const splitSections = document.querySelectorAll('.grid-cols-1.lg\\:grid-cols-2, .grid-cols-1.lg\\:grid-cols-3, .grid-cols-1.lg\\:grid-cols-12');
+                splitSections.forEach((sec) => {
+                    const children = sec.children;
+                    if (children.length >= 2) {
+                        gsap.fromTo(children[0], 
+                            { x: -40, opacity: 0 },
+                            {
+                                x: 0,
+                                opacity: 1,
+                                duration: 1.1,
+                                ease: editorialEase,
+                                scrollTrigger: {
+                                    trigger: sec,
+                                    start: 'top 82%',
+                                    toggleActions: 'play none none reverse'
+                                }
+                            }
+                        );
+                        gsap.fromTo(children[1], 
+                            { x: 40, opacity: 0 },
+                            {
+                                x: 0,
+                                opacity: 1,
+                                duration: 1.1,
+                                ease: editorialEase,
+                                scrollTrigger: {
+                                    trigger: sec,
+                                    start: 'top 82%',
+                                    toggleActions: 'play none none reverse'
+                                }
+                            }
+                        );
+                    }
+                });
             }
         });
     </script>
