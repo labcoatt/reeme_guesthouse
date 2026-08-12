@@ -875,23 +875,6 @@
             }
         }
 
-        // Simple Fade-in animation on scroll using Intersection Observer
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-6');
-                }
-            });
-        }, { threshold: 0.08 });
-
-        document.querySelectorAll('.neomorph-raised, .neomorph-card-dark').forEach(el => {
-            if (!el.closest('#home')) { 
-                el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-6');
-                scrollObserver.observe(el);
-            }
-        });
-
         // Hero Background Carousel Rotation
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-carousel-item');
@@ -905,7 +888,6 @@
         if (slides.length > 1) {
             setInterval(rotateHeroSlide, 6000); // Change image every 6 seconds
         }
-
 
         // Lenis Smooth Scroll Engine
         if (typeof Lenis !== 'undefined') {
@@ -925,7 +907,7 @@
             gsap.ticker.lagSmoothing(0);
         }
 
-        // GSAP Plugins, Custom Ease & Animations Engine
+        // Powerful GSAP ScrollTrigger & CustomEase Animation Engine
         if (typeof gsap !== 'undefined') {
             const pluginsToRegister = [];
             if (typeof ScrollTrigger !== 'undefined') pluginsToRegister.push(ScrollTrigger);
@@ -950,59 +932,75 @@
                 softBounce = "softBounce";
             }
 
-            // 1. Initial Hero Fold Entrance Animation
-            const heroTl = gsap.timeline({ delay: 0.2 });
+            // 1. Hero Entrance Timeline
+            const heroTl = gsap.timeline({ delay: 0.15 });
             const heroHeading = document.querySelector('#home h1');
             const heroSubtitle = document.querySelector('#home p');
             const heroBookingBar = document.querySelector('#home .absolute.inset-x-6.bottom-8');
 
             if (heroHeading) {
                 heroTl.fromTo(heroHeading, 
-                    { y: 40, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 1.2, ease: luxuryExpo }
+                    { y: 50, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1.3, ease: luxuryExpo }
                 );
             }
             if (heroSubtitle) {
                 heroTl.fromTo(heroSubtitle, 
-                    { y: 30, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 1.0, ease: luxuryExpo },
-                    '-=0.8'
+                    { y: 35, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1.1, ease: luxuryExpo },
+                    '-=0.9'
                 );
             }
             if (heroBookingBar) {
                 heroTl.fromTo(heroBookingBar, 
-                    { y: 50, opacity: 0, scale: 0.96 },
-                    { y: 0, opacity: 1, scale: 1, duration: 1.1, ease: softBounce },
-                    '-=0.7'
+                    { y: 60, opacity: 0, scale: 0.95 },
+                    { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: softBounce },
+                    '-=0.8'
                 );
             }
 
             if (typeof ScrollTrigger !== 'undefined') {
-                // 2. Hero Carousel Scroll Parallax Scrub
+                // 2. Hero Background Carousel Zoom & Parallax Scrub
                 const heroSection = document.getElementById('home');
                 if (heroSection) {
                     gsap.to('#hero-carousel img', {
-                        scale: 1.15,
-                        yPercent: 15,
+                        scale: 1.2,
+                        yPercent: 18,
                         ease: 'none',
                         scrollTrigger: {
                             trigger: heroSection,
                             start: 'top top',
                             end: 'bottom top',
-                            scrub: true
+                            scrub: 0.8
                         }
                     });
+
+                    // Scrub fade-out for hero text content as user scrolls down
+                    const heroContent = heroSection.querySelector('.relative.z-10');
+                    if (heroContent) {
+                        gsap.to(heroContent, {
+                            opacity: 0,
+                            yPercent: -25,
+                            ease: 'none',
+                            scrollTrigger: {
+                                trigger: heroSection,
+                                start: 'top top',
+                                end: '60% top',
+                                scrub: 0.5
+                            }
+                        });
+                    }
                 }
 
-                // 3. Section Headers Entrance Triggers (h2, h3, pill badges)
+                // 3. High-Impact Section Headers Reveal (h2, h3, badges, lead descriptions)
                 const sectionHeaders = document.querySelectorAll('section h2, section h3, section .inline-flex, section p.max-w-xl, section p.max-w-2xl');
                 sectionHeaders.forEach((el) => {
                     gsap.fromTo(el, 
-                        { y: 45, opacity: 0 },
+                        { y: 60, opacity: 0 },
                         {
                             y: 0,
                             opacity: 1,
-                            duration: 1.1,
+                            duration: 1.2,
                             ease: luxuryExpo,
                             scrollTrigger: {
                                 trigger: el,
@@ -1013,23 +1011,23 @@
                     );
                 });
 
-                // 4. Grid Cards Stagger Reveal Triggers
+                // 4. Staggered Grid Cards Entrance Triggers
                 const cardGrids = document.querySelectorAll('.grid');
                 cardGrids.forEach((grid) => {
                     const cards = grid.querySelectorAll(':scope > div, :scope > article, :scope > a');
                     if (cards.length > 0) {
                         gsap.fromTo(cards,
-                            { y: 55, opacity: 0, scale: 0.96 },
+                            { y: 70, opacity: 0, scale: 0.93 },
                             {
                                 y: 0,
                                 opacity: 1,
                                 scale: 1,
-                                duration: 1.15,
+                                duration: 1.25,
                                 ease: luxuryExpo,
-                                stagger: 0.15,
+                                stagger: 0.16,
                                 scrollTrigger: {
                                     trigger: grid,
-                                    start: 'top 85%',
+                                    start: 'top 84%',
                                     toggleActions: 'play none none reverse'
                                 }
                             }
@@ -1037,17 +1035,36 @@
                     }
                 });
 
-                // 5. Split Editorial Column Slide-In Triggers
+                // 5. Image Zoom Entrance Trigger for Feature Photography Cards
+                const featureImages = document.querySelectorAll('section img:not(#hero-carousel img)');
+                featureImages.forEach((img) => {
+                    gsap.fromTo(img,
+                        { scale: 1.12, opacity: 0.6 },
+                        {
+                            scale: 1,
+                            opacity: 1,
+                            duration: 1.3,
+                            ease: luxuryExpo,
+                            scrollTrigger: {
+                                trigger: img,
+                                start: 'top 86%',
+                                toggleActions: 'play none none reverse'
+                            }
+                        }
+                    );
+                });
+
+                // 6. Split Editorial Column Slide-In Triggers
                 const splitSections = document.querySelectorAll('.grid-cols-1.lg\\:grid-cols-2, .grid-cols-1.lg\\:grid-cols-3, .grid-cols-1.lg\\:grid-cols-12');
                 splitSections.forEach((sec) => {
                     const children = sec.children;
                     if (children.length >= 2) {
                         gsap.fromTo(children[0], 
-                            { x: -45, opacity: 0 },
+                            { x: -60, opacity: 0 },
                             {
                                 x: 0,
                                 opacity: 1,
-                                duration: 1.2,
+                                duration: 1.25,
                                 ease: editorialOut,
                                 scrollTrigger: {
                                     trigger: sec,
@@ -1057,11 +1074,11 @@
                             }
                         );
                         gsap.fromTo(children[1], 
-                            { x: 45, opacity: 0 },
+                            { x: 60, opacity: 0 },
                             {
                                 x: 0,
                                 opacity: 1,
-                                duration: 1.2,
+                                duration: 1.25,
                                 ease: editorialOut,
                                 scrollTrigger: {
                                     trigger: sec,
