@@ -195,9 +195,12 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             
             <!-- Left Side: Brand Logo -->
-            <a href="index.html" class="flex items-center gap-2.5 click-shrink">
-                <img src="images/reeme_logo.jpg" alt="Reeme Guest House Logo" class="h-10 w-auto object-contain rounded-lg shadow-sm">
-                <span class="font-sans font-bold uppercase tracking-widest text-[#2D2722] text-sm hidden sm:inline">Reeme Guest House</span>
+            <a href="index.html" class="flex items-center gap-3 click-shrink group">
+                <img src="images/reeme_logo.jpg" alt="Reeme Guest House Logo" class="h-10 md:h-12 w-auto object-contain rounded-xl shadow-md border border-primary/20 group-hover:scale-105 transition-transform duration-300">
+                <div class="flex flex-col">
+                    <span class="font-display font-extrabold uppercase tracking-widest text-[#2D2722] text-sm md:text-base leading-none">Reeme</span>
+                    <span class="text-[10px] font-mono tracking-widest text-[#A76B46] uppercase font-bold">Guest House</span>
+                </div>
             </a>
 
             <!-- Center: Desktop Links -->
@@ -231,8 +234,9 @@
         <div class="absolute inset-0 bg-black/70 opacity-0" data-menu-backdrop></div>
         <div class="absolute top-0 left-0 right-0 bg-[#2D2722] border-b border-white/10 opacity-0 -translate-y-6 text-white" data-menu-panel>
             <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-                <div class="text-lg font-serif tracking-wider text-white">
-                    <span>REEME</span><span class="text-brand-gold">.</span>
+                <div class="flex items-center gap-2.5 text-white">
+                    <img src="images/reeme_logo.jpg" alt="Reeme Guest House Logo" class="h-9 w-auto object-contain rounded-lg shadow-sm">
+                    <span class="font-bold text-sm uppercase tracking-widest text-white">Reeme Guest House</span>
                 </div>
                 <button id="menuCloseBtn" class="text-white text-xl" aria-label="Close menu">
                     <i class="fa-solid fa-xmark" aria-hidden="true"></i>
@@ -861,6 +865,13 @@
     <footer class="bg-[#2D2722] py-12 border-t border-white/10 text-stone-400 text-xs">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center tracking-wider gap-6">
             <div class="text-center md:text-left space-y-2">
+<div class="flex items-center justify-center md:justify-start gap-3.5 mb-3">
+                    <img src="images/reeme_logo.jpg" alt="Reeme Guest House Logo" class="h-12 w-auto object-contain rounded-xl shadow-lg border border-white/20">
+                    <div class="flex flex-col text-left">
+                        <span class="font-extrabold text-base text-white tracking-widest uppercase font-display">Reeme Guest House</span>
+                        <span class="text-[10px] text-[#C5A059] font-mono tracking-widest uppercase font-bold">Postmasburg • Northern Cape</span>
+                    </div>
+                </div>
                 <p>
                     &copy; <span data-year>2026</span>
                     <span data-brand-text>REEME GUEST HOUSE</span>. All Rights Reserved.
