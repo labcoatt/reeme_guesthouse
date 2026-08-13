@@ -11,9 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@1,400;1,600;1,700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
     
-    <!-- GSAP & Lenis Smooth Scroll Engine (No Art Music Tech Stack) -->
+    <!-- GSAP & Lenis Smooth Scroll Engine (Matching Accommodations Scroll Effect) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/EasePack.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Observer.min.js"></script>
     <script src="https://unpkg.com/lenis@1.3.21/dist/lenis.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.21/dist/lenis.css">
@@ -588,5 +590,87 @@
     </script>
     <script src="js/multi-state-button.js"></script>
     <script src="js/noart-animations.js"></script>
+    <script>
+        // GSAP Plugins, Custom Ease & ScrollTrigger Engine for About Us Page (matching Accommodations page)
+        if (typeof gsap !== 'undefined') {
+            const pluginsToRegister = [];
+            if (typeof ScrollTrigger !== 'undefined') pluginsToRegister.push(ScrollTrigger);
+            if (typeof CustomEase !== 'undefined') pluginsToRegister.push(CustomEase);
+            if (typeof EasePack !== 'undefined') pluginsToRegister.push(EasePack);
+            
+            if (pluginsToRegister.length > 0) {
+                gsap.registerPlugin(...pluginsToRegister);
+            }
+
+            // Custom Ease Curves matching Accommodations page
+            let luxuryExpo = "power3.out";
+            let softBounce = "back.out(1.7)";
+            
+            if (typeof CustomEase !== 'undefined') {
+                CustomEase.create("luxuryExpo", "M0,0 C0.16,1 0.3,1 1,1");
+                CustomEase.create("softBounce", "M0,0 C0.175,0.885 0.32,1.275 1,1");
+                luxuryExpo = "luxuryExpo";
+                softBounce = "softBounce";
+            }
+
+            // 1. Initial Hero Fold Reveal
+            const heroSection = document.querySelector('#hero, main section:first-of-type');
+            if (heroSection) {
+                const heroTl = gsap.timeline({ delay: 0.15 });
+                const badge = heroSection.querySelector('.inline-flex');
+                const title = heroSection.querySelector('h1, h2');
+                const desc = heroSection.querySelector('p');
+
+                if (badge) heroTl.fromTo(badge, { y: 25, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: softBounce });
+                if (title) heroTl.fromTo(title, { y: 35, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, ease: luxuryExpo }, '-=0.5');
+                if (desc) heroTl.fromTo(desc, { y: 25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: luxuryExpo }, '-=0.6');
+            }
+
+            if (typeof ScrollTrigger !== 'undefined') {
+                // 2. Section Headers Entrance Triggers
+                const sectionHeaders = document.querySelectorAll('section h2, section h3, section .inline-flex');
+                sectionHeaders.forEach((el) => {
+                    gsap.fromTo(el, 
+                        { y: 45, opacity: 0 },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 1.1,
+                            ease: luxuryExpo,
+                            scrollTrigger: {
+                                trigger: el,
+                                start: 'top 88%',
+                                toggleActions: 'play none none reverse'
+                            }
+                        }
+                    );
+                });
+
+                // 3. Grid Cards Stagger Reveal (Feature Cards, Pillars, Maps)
+                const cardGrids = document.querySelectorAll('.grid');
+                cardGrids.forEach((grid) => {
+                    const cards = grid.querySelectorAll(':scope > div, :scope > article');
+                    if (cards.length > 0) {
+                        gsap.fromTo(cards,
+                            { y: 55, opacity: 0, scale: 0.96 },
+                            {
+                                y: 0,
+                                opacity: 1,
+                                scale: 1,
+                                duration: 1.15,
+                                ease: luxuryExpo,
+                                stagger: 0.15,
+                                scrollTrigger: {
+                                    trigger: grid,
+                                    start: 'top 85%',
+                                    toggleActions: 'play none none reverse'
+                                }
+                            }
+                        );
+                    }
+                });
+            }
+        }
+    </script>
 </body>
 </html>
